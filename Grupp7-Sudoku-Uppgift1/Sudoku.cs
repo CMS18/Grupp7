@@ -56,6 +56,10 @@ namespace Grupp7_Sudoku_Uppgift1
                 Console.Write("|");
                 for (int col = 1; col < tableWidth; ++col)
                 {
+                    if (col != 10)
+                    {
+                        Console.Write(" {0} ", _sudokuBoard[row - 1, col - 1]);
+                    }
                     if (col == 4 || col == 7)
                     {
                         Console.Write("|"); // Places a seperator between first and second 3x3 boxes
@@ -63,10 +67,6 @@ namespace Grupp7_Sudoku_Uppgift1
                     else if (col == 10)
                     {
                         Console.Write("|"); // Places a '|' to close the last 3x3 box
-                    }
-                    if (col != 10)
-                    {
-                        Console.Write(" {0} ", _sudokuBoard[row - 1, col - 1]);
                     }
                 }
                 Console.WriteLine();
