@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grupp7_Sudoku_Uppgift1
+namespace Uppgift1
 {
     public class Sudoku
     {
@@ -148,7 +148,7 @@ namespace Grupp7_Sudoku_Uppgift1
             }
             return false;
         }
-        #endregion
+       
 
 
         private bool ControlRowColBox(int row, int col, int num)
@@ -168,5 +168,7 @@ namespace Grupp7_Sudoku_Uppgift1
             }
             return true;
         }
+
+        #endregion
     }
 }

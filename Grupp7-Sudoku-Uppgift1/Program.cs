@@ -5,7 +5,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grupp7_Sudoku_Uppgift1
+namespace Uppgift1
 {
     class Program
     {

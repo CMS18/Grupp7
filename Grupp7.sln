@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grupp7-Sudoku-Uppgift1", "Grupp7-Sudoku-Uppgift1\Grupp7-Sudoku-Uppgift1.csproj", "{43D395CF-8933-425E-9B17-2DBD2DB95CD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift1", "Grupp7-Sudoku-Uppgift1\Uppgift1.csproj", "{43D395CF-8933-425E-9B17-2DBD2DB95CD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift-2", "Uppgift-2\Uppgift-2.csproj", "{E0AB7288-EA83-4D4F-9A30-E8A601608B2F}"
 EndProject
