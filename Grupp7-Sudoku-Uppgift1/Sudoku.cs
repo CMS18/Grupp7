@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,10 +78,111 @@ namespace Grupp7_Sudoku_Uppgift1
             }
         }
 
+        public void Solve()
+        {
+            int tries = 0;
+            int row = 0;
+            do
+            {
+
+                if (row == 9)
+                {
+                    row = 0;
+                }
+
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        int solutions = 0;
+                        int correctNum = 0;
+
+                        for (int i = 1; i < 10; i++)
+                        {
+                            if (solutions > 1)
+                            {
+                                solutions = 0;
+                                break;
+                            }
+                            if (ControlRowColBox(row ,col ,i))
+                            {
+                                correctNum = i;
+                                solutions++;
+
+                            }
+                        }
+                        if (solutions == 1 && correctNum != 0)
+                        {
+                            _sudokuBoard[row, col] = correctNum;
+                        }
+
+                    }
+                }
+                row++;
+                tries++;
+
+                if (NoEmptyCell() && tries == 150)
+                {
+                    Console.WriteLine( );
+                    Console.WriteLine( "Sudokun saknar lösning... Så här lång kom jag!");
+                    BoardAsText();
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                    break;
+                }
 
 
+            } while (NoEmptyCell());
+            Console.WriteLine("");
+            BoardAsText();
+            Console.ReadLine();
 
 
+        }
+
+        private bool NoEmptyCell()
+        {
+            for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
+            {
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
+
+
+        private bool ControlRowColBox(int row, int col, int num)
+        {
+            int RowStart = (row / 3) * 3;
+            int ColStart = (col / 3) * 3;
+
+            for (int i = 0; i < 9; i++)
+            {
+                if (_sudokuBoard[row, i] == num)
+                {
+                    return false;
+                }
+
+                if (_sudokuBoard[i, col] == num)
+                {
+                    return false;
+                }
+
+                if (_sudokuBoard[RowStart + (i % 3), ColStart + (i / 3)] == num)
+                {
+                    return false;
+                }
+
+               
+            }
+
+            return true;
+        }
     }
 }
