@@ -78,9 +78,22 @@ namespace Uppgift_2
             }
         }
 
-        public void Solve()
+        public bool Solve()
         {
-            // Fortsätt här
+            // FÖR VARJE row
+                // FÖR VARJE col
+                    // OM cell == 0
+                        // Testa nummer 1-9
+                            // OM ControlRowBox(row, col, nummer) = true
+                                // Placera nummer i cell
+                                    // OM Solve()  -Rekursivt, hoppar upp till första kommentaren
+                                    // return true
+                                    // ANNARS cell = 0
+                        // return false, inget av nummer 1-9 fungerar, hoppa ur denna rekursiva metoden. Går till Else och sätter cell till 0.
+                       
+            // return true, sudukon är löst
+
+            return true;
 
         }
 

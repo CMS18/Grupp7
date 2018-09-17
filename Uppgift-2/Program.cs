@@ -18,7 +18,10 @@ namespace Uppgift_2
 
             game.PrintSuduko();
 
-            // Sätt Solve här
+            if(game.Solve())
+            {
+                game.PrintSuduko();
+            }
 
 
             Console.ReadKey();
