@@ -77,10 +77,56 @@ namespace Grupp7_Sudoku_Uppgift1
             }
         }
 
+        public void Solve()
+        {
+            int row = 0;
+            do
+            {
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        int solutions = 0;
+                        int correctNum = 0;
 
+                        for (int i = 1; i < 10; i++)
+                        {
+                            if (solutions > 1)
+                            {
+                                solutions = 0;
+                                break;
+                            }
+                            //if (checkColRowBox)
+                            {
+                                correctNum = i;
+                                solutions++;
+                            }
+                        }
+                        if (solutions == 1 && correctNum != 0)
+                        {
+                            _sudokuBoard[row, col] = correctNum;
+                        }
+                    }
+                }
+                row++;
+            } while (NoEmptyCell());
 
+        }
 
-
+        private bool NoEmptyCell()
+        {
+            for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
+            {
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
     }
 }
