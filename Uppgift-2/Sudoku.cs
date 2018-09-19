@@ -98,7 +98,15 @@ namespace Uppgift_2
                                 // Placera nummer i cell
                                 _sudokuBoard[row, col] = num;
                             }
+                            if (Solve())
+                            {
+                                return true;
+                            }else
+                            {
+                                _sudokuBoard[row, col] = 0;
+                            }
                         }
+                        return false; 
                     }
                 }
             }
