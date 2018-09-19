@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift1", "Grupp7-Sudoku-U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift-2", "Uppgift-2\Uppgift-2.csproj", "{E0AB7288-EA83-4D4F-9A30-E8A601608B2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift3-Spel", "Uppgift3-Spel\Uppgift3-Spel.csproj", "{A59917FE-EF13-4305-8655-635FD8A35CE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E0AB7288-EA83-4D4F-9A30-E8A601608B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0AB7288-EA83-4D4F-9A30-E8A601608B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0AB7288-EA83-4D4F-9A30-E8A601608B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59917FE-EF13-4305-8655-635FD8A35CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59917FE-EF13-4305-8655-635FD8A35CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59917FE-EF13-4305-8655-635FD8A35CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59917FE-EF13-4305-8655-635FD8A35CE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

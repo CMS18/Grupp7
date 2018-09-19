@@ -80,58 +80,53 @@ namespace Uppgift1
 
         public void Solve()
         {
-
-            Console.WriteLine("Tryck på en tangent för att lösa...");
+            Console.WriteLine("Press a key to solve...");
             Console.ReadKey();
-            int tries = 0;
-            int row = 0;
+
             do
             {
-                if (row == 9) row = 0;
-
-                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
                 {
-                    if (_sudokuBoard[row, col] == 0)
+                    for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
                     {
-                        int solutions = 0;
-                        int correctNum = 0;
-
-                        for (int i = 1; i < 10; i++)
+                        if (_sudokuBoard[row, col] == 0)
                         {
-                            if (solutions > 1)
+                            int solutions = 0;
+                            int correctNum = 0;
+                            for (int i = 1; i < 10; i++)
                             {
-                                solutions = 0;
+                                if (solutions > 1)
+                                {
+                                    solutions = 0;
+                                    break;
+                                }
+                                if (ControlRowColBox(row, col, i))
+                                {
+                                    correctNum = i;
+                                    solutions++;
+                                }
+                            }
+                            if (solutions == 1 && correctNum != 0)
+                            {
+                                _sudokuBoard[row, col] = correctNum;
+                            }
+                            if(solutions == 0)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("Sudokun saknar lösning... så här långt kom jag.");
+                                BoardAsText();
+                                Console.ReadLine();
+                                Environment.Exit(0);
                                 break;
                             }
-                            if (ControlRowColBox(row ,col ,i))
-                            {
-                                correctNum = i;
-                                solutions++;
-                            }
-                        }
-                        if (solutions == 1 && correctNum != 0)
-                        {
-                            _sudokuBoard[row, col] = correctNum;
                         }
                     }
                 }
-                row++;
-                tries++;
-
-                if (NoEmptyCell() && tries == 150)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Sudokun saknar lösning... Så här långt kom jag!");
-                    BoardAsText();
-                    Console.ReadKey();
-                    Environment.Exit(0);
-                }
-
             } while (NoEmptyCell());
 
             Console.WriteLine();
             BoardAsText();
-            Console.ReadKey();
+            Console.ReadLine();
         }
 
         private bool NoEmptyCell()
