@@ -10,14 +10,15 @@ namespace Uppgift1
     public class Sudoku
     {
         #region Fields
-        private int[,] _sudokuBoard;
+        private int[,] _sudokuBoard = new int[9, 9];
         #endregion
 
         #region Constructors
         public Sudoku(string board)
         {
-            _sudokuBoard = GenerateBoard(board);
+            _sudokuBoard = GenerateBoard(board); 
         }
+        
         #endregion
 
 
@@ -43,8 +44,6 @@ namespace Uppgift1
             }
             return sudokuBoard;
         }
-
-
 
         public void BoardAsText()
         {
