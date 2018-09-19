@@ -82,6 +82,7 @@ namespace Uppgift1
         {
             Console.WriteLine("Press a key to solve...");
             Console.ReadKey();
+            int tries = 0;
 
             do
             {
@@ -110,23 +111,29 @@ namespace Uppgift1
                             {
                                 _sudokuBoard[row, col] = correctNum;
                             }
-                            if(solutions == 0)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Sudokun saknar lösning... så här långt kom jag.");
-                                BoardAsText();
-                                Console.ReadLine();
-                                Environment.Exit(0);
-                                break;
-                            }
                         }
                     }
                 }
+                tries++;
+                if (NoEmptyCell() && tries == 100)
+                {
+                    NoSolution();
+                }
+
             } while (NoEmptyCell());
 
             Console.WriteLine();
             BoardAsText();
             Console.ReadLine();
+        }
+
+        private void NoSolution()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Sudokun saknar lösning... så här långt kom jag.");
+            BoardAsText();
+            Console.ReadLine();
+            Environment.Exit(0);
         }
 
         private bool NoEmptyCell()
@@ -144,7 +151,6 @@ namespace Uppgift1
             return false;
         }
        
-
 
         private bool ControlRowColBox(int row, int col, int num)
         {
