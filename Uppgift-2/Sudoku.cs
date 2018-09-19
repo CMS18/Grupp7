@@ -81,16 +81,33 @@ namespace Uppgift_2
         public bool Solve()
         {
             // FÖR VARJE row
+            for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
+            {
                 // FÖR VARJE col
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
                     // OM cell == 0
+                    if (_sudokuBoard[row, col] == 0)
+                    {
                         // Testa nummer 1-9
+                        for (int num = 1; num < 10; num++)
+                        {
                             // OM ControlRowBox(row, col, nummer) = true
+                            if (ControlRowColBox(row, col, num))
+                            {
                                 // Placera nummer i cell
-                                    // OM Solve()  -Rekursivt, hoppar upp till första kommentaren
-                                    // return true
-                                    // ANNARS cell = 0
-                        // return false, inget av nummer 1-9 fungerar, hoppa ur denna rekursiva metoden. Går till Else och sätter cell till 0.
-                       
+                                _sudokuBoard[row, col] = num;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // OM Solve()  -Rekursivt, hoppar upp till första kommentaren
+            // return true
+            // ANNARS cell = 0
+            // return false, inget av nummer 1-9 fungerar, hoppa ur denna rekursiva metoden. Går till Else och sätter cell till 0.
+
             // return true, sudukon är löst
 
             return true;
