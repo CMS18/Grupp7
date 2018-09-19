@@ -1,6 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Uppgift_2
 {
@@ -23,11 +26,11 @@ namespace Uppgift_2
 
         #region Methods
 
-
         private int[,] GenerateBoard(string board)
         {
             char[] boardCharArray = board.ToCharArray();
             int[,] sudokuBoard = new int[9, 9];
+
             int row = 0;
             int col = 0;
 
