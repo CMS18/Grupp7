@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Uppgift_2
@@ -80,6 +81,8 @@ namespace Uppgift_2
 
         public bool Solve()
         {
+            Thread.Sleep(60);
+
             // FÖR VARJE row
             for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
             {
@@ -97,31 +100,33 @@ namespace Uppgift_2
                             {
                                 // Placera nummer i cell
                                 _sudokuBoard[row, col] = num;
-                            }
-                            if (Solve())
-                            {
-                                return true;
-                            }else
-                            {
-                                _sudokuBoard[row, col] = 0;
+                                Console.SetCursorPosition(0, 0);
+                                PrintSuduko();
+
+                                // OM Solve()  -Rekursivt, hoppar upp till första kommentaren
+                                if (Solve())
+                                {
+                                    // return true
+                                    return true;
+                                }
+                                // ANNARS cell = 0
+                                else
+                                {
+                                    _sudokuBoard[row, col] = 0;
+                                    Console.SetCursorPosition(0, 0);
+                                    PrintSuduko();
+                                }
                             }
                         }
+                        // return false, inget av nummer 1-9 fungerar, hoppa ur denna rekursiva metoden.
+                        //Går till Else och sätter cell till 0.
                         return false; 
                     }
                 }
             }
-
-            // OM Solve()  -Rekursivt, hoppar upp till första kommentaren
-            // return true
-            // ANNARS cell = 0
-            // return false, inget av nummer 1-9 fungerar, hoppa ur denna rekursiva metoden. Går till Else och sätter cell till 0.
-
-            // return true, sudukon är löst
-
+            // return true, sudokun är löst
             return true;
-
         }
-
 
 
         private bool ControlRowColBox(int row, int col, int num)
