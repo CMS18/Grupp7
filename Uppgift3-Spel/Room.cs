@@ -10,7 +10,7 @@ namespace Uppgift3_Spel
     {
 
         public string Title { get; private set; }
-        public string Description { get; private set; 
+        public string Description { get; private set; } 
         public List<Exit> Exit { get; private set; }
 
 

@@ -19,7 +19,14 @@ namespace Uppgift3_Spel
             // Generate Rooms, add inventorys, add exits
             var room1 = new Room("Outside Mansion", "We are outside the mansion", exit1, item1);
 
+
+            var exit2 = new Exit("Room 3", 2);
+            var item2 = new Item("Item 2", "This is item2", 2);
+
+            var room2 = new Room("Back of the Mansion", "We are still outside the mansion", exit2, item2);
+
             result.Add(room1);
+            result.Add(room2);
             _room = result;
             // Add to List
             
