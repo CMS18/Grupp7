@@ -10,17 +10,21 @@ namespace Uppgift3_Spel
     {
         public List<string> Inventory { get; private set; }
         public string Name { get; private set; }
+        private bool _alive;
         
         public Player(string name)
         {
             Name = name;
             Inventory = new List<string>();
+            _alive = true;
         }
 
         public void Move()
         {
 
         }
+
+        public bool isDead() => _alive == false;
 
         public void Look() //Room
         {

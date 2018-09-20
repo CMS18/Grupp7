@@ -12,18 +12,30 @@ namespace Uppgift3_Spel
         private List<Room> _rooms;
         private bool _alive;
         private bool _victory;
+        private Room _currentLocation;
+
+        public Game()
+        {
+            NewGame();
+        }
 
         public void NewGame()
         {
             // Load WorldBuilder
+            // Set worldbuilder room list to _rooms
+            // Ask player for Name, create Player.
         }
 
-        public void PlayGame()
+        public void PlayingGame()
         {
+            while(_alive || !_victory)
+            {
+                // Playing here
 
+            }
         }
 
-        public void PlayerTurn()
+        public void PlayerParse()
         {
             
         }

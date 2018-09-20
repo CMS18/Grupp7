@@ -10,7 +10,11 @@ namespace Uppgift3_Spel
     {
         static void Main(string[] args)
         {
-            //TEXTSPEL 
+            //string title = "Outside of Mansion  Score: 0";
+            //Console.Title = title;
+            //TEXTSPEL
+            var game = new Game();
+
         }
     }
 }
