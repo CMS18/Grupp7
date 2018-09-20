@@ -14,7 +14,7 @@ namespace Uppgift_2
 
             string easy = "619030040270061008000047621486302079000014580031009060005720806320106057160400030";
 
-            Sudoku game = new Sudoku(easy);
+            Sudoku game = new Sudoku(zen);
 
             game.PrintSuduko();
 
