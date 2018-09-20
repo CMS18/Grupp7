@@ -14,6 +14,7 @@ namespace Uppgift3_Spel
         private bool _victory;
         private Room _currentLocation;
 
+
         public Game()
         {
             NewGame();
@@ -22,8 +23,14 @@ namespace Uppgift3_Spel
         public void NewGame()
         {
             // Load WorldBuilder
+            WorldBuilder world = new WorldBuilder();
+
             // Set worldbuilder room list to _rooms
+            _rooms = world._rooms;
+
             // Ask player for Name, create Player.
+            _player = world.CreateNewPlayer();
+
         }
 
         public void PlayingGame()

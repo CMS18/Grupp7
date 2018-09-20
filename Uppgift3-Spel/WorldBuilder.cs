@@ -23,5 +23,12 @@ namespace Uppgift3_Spel
             
         }
 
+        public Player CreateNewPlayer()
+        {
+            string name = Console.ReadLine();
+            Player player = new Player(name);
+            return player;
+        }
+
     }
 }
