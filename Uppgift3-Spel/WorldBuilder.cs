@@ -12,8 +12,8 @@ namespace Uppgift3_Spel
 
         public WorldBuilder()
         {
-            var exit1 = new Exit("Room 2");
-            var item1 = new Item("Item1", "This is item1");
+            var exit1 = new Exit("Room 2", 1);
+            var item1 = new Item("Item1", "This is item1", 1);
 
             // Generate Rooms, add inventorys, add exits
             var room1 = new Room("Outside Mansion", "We are outside the mansion", exit1, item1);

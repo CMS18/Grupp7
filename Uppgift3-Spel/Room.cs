@@ -10,14 +10,15 @@ namespace Uppgift3_Spel
     {
         public string Title { get; private set; }
         public string Description { get; private set; }
-        public List<Exit> Exits { get; private set; }
+        public List<Exit> Exit { get; private set; }
         public List<Item> RoomInventory { get; private set; }
 
         public Room(string title, string description, Exit exit, Item item)
         {
+            Console.Title = title;
             Title = title;
             Description = description;
-            Exits.Add(exit);
+            Exit.Add(exit);
             RoomInventory.Add(item);
         }
 
