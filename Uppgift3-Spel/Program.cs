@@ -13,7 +13,7 @@ namespace Uppgift3_Spel
             //string title = "Outside of Mansion  Score: 0";
             //Console.Title = title;
             //TEXTSPEL
-            var game = new Game();
+            var game = new World();
 
         }
     }

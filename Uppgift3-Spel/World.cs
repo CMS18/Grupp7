@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Uppgift3_Spel
 {
-    class Game
+    class World
     {
         private Player _player;
         private List<Room> _rooms = new List<Room>();
         private Room _currentLocation;
 
-        public Game()
+        public World()
         {
-            NewGame();
+            NewWorld();
         }
 
-        public void NewGame()
+        public void NewWorld()
         {
             // Load WorldBuilder
             WorldBuilder world = new WorldBuilder();
@@ -29,10 +29,10 @@ namespace Uppgift3_Spel
             _player = world.CreateNewPlayer();
 
             // Go to PlayingGame
-            PlayingGame();
+            PlayGame();
         }
 
-        public void PlayingGame()
+        public void PlayGame()
         {
             _currentLocation = _rooms[0]; // Sätter startposition till första index i listan av rum.
 
