@@ -8,6 +8,7 @@ namespace Uppgift3_Spel
 {
     class World
     {
+        private Game _game = new Game();
         private Player _player;
         private List<Room> _rooms = new List<Room>();
         private Room _currentLocation;
@@ -37,7 +38,7 @@ namespace Uppgift3_Spel
                 Console.WriteLine(_currentLocation.Title);
                 Console.WriteLine(_currentLocation.Description);
                 // Anropa metod för att integrera med spelaren
-
+                _game.PlayerInput(_player, _currentLocation);
                 Console.ReadKey();
             }
         }
