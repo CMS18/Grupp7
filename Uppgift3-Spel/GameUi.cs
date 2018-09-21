@@ -90,11 +90,11 @@ namespace Uppgift3_Spel
                     if (room != _currentRoom) continue;
                     foreach (var exit in room.Exit)
                     {
-                        if (exit.ExitId == item.ItemId && PlayerParse(value, exit.ExitName))
-                        {
-                            Console.WriteLine("Its unlocked!");
-                            exit.Locked = false;
-                        }
+                        if (exit.ExitId != item.ItemId || !PlayerParse(value, exit.ExitName)) continue;
+                        Console.WriteLine("Its unlocked!");
+                        _player.PlayerInventory.Remove((item));
+                        exit.Locked = false;
+                        return;
                     }
                 }
             }
@@ -115,7 +115,10 @@ namespace Uppgift3_Spel
                     }
                     if(!exit.Locked && PlayerParse(value, exit.ExitName))
                     {
+                        // Tillfällig
+                        Console.WriteLine("Success! The key broke in half... I think it's useless now.");
                         _currentRoom = exit.LeadsTo;
+                        _currentRoom.ShowRoomDescription();
                     }
                 }
             }

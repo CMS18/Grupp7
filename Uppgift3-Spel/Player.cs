@@ -35,10 +35,5 @@ namespace Uppgift3_Spel
                 }   
             }
         }
-
-        public void UseItem()
-        {
-
-        }
     }
 }

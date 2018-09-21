@@ -30,6 +30,7 @@ namespace Uppgift3_Spel
 
         public void ShowRoomDescription()
         {
+            Console.Title = Title;
             Console.WriteLine(Title);
             Console.WriteLine(Description);
 

@@ -6,17 +6,11 @@ namespace Uppgift3_Spel
     internal class World
     {
         private readonly GameUi _game = new GameUi();
-        private Player _player;
-        private List<Room> _rooms;
+        private readonly Player _player;
+        private readonly List<Room> _rooms;
         private Room _currentLocation;
 
         public World()
-        {
-            NewWorld();
-            PlayGame();
-        }
-
-        public void NewWorld()
         {
             // Instance of worldbuilder
             var world = new WorldBuilder();
@@ -24,6 +18,7 @@ namespace Uppgift3_Spel
             _rooms = world.Room;
             // Ask player for Name, create Player.
             _player = world.CreateNewPlayer();
+            PlayGame();
         }
 
         public void PlayGame()
