@@ -5,14 +5,14 @@ namespace Uppgift3_Spel
 {
     internal class Player
     {
-        public List<string> PlayerInventory { get; }
+        public List<Item> PlayerInventory { get; }
         public string Name { get; }
         private readonly bool _alive;
         
         public Player(string name)
         {
             Name = name;
-            PlayerInventory = new List<string>();
+            PlayerInventory = new List<Item>();
             _alive = true;
         }
 

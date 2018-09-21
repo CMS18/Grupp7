@@ -41,6 +41,7 @@ namespace Uppgift3_Spel
                     Show(inputArray);
                     break;
                 case "take": case "pickup":
+                    Take(inputArray);
                     break;
                 case "go":
                     Go((inputArray));
@@ -67,15 +68,52 @@ namespace Uppgift3_Spel
 
         public void Use(string[] value)
         {
+            foreach (var str in value)
+            {
+                foreach(var item in _player.PlayerInventory)
+                {
+                    foreach (var room in _rooms)
+                    {
+                        if (room == _currentRoom)
+                        {
+                            foreach (var exit in room.Exit)
+                            {
+                                if (exit.ExitId == item.ItemId)
+                                {
+                                    exit.Locked = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
             // ordet value
             // kolla om spelaren har det i sitt inventory
             // kolla om det kan användas på det andra föremålet
             // kolla om det kan användas på exit
+
         }
 
         public void Open(string[] value)
         {
-
+            foreach (var str in value)
+            {
+                foreach (var room in _rooms)
+                {
+                    if (room == _currentRoom)
+                    {
+                        foreach (var exit in room.Exit)
+                        {
+                            if (exit.Locked == false)
+                            {
+                                _currentRoom = exit.LeadsTo;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public void Take(string[] value)

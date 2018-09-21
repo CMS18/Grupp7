@@ -4,7 +4,7 @@
     {
         public Room LeadsTo { get; }
         public int ExitId { get; }
-        public bool Locked { get; }
+        public bool Locked { get; set; }
         public bool EndPoint { get; }
         public string ExitName { get; }
 
