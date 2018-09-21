@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Uppgift3_Spel
 {
-    class World
+    internal class World
     {
+        private readonly GameUi _game = new GameUi();
         private Player _player;
         private List<Room> _rooms = new List<Room>();
         private Room _currentLocation;
@@ -15,32 +13,27 @@ namespace Uppgift3_Spel
         public World()
         {
             NewWorld();
+            PlayGame();
         }
 
         public void NewWorld()
         {
-            // Load WorldBuilder
-            WorldBuilder world = new WorldBuilder();
-
-            // Set worldbuilder room list to _rooms
-            _rooms = world._room;
-
+            // Instance of worldbuilder
+            var world = new WorldBuilder();
+            // Set worldbuilder's room list to _rooms
+            _rooms = world.Room;
             // Ask player for Name, create Player.
             _player = world.CreateNewPlayer();
-
-            // Go to PlayingGame
-            PlayGame();
         }
 
         public void PlayGame()
         {
             _currentLocation = _rooms[0]; // Sätter startposition till första index i listan av rum.
-
-            while(!_player.isDead()) // or _rooms endpoint !true
+            while(!_player.IsDead()) // or _rooms endpoint !true
             {
-                Console.WriteLine("Hello " + _player.Name);
-                Console.WriteLine(_currentLocation.Title);
-                Console.WriteLine(_currentLocation.Description);
+                _currentLocation.ShowRoomDescription();
+               
+                _game.PlayerInput(_player, _currentLocation, _rooms);
                 Console.ReadKey();
             }
         }

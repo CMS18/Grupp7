@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Uppgift3_Spel
 {
-    class Game
+    internal class Game
     {
-        private Player _player;
-
-        public void PlayerInput(Player player)
+        static void Main(string[] args)
         {
-            _player = player;
-         
-            //Console.WriteLine ("> input");
-        }
-
-        public void PlayerParse()
-        {
+            //string title = "Outside of Mansion  Score: 0";
+            //Console.Title = title;
+            //TEXTSPEL
+            var game = new World();
 
         }
     }

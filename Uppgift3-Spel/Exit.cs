@@ -2,21 +2,21 @@
 {
     public class Exit
     {
-        public string LeadsTo { get; private set; }
-        public int ExitId { get; private set; }
-        public bool EndPoint { get; private set; }
+        public Room LeadsTo { get; }
+        public int ExitId { get; }
+        public bool Locked { get; }
+        public bool EndPoint { get; }
+        public string ExitName { get; }
 
 
-        public Exit(string leadsto, int id)
+        public Exit(Room leadsto, int exitId, bool locked, bool endPoint, string name)
         {
             LeadsTo = leadsto;
-            ExitId = id;
-            EndPoint = false;
+            ExitId = exitId;
+            Locked = locked;
+            EndPoint = endPoint;
+            ExitName = name;
         }
 
-        public Exit(string leadsto, int id, bool endpoint)
-        {
-
-        }
     }
 }
