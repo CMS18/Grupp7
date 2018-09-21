@@ -9,7 +9,7 @@ namespace Uppgift3_Spel
         private Room _currentRoom;
         private List<Room> _rooms;
 
-        public void PlayerInput(Player player, List<Room> rooms, Room room)
+        public void LoadGameUi(Player player, List<Room> rooms, Room room)
         {
             _currentRoom = room;
             _rooms = rooms;
@@ -76,6 +76,7 @@ namespace Uppgift3_Spel
             {
                 foreach(var item in _player.PlayerInventory)
                 {
+                    if (!item.Name.ToLower().Contains(str)) continue;
                     foreach (var room in _rooms)
                     {
                         if (room != _currentRoom) continue;

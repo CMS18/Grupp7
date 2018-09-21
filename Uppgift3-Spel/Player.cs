@@ -16,17 +16,7 @@ namespace Uppgift3_Spel
             _alive = true;
         }
 
-        public void Move()
-        {
-
-        }
-
         public bool IsDead() => _alive == false;
-
-        public void Look() //Room
-        {
-
-        }
 
         public void PickUpItem()
         {
