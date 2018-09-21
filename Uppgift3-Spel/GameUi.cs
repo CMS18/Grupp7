@@ -19,7 +19,7 @@ namespace Uppgift3_Spel
         // Method to handle user input
         public void PlayersTurn()
         {      
-                Console.Clear();
+                //Console.Clear();
                 _currentRoom.ShowRoomDescription();
                 Console.Write("> ");
                 var input = Console.ReadLine();
@@ -143,13 +143,25 @@ namespace Uppgift3_Spel
 
         public void Drop(string[] value)
         {
-
-        }
-        public void PlayerParse()
-        {
-            // Check user input, split string to array
-            // Check if first word matches one of the method, switch?
-            // Go to that method
+            foreach (var str in value)
+            {
+                foreach (var room in _rooms)
+                {
+                    if (room == _currentRoom)
+                    {
+                        foreach (var item in _player.PlayerInventory)
+                        {
+                            if(item.Name.ToLower().Contains(str))
+                            {
+                                room.RoomInventory.Add(item);
+                                _player.PlayerInventory.Remove(item);
+                                Console.WriteLine("Dropped " + item.Name + ".");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // Method for mainscreen
