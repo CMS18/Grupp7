@@ -18,12 +18,13 @@ namespace Uppgift3_Spel
             PlayersTurn();
         }
 
+        // Method to handle user input
         public void PlayersTurn()
         {
             Console.Write("> ");
             var input = Console.ReadLine();
             // om input är tom, gå tillbaks hit.
-
+            
             var inputArray = input.Split(' ');
 
             switch(inputArray[0].ToLower())
@@ -34,6 +35,12 @@ namespace Uppgift3_Spel
                     break;
                 case "show":
                     Show(inputArray[1]);
+                    break;
+                case "take":
+                    break;
+                case "go":
+                    break;
+                case "drop":
                     break;
             }
             
@@ -47,7 +54,45 @@ namespace Uppgift3_Spel
             }
         }
 
-        // Method to handle user input
+        public void Use(string value)
+        {
+            if (value.ToLower() == "use")
+            {
+
+            }
+        }
+
+        public void Open(string value)
+        {
+            if (value.ToLower() == "open")
+            {
+
+            }
+        }
+
+        public void Take(string value)
+        {
+            if (value.ToLower() == "take" || value.ToLower() == "pick up")
+            {
+
+            }
+        }
+        
+        public void Go(string value)
+        {
+            if (value.ToLower() == "go")
+            {
+
+            }
+        }
+
+        public void Drop(string value)
+        {
+            if(value.ToUpper() == "drop")
+            {
+
+            }
+        }
 
         public void PlayerParse()
         {
