@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -16,23 +17,34 @@ namespace Uppgift3_Spel
             _player = player;
         }
 
+        private static bool PlayerParse(string[] compare, string compareTo)
+        {
+            foreach (var str in compare)
+            {
+                if (compareTo.ToLower().Contains(str))
+                    return true;
+            }
+            return false;
+        }
+
+
         // Method to handle user input
         public void PlayersTurn()
         {      
-                Console.Write("> ");
-                var input = Console.ReadLine();
-                if (input == null) return;
-
-                var inputArray = input.Split(' ');
-                var statement = inputArray[0];
+            Console.Write("> ");
+            var input = Console.ReadLine();
+            if (input == null) return;
+            var inputArray = input.Split(' ');
+            var statement = inputArray[0];
+            var inputString = inputArray.Skip(1).ToArray();
 
                 switch (statement.ToLower())
                 {
                     case "open":
-                        Open(inputArray);
+                        Open(inputString);
                         break;
                     case "use":
-                        Use(inputArray);
+                        Use(inputString);
                         break;
                     case "look":
                         _currentRoom.ShowRoomDescription();
@@ -43,7 +55,7 @@ namespace Uppgift3_Spel
                         break;
                     case "take":
                     case "pickup":
-                        Take(inputArray);
+                        Take(inputString);
                         break;
                     case "go":
                         Go((inputArray));
@@ -70,71 +82,62 @@ namespace Uppgift3_Spel
 
         public void Use(string[] value)
         {
-            foreach (var str in value)
+            foreach (var item in _player.PlayerInventory)
             {
-                foreach(var item in _player.PlayerInventory)
-                {
-                    if (!item.Name.ToLower().Contains(str)) continue;
-                    foreach (var room in _rooms)
-                    {
-                        if (room != _currentRoom) continue;
-                        foreach (var exit in room.Exit)
-                        {
-                            if (exit.ExitId == item.ItemId)
-                            {
-                                exit.Locked = false;
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-
-        public void Open(string[] value)
-        {
-            foreach (var str in value)
-            {
+                if (!PlayerParse(value, item.Name)) continue;
                 foreach (var room in _rooms)
                 {
                     if (room != _currentRoom) continue;
                     foreach (var exit in room.Exit)
                     {
-                        if (exit.Locked && exit.ExitName.ToLower().Contains(str))
+                        if (exit.ExitId == item.ItemId && PlayerParse(value, exit.ExitName))
                         {
-                            Console.WriteLine("The door is locked. There is a keyhole... maybe there's a key?");
-                            return;
-                        }
-                        if(!exit.Locked)
-                        {
-                            _currentRoom = exit.LeadsTo;
+                            Console.WriteLine("Its unlocked!");
+                            exit.Locked = false;
                         }
                     }
                 }
             }
         }
 
-        public void Take(string[] value)
+        public void Open(string[] value)
         {
-            foreach (var str in value)
+            foreach (var room in _rooms)
             {
-                foreach (var room in _rooms)
+                if (room != _currentRoom) continue;
+                foreach (var exit in room.Exit)
                 {
-                    if (room == _currentRoom)
+                    if (exit.Locked)
                     {
-                        foreach (var item in room.RoomInventory)
-                        {
-                            if (item.Name.ToLower().Contains(str))
-                            {
-                                _player.PlayerInventory.Add(item);
-                                room.RoomInventory.Remove(item);
-                                Console.WriteLine("Taken.");
-                                return;
-                            }
-                        }
+                        // Tillfällig
+                        Console.WriteLine("The door is locked. There is a keyhole... maybe there's a key?");
+                        return;
+                    }
+                    if(!exit.Locked && PlayerParse(value, exit.ExitName))
+                    {
+                        _currentRoom = exit.LeadsTo;
                     }
                 }
             }
+            
+        }
+
+        public void Take(string[] value)
+        {
+            foreach (var room in _rooms)
+            {
+                if (room != _currentRoom) continue;
+                foreach (var item in room.RoomInventory)
+                {
+                    if (PlayerParse(value, item.Name))
+                    {
+                        _player.PlayerInventory.Add(item);
+                        room.RoomInventory.Remove(item);
+                        Console.WriteLine("Taken.");
+                        return;
+                    }
+                }
+            } 
         }
         
         public void Go(string[] value)
