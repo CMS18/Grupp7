@@ -9,17 +9,19 @@ namespace Uppgift3_Spel
 
         public WorldBuilder()
         {
-            List<Room> result = new List<Room>();
-            var exit1 = new Exit("Room 2", 1, "West");
-            var item1 = new Item("Item1", "This is item1", 1);
-            var room1 = new Room("Outside Mansion", "We are outside the mansion", exit1, item1);
+            var result = new List<Room>();
+            var room1 = new Room("House", "It's a house");
+            var room2 = new Room("Inside House", "We are inside house");
+
             
-            var exit2 = new Exit("Room 3", 2, "Door");
-            var item2 = new Item("Item 2", "This is item2", 2);
-            var room2 = new Room("Back of the Mansion", "We are still outside the mansion", exit2, item2);
+
+            var exit1 = new Door(room2, 1, false, true, "Maindoor");
+            room1.Exit.Add((exit1));
+                
+
+           
 
             result.Add(room1);
-            result.Add(room2);
             Room = result;
         }
 
@@ -27,7 +29,7 @@ namespace Uppgift3_Spel
         {
             // Call print first screen
             Console.Write("> What's your name? ");
-            string name = Console.ReadLine();
+            var name = Console.ReadLine();
             return new Player(name);
         }
 

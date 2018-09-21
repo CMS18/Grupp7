@@ -21,6 +21,11 @@ namespace Uppgift3_Spel
             RoomInventory = new List<Item> { item };
         }
 
+        public Room(string title, string description)
+        {
+
+        }
+
 
         public void ShowRoomDescription()
         {

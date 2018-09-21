@@ -19,7 +19,7 @@ namespace Uppgift3_Spel
         public void NewWorld()
         {
             // Instance of worldbuilder
-            WorldBuilder world = new WorldBuilder();
+            var world = new WorldBuilder();
             // Set worldbuilder's room list to _rooms
             _rooms = world.Room;
             // Ask player for Name, create Player.
@@ -31,11 +31,9 @@ namespace Uppgift3_Spel
             _currentLocation = _rooms[0]; // Sätter startposition till första index i listan av rum.
             while(!_player.IsDead()) // or _rooms endpoint !true
             {
-                Console.WriteLine("Hello " + _player.Name);
-                Console.WriteLine(_currentLocation.Title);
-                Console.WriteLine(_currentLocation.Description);
-                // Anropa metod för att integrera med spelaren
-                _game.PlayerInput(_player, _currentLocation);
+                _currentLocation.ShowRoomDescription();
+               
+                _game.PlayerInput(_player, _currentLocation, _rooms);
                 Console.ReadKey();
             }
         }

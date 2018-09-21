@@ -1,6 +1,6 @@
 namespace Uppgift3_Spel
 {
-    internal class Program
+    internal class Game
     {
         static void Main(string[] args)
         {
