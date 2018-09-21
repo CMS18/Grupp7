@@ -27,7 +27,6 @@ namespace Uppgift3_Spel
             return false;
         }
 
-
         // Method to handle user input
         public void PlayersTurn()
         {      
@@ -49,12 +48,10 @@ namespace Uppgift3_Spel
                     case "look":
                         _currentRoom.ShowRoomDescription();
                         break;
-                    case "show":
-                    case "inventory":
+                    case "show": case "inventory":
                         Show(inputArray);
                         break;
-                    case "take":
-                    case "pickup":
+                    case "take": case "pickup":
                         Take(inputString);
                         break;
                     case "go":
@@ -64,7 +61,7 @@ namespace Uppgift3_Spel
                         Drop((inputArray));
                         break;
                     default:
-                        Console.WriteLine("I don't understand what you want?");
+                        Console.WriteLine("Do what now?");
                         break;
                 }
         }
@@ -91,9 +88,8 @@ namespace Uppgift3_Spel
                     foreach (var exit in room.Exit)
                     {
                         if (exit.ExitId != item.ItemId || !PlayerParse(value, exit.ExitName)) continue;
-                        Console.WriteLine("Its unlocked!");
-                        _player.PlayerInventory.Remove((item));
-                        exit.Locked = false;
+                        _player.DropItem(item); // Calla och ändra description för room 1?
+                        exit.Unlock();
                         return;
                     }
                 }
@@ -107,19 +103,14 @@ namespace Uppgift3_Spel
                 if (room != _currentRoom) continue;
                 foreach (var exit in room.Exit)
                 {
-                    if (exit.Locked)
+                    if (!exit.Locked || !PlayerParse(value, exit.ExitName))
                     {
-                        // Tillfällig
-                        Console.WriteLine("The door is locked. There is a keyhole... maybe there's a key?");
+                        _currentRoom = exit.LeadsTo; // Kanske bör vara en metod i Exit, återkom.
+                        _currentRoom.ShowRoomDescription();
                         return;
                     }
-                    if(!exit.Locked && PlayerParse(value, exit.ExitName))
-                    {
-                        // Tillfällig
-                        Console.WriteLine("Success! The key broke in half... I think it's useless now.");
-                        _currentRoom = exit.LeadsTo;
-                        _currentRoom.ShowRoomDescription();
-                    }
+                    exit.LockedDescription();
+                    return;
                 }
             }
             
@@ -132,48 +123,38 @@ namespace Uppgift3_Spel
                 if (room != _currentRoom) continue;
                 foreach (var item in room.RoomInventory)
                 {
-                    if (PlayerParse(value, item.Name))
-                    {
-                        _player.PlayerInventory.Add(item);
-                        room.RoomInventory.Remove(item);
-                        Console.WriteLine("Taken.");
-                        return;
-                    }
+                    if (!PlayerParse(value, item.Name)) continue;
+                    _player.PlayerInventory.Add(item);
+                    room.RoomInventory.Remove(item);
+                    Console.WriteLine("Taken.");
+                    return;
                 }
             } 
         }
         
         public void Go(string[] value)
         {
-
+            // Gå till föremål/direction
+            // Förflytta spelaren dit
+            // Ändra description
         }
 
         public void Drop(string[] value)
         {
-            foreach (var str in value)
+            foreach (var room in _rooms)
             {
-                foreach (var room in _rooms)
+                if (room != _currentRoom) continue;
+                foreach (var item in _player.PlayerInventory)
                 {
-                    if (room == _currentRoom)
-                    {
-                        foreach (var item in _player.PlayerInventory)
-                        {
-                            if(item.Name.ToLower().Contains(str))
-                            {
-                                room.RoomInventory.Add(item);
-                                _player.PlayerInventory.Remove(item);
-                                Console.WriteLine("Dropped " + item.Name + ".");
-                                return;
-                            }
-                        }
-                    }
+                    if (!PlayerParse(value, item.Name)) continue;
+                    room.RoomInventory.Add(item);
+                    _player.PlayerInventory.Remove(item);
+                    Console.WriteLine("Dropped " + item.Name + "."); // Temporary checker
+                    return;
                 }
             }
+            
         }
 
-        // Method for mainscreen
-
-        // Method "Go", "Use", "Open", "Examine/Inspect" "Look"
-        // Return true, false?
     }
 }

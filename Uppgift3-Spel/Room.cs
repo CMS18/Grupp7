@@ -34,13 +34,14 @@ namespace Uppgift3_Spel
             Console.WriteLine(Title);
             Console.WriteLine(Description);
 
-            // If item is gone, show other description
+            // If item is gone, show other description?
         }
 
-        public void RemoveItem()
+        public void RemoveItem(Item item)
         {
-            // Remove item
-            // Change description
+            RoomInventory.Remove(item);
+            // Change description?
         }
+
     }
 }

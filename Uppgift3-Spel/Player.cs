@@ -18,9 +18,14 @@ namespace Uppgift3_Spel
 
         public bool IsDead() => _alive == false;
 
-        public void PickUpItem()
+        public void PickUpItem(Item item)
         {
+             PlayerInventory.Add(item);
+        }
 
+        public void DropItem(Item item)
+        {
+            PlayerInventory.Remove(item);
         }
 
         public void ShowInventory()

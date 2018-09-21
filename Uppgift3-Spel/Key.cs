@@ -8,7 +8,7 @@ namespace Uppgift3_Spel
 {
     internal class Key : Item
     {
-        public Key(string name, string description, int id) : base(name, description, id)
+        public Key(string name, string description, int id, string examine) : base(name, description, id, examine)
         {
         }
     }
