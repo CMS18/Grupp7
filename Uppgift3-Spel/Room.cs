@@ -8,8 +8,6 @@ namespace Uppgift3_Spel
         public string Title { get; }
         public string Description { get; } 
         public List<Exit> Exit { get; }
-
-
         public List<Item> RoomInventory { get; }
 
         public Room(string title, string description, Exit exit, Item item)
@@ -23,7 +21,10 @@ namespace Uppgift3_Spel
 
         public Room(string title, string description)
         {
-
+            Title = title;
+            Description = description;
+            Exit = new List<Exit>();
+            RoomInventory = new List<Item>();
         }
 
 

@@ -12,16 +12,17 @@ namespace Uppgift3_Spel
             var result = new List<Room>();
             var room1 = new Room("House", "It's a house");
             var room2 = new Room("Inside House", "We are inside house");
-
+            
+            var item1 = new Key("House Key", "A key to the house", 1);
             
 
-            var exit1 = new Door(room2, 1, false, true, "Maindoor");
+            var exit1 = new Door(room2, 1, true, true, "Maindoor");
             room1.Exit.Add((exit1));
-                
-
-           
+            room1.RoomInventory.Add(item1);
+             
 
             result.Add(room1);
+            result.Add(room2);
             Room = result;
         }
 

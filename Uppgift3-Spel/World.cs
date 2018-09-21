@@ -7,7 +7,7 @@ namespace Uppgift3_Spel
     {
         private readonly GameUi _game = new GameUi();
         private Player _player;
-        private List<Room> _rooms = new List<Room>();
+        private List<Room> _rooms;
         private Room _currentLocation;
 
         public World()
