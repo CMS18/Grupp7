@@ -4,7 +4,7 @@ namespace Uppgift3_Spel
 {
     public class Exit
     {
-        public Room LeadsTo { get; private set; }
+        public Room LeadsTo { get; }
         public int ExitId { get; }
         public bool Locked { get; set; }
         public bool EndPoint { get; }
@@ -34,20 +34,11 @@ namespace Uppgift3_Spel
             }
         }
 
-        public void ExamineExit()
-        {
-            Console.WriteLine(Examine);
-        }
+        public void ExamineExit() => Console.WriteLine(Examine);
 
-        public virtual void Unlock()
-        {
-            Locked = false;
-        }
+        public virtual void Unlock() => Locked = false;
 
-        public virtual void LockedDescription()
-        {
-            Console.WriteLine(LockedString);
-        }
+        public virtual void LockedDescription() => Console.WriteLine(LockedString);
 
 
     }

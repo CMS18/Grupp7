@@ -70,6 +70,7 @@ namespace Uppgift3_Spel
         }
         // TODO loop to check if currentroom is room, own method? Mycket copy pasta just nu...LARM!
         // TODO Calla och ändra description för nuvarande room? DropItem bör finnas på marken i nya rummet.
+        // TODO Kolla player inventory för item i player istället för här? Samma med Rum och Exit i respektive klasser?
 
         private void Examine(string[] value)
         {
@@ -151,9 +152,8 @@ namespace Uppgift3_Spel
                 foreach (var item in room.RoomInventory)
                 {
                     if (!PlayerParse(value, item.Name)) continue;
-                    _player.PlayerInventory.Add(item);
-                    room.RoomInventory.Remove(item);
-                    Console.WriteLine("Taken.");
+                    _player.PickUpItem(item);
+                    _currentRoom.RemoveItem(item);
                     return;
                 }
             } 
@@ -161,7 +161,7 @@ namespace Uppgift3_Spel
         
         public void Go(string[] value)
         {
-            // Gå till föremål/direction
+            // Gå mot ett håll
             // Förflytta spelaren dit
             // Ändra description
         }
@@ -174,9 +174,8 @@ namespace Uppgift3_Spel
                 foreach (var item in _player.PlayerInventory)
                 {
                     if (!PlayerParse(value, item.Name)) continue;
-                    room.RoomInventory.Add(item);
-                    _player.PlayerInventory.Remove(item);
-                    Console.WriteLine("Dropped " + item.Name + "."); // Temporary checker
+                    _currentRoom.AddRoomItem(item);
+                    _player.DropItem(item);
                     return;
                 }
             }

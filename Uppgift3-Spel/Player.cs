@@ -21,11 +21,13 @@ namespace Uppgift3_Spel
         public void PickUpItem(Item item)
         {
              PlayerInventory.Add(item);
+             Console.WriteLine("Taken.");
         }
 
         public void DropItem(Item item)
         {
             PlayerInventory.Remove(item);
+            Console.WriteLine($"Dropped {item.Name}.");
         }
 
         public void ShowInventory()
