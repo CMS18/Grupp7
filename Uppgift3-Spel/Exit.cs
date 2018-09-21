@@ -2,10 +2,10 @@
 {
     public class Exit
     {
-        public string LeadsTo { get; private set; }
-        public int ExitId { get; private set; }
-        public bool EndPoint { get; private set; }
-        public string ExitName { get; private set; }
+        public string LeadsTo { get; }
+        public int ExitId { get; }
+        public bool EndPoint { get; }
+        public string ExitName { get; }
 
 
         public Exit(string leadsto, int id, string name)

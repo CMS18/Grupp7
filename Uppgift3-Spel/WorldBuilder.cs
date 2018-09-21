@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Uppgift3_Spel
 {
-    class WorldBuilder
+    internal class WorldBuilder
     {
-        public List<Room> _room { get; private set; }
+        public List<Room> Room { get; }
 
         public WorldBuilder()
         {
@@ -23,7 +20,7 @@ namespace Uppgift3_Spel
 
             result.Add(room1);
             result.Add(room2);
-            _room = result;          
+            Room = result;
         }
 
         public Player CreateNewPlayer()

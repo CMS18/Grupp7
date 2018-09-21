@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Uppgift3_Spel
+﻿namespace Uppgift3_Spel
 {
-    class Game
+    internal class Game
     {
         private Player _player;
         private Room _room;
