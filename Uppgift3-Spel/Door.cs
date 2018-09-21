@@ -4,8 +4,8 @@ namespace Uppgift3_Spel
 {
     internal class Door : Exit
     {
-        public Door(Room leadsto, int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString) 
-            : base(leadsto, exitId, locked, endPoint, name, openExit, lockedString)
+        public Door(Room leadsto, int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString, string examine) 
+            : base(leadsto, exitId, locked, endPoint, name, openExit, lockedString, examine)
         { }
 
         public override void Unlock()

@@ -26,15 +26,13 @@ namespace Uppgift3_Spel
                 true,   // EndPoint
                 "House Door",
                 "You hear a crack... the door is open! Oh... the key broke in half.",
-                "The door is locked, maybe there's a key?");
-
-
-
+                "The door is locked, maybe there's a key?",
+                "A brown wooden door with a sturdy lock.");
 
 
             // Add Exits to Lists
             room1.Exit.Add((exit1));
-            room2.Exit.Add(new Door(room1, 1, false, false, "House Door", "", ""));
+            room2.Exit.Add(new Door(room1, 1, false, false, "House Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room1.RoomInventory.Add(item1);
             
              

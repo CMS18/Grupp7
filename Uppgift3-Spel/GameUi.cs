@@ -60,10 +60,37 @@ namespace Uppgift3_Spel
                     case "drop":
                         Drop((inputArray));
                         break;
+                case "examine":
+                    Examine(inputArray);
+                    break;
                     default:
                         Console.WriteLine("Do what now?");
                         break;
                 }
+        }
+        // TODO loop to check if currentroom is room, own method? Mycket copy pasta just nu...LARM!
+        // TODO Calla och ändra description för nuvarande room? DropItem bör finnas på marken i nya rummet.
+
+        private void Examine(string[] value)
+        {
+            foreach (var room in _rooms)
+            {
+                if (room != _currentRoom) continue;
+                foreach (var item in _player.PlayerInventory)
+                {
+                    if (PlayerParse(value, item.Name))
+                    {
+                        item.ExamineItem();
+                    }
+                }
+                foreach (var exit in room.Exit)
+                {
+                    if (PlayerParse(value, exit.ExitName))
+                    {
+                        exit.ExamineExit();
+                    }
+                }
+            }
         }
 
         public void Show(string[] value)
@@ -88,7 +115,7 @@ namespace Uppgift3_Spel
                     foreach (var exit in room.Exit)
                     {
                         if (exit.ExitId != item.ItemId || !PlayerParse(value, exit.ExitName)) continue;
-                        _player.DropItem(item); // Calla och ändra description för room 1?
+                        _player.DropItem(item); 
                         exit.Unlock();
                         return;
                     }
