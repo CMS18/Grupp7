@@ -1,6 +1,6 @@
 ﻿namespace Uppgift3_Spel
 {
-    internal class Game
+    internal class GameUi
     {
         private Player _player;
         private Room _room;

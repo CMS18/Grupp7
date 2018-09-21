@@ -5,7 +5,7 @@ namespace Uppgift3_Spel
 {
     internal class World
     {
-        private readonly Game _game = new Game();
+        private readonly GameUi _game = new GameUi();
         private Player _player;
         private List<Room> _rooms = new List<Room>();
         private Room _currentLocation;
