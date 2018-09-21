@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -26,72 +27,70 @@ namespace Uppgift3_Spel
             // om input är tom, gå tillbaks hit.
             
             var inputArray = input.Split(' ');
+            var statement = inputArray[0];
 
-            switch(inputArray[0].ToLower())
+            switch(statement.ToLower())
             {
                 case "open":
+                    Open(inputArray);
                     break;
                 case "use":
+                    Use(inputArray);
                     break;
-                case "show":
-                    Show(inputArray[1]);
+                case "show": case "inventory":
+                    Show(inputArray);
                     break;
                 case "take": case "pickup":
                     break;
                 case "go":
+                    Go((inputArray));
                     break;
                 case "drop":
+                    Drop((inputArray));
+                    break;
+                default:
+                    Console.WriteLine();
                     break;
             }
-            
         }
 
-        public void Show(string value)
+        public void Show(string[] value)
         {
-            if (value.ToLower() == "inventory")
+            foreach (var str in value)
             {
-                _player.ShowInventory();
+                if (str.ToLower() == "inventory")
+                {
+                    _player.ShowInventory();
+                }
             }
         }
 
-        public void Use(string value)
+        public void Use(string[] value)
         {
-            if (value.ToLower() == "")
-            {
-
-            }
+            // ordet value
+            // kolla om spelaren har det i sitt inventory
+            // kolla om det kan användas på det andra föremålet
+            // kolla om det kan användas på exit
         }
 
-        public void Open(string value)
+        public void Open(string[] value)
         {
-            if (value.ToLower() == "")
-            {
 
-            }
         }
 
-        public void Take(string value)
+        public void Take(string[] value)
         {
-            if (value.ToLower() == "" || value.ToLower() == "")
-            {
-
-            }
+  
         }
         
-        public void Go(string value)
+        public void Go(string[] value)
         {
-            if (value.ToLower() == "")
-            {
 
-            }
         }
 
-        public void Drop(string value)
+        public void Drop(string[] value)
         {
-            if(value.ToUpper() == "")
-            {
 
-            }
         }
 
         public void PlayerParse()
