@@ -32,7 +32,6 @@ namespace Uppgift3_Spel
             while(!_player.IsDead()) // or _rooms endpoint !true
             {
                 _currentLocation.ShowRoomDescription();
-               
                 _game.PlayerInput(_player, _currentLocation, _rooms);
                 Console.ReadKey();
             }

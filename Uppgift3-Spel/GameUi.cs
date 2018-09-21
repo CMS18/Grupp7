@@ -1,19 +1,50 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Uppgift3_Spel
 {
     internal class GameUi
     {
         private Player _player;
-        private Room _room;
+        private Room _currentRoom;
         private List<Room> _rooms;
 
         public void PlayerInput(Player player, Room room, List<Room> rooms)
         {
             _rooms = rooms;
-            _room = room;
-            _player = player;        
-            //Console.WriteLine ("> input");
+            _currentRoom = room;
+            _player = player;
+            PlayersTurn();
+        }
+
+        public void PlayersTurn()
+        {
+            Console.Write("> ");
+            var input = Console.ReadLine();
+            // om input är tom, gå tillbaks hit.
+
+            var inputArray = input.Split(' ');
+
+            switch(inputArray[0].ToLower())
+            {
+                case "open":
+                    break;
+                case "use":
+                    break;
+                case "show":
+                    Show(inputArray[1]);
+                    break;
+            }
+            
+        }
+
+        public void Show(string value)
+        {
+            if (value.ToLower() == "inventory")
+            {
+                _player.ShowInventory();
+            }
         }
 
         // Method to handle user input

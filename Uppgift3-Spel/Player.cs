@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Uppgift3_Spel
 {
@@ -34,6 +35,15 @@ namespace Uppgift3_Spel
 
         public void ShowInventory()
         {
+            
+            foreach (var item in PlayerInventory)
+            {
+                if (item != null)
+                {
+                    Console.WriteLine(item);
+                }   
+            }
+            Console.WriteLine("Your inventory is empty.");
 
         }
 
