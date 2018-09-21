@@ -36,7 +36,7 @@ namespace Uppgift3_Spel
                 case "show":
                     Show(inputArray[1]);
                     break;
-                case "take":
+                case "take": case "pickup":
                     break;
                 case "go":
                     break;
@@ -56,7 +56,7 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
-            if (value.ToLower() == "use")
+            if (value.ToLower() == "")
             {
 
             }
@@ -64,7 +64,7 @@ namespace Uppgift3_Spel
 
         public void Open(string value)
         {
-            if (value.ToLower() == "open")
+            if (value.ToLower() == "")
             {
 
             }
@@ -72,7 +72,7 @@ namespace Uppgift3_Spel
 
         public void Take(string value)
         {
-            if (value.ToLower() == "take" || value.ToLower() == "pick up")
+            if (value.ToLower() == "" || value.ToLower() == "")
             {
 
             }
@@ -80,7 +80,7 @@ namespace Uppgift3_Spel
         
         public void Go(string value)
         {
-            if (value.ToLower() == "go")
+            if (value.ToLower() == "")
             {
 
             }
@@ -88,7 +88,7 @@ namespace Uppgift3_Spel
 
         public void Drop(string value)
         {
-            if(value.ToUpper() == "drop")
+            if(value.ToUpper() == "")
             {
 
             }
