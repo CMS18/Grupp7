@@ -15,7 +15,6 @@ namespace Uppgift3_Spel
             
             var item1 = new Key("House Key", "A key to the house", 1);
             
-
             var exit1 = new Door(room2, 1, true, true, "Maindoor");
             room1.Exit.Add((exit1));
             room1.RoomInventory.Add(item1);

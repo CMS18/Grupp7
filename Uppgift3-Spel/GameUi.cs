@@ -11,17 +11,16 @@ namespace Uppgift3_Spel
         private Room _currentRoom;
         private List<Room> _rooms;
 
-        public void PlayerInput(Player player, Room room, List<Room> rooms)
+        public void PlayerInput(Player player, List<Room> rooms)
         {
             _rooms = rooms;
-            _currentRoom = room;
             _player = player;
-            PlayersTurn();
         }
 
         // Method to handle user input
-        public void PlayersTurn()
+        public void PlayersTurn(Room room)
         {
+            _currentRoom = room;
             Console.Write("> ");
             var input = Console.ReadLine();
             // om input är tom, gå tillbaks hit.
@@ -126,10 +125,12 @@ namespace Uppgift3_Spel
                     {
                         foreach (var item in room.RoomInventory)
                         {
-                            if (item.Name == str)
+                            if (item.Name.ToLower().Contains(str))
                             {
                                 _player.PlayerInventory.Add(item);
                                 room.RoomInventory.Remove(item);
+                                Console.WriteLine("Taken.");
+                                return;
                             }
                         }
                     }

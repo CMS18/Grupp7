@@ -29,11 +29,11 @@ namespace Uppgift3_Spel
         public void PlayGame()
         {
             _currentLocation = _rooms[0]; // Sätter startposition till första index i listan av rum.
-            while(!_player.IsDead()) // or _rooms endpoint !true
+            _currentLocation.ShowRoomDescription();
+            _game.PlayerInput(_player, _rooms);
+            while (!_player.IsDead()) // or _rooms endpoint !true
             {
-                _currentLocation.ShowRoomDescription();
-                _game.PlayerInput(_player, _currentLocation, _rooms);
-                Console.ReadKey();
+                _game.PlayersTurn(_currentLocation);
             }
         }
     }

@@ -35,16 +35,15 @@ namespace Uppgift3_Spel
 
         public void ShowInventory()
         {
-            
+            if(PlayerInventory.Count == 0) Console.WriteLine("Your inventory is empty.");
+
             foreach (var item in PlayerInventory)
             {
                 if (item != null)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine(item.Name);
                 }   
             }
-            Console.WriteLine("Your inventory is empty.");
-
         }
 
         public void UseItem()
