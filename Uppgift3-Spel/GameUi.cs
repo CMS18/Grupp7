@@ -19,8 +19,6 @@ namespace Uppgift3_Spel
         // Method to handle user input
         public void PlayersTurn()
         {      
-                //Console.Clear();
-                _currentRoom.ShowRoomDescription();
                 Console.Write("> ");
                 var input = Console.ReadLine();
                 if (input == null) return;
@@ -54,7 +52,7 @@ namespace Uppgift3_Spel
                         Drop((inputArray));
                         break;
                     default:
-                        Console.WriteLine();
+                        Console.WriteLine("I don't understand what you want?");
                         break;
                 }
         }
@@ -99,14 +97,17 @@ namespace Uppgift3_Spel
             {
                 foreach (var room in _rooms)
                 {
-                    if (room == _currentRoom)
+                    if (room != _currentRoom) continue;
+                    foreach (var exit in room.Exit)
                     {
-                        foreach (var exit in room.Exit)
+                        if (exit.Locked && exit.ExitName.ToLower().Contains(str))
                         {
-                            if (!exit.Locked)
-                            {
-                                _currentRoom = exit.LeadsTo;
-                            }
+                            Console.WriteLine("The door is locked. There is a keyhole... maybe there's a key?");
+                            return;
+                        }
+                        if(!exit.Locked)
+                        {
+                            _currentRoom = exit.LeadsTo;
                         }
                     }
                 }
