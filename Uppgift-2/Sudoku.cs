@@ -110,63 +110,69 @@ namespace Uppgift_2
             return true;
         }
 
+        private bool ContainsEmptyCell()
+        {
+            for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
+            {
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public void Solve()
         {
-            if (SolvingBoard())
+            int tries = 1;
+            do
             {
-                while (true)
+                for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
                 {
-                    Thread.Sleep(80);
-                    Console.SetCursorPosition(0, 0);
-                    PrintSudokuSolved(ConsoleColor.Green);
-                    Console.WriteLine("\tVICTORY IS MINE!!");
-                    Thread.Sleep(80);
-                    Console.SetCursorPosition(0, 0);
-                    PrintSudokuSolved(ConsoleColor.DarkGreen);
-
+                    for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                    {
+                        if (_sudokuBoard[row, col] == 0)
+                        {
+                            int solutions = 0;
+                            int correctNum = 0;
+                            for (int i = 1; i < 10; i++)
+                            {
+                                if (solutions > 1)
+                                {
+                                    solutions = 0;
+                                    break;
+                                }
+                                if (ControlRowColBox(row, col, i))
+                                {
+                                    correctNum = i;
+                                    solutions++;
+                                }
+                            }
+                            if (solutions == 1 && correctNum != 0)
+                            {
+                                _sudokuBoard[row, col] = correctNum;
+                            }
+                        }
+                    }
                 }
+                if (tries == 0) break;
+                tries--;
+            } while (ContainsEmptyCell());
 
-            }
-
-        }
-
-        private void PrintSudokuSolved(ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            int tableHeight = 10; // 9 rader + 1
-            int tableWidth = 11; // För att placera ett | på var del av sidorna 1 + 9 + 1
-
-            Console.WriteLine("+-----------------------------+");
-            for (int row = 1; row < tableHeight; ++row)
+            if (StartGuessing())
             {
-                Console.Write("|");
-                for (int col = 1; col < tableWidth; ++col)
-                {
-                    if (col == 4 || col == 7)
-                    {
-                        Console.Write("|");
-                    }
-                    else if (col == 10)
-                    {
-                        Console.Write("|");
-                    }
-                    if (col != 10)
-                    {
-                        Console.Write(" {0} ", _sudokuBoard[row - 1, col - 1]);
-                    }
-
-                }
-                Console.WriteLine();
-                if (row % 3 == 0) // 9 % 3 ger 0 i rest, då har raden nått slutet. Printar ut botten.
-                {
-                    Console.WriteLine("+-----------------------------+");
-                }
+                Console.SetCursorPosition(0, 0);
+                PrintSudoku();
+                Console.ReadKey();
             }
         }
 
-        private bool SolvingBoard()
+        private bool StartGuessing()
         {
-            Thread.Sleep(60);
+            Thread.Sleep(10);
 
             for (int row = 0; row < 9; row++)
             {
@@ -174,40 +180,26 @@ namespace Uppgift_2
                 {
                     if (_sudokuBoard[row, col] == 0)
                     {
-                        int i = 0;
-                        do
+                        for (int number = 1; number < 10; number++) // Testar nr 1 - 10
                         {
-                            i++;
-                            var number = _rand.Next(1, 10);
-
-                            if (ControlRowColBox(row, col, number))
+                            if (ControlRowColBox(row, col, number)) // Kollar om numret inte finns i rad/kol/box
                             {
                                 _sudokuBoard[row, col] = number;
                                 Console.SetCursorPosition(0, 0);
                                 PrintSudoku();
-
-                                if (SolvingBoard())
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    _sudokuBoard[row, col] = 0;
-                                    Console.SetCursorPosition(0, 0);
-                                    PrintSudoku();
-                                }
+                                Solve(); // Hoppar in i första Solve och testar lösa den med detta nummer.
+                                _sudokuBoard[row, col] = 0; // Kommer ut så blir cellen Noll och forsätter for-loopen här inne och testar nästa nummer
+                                Console.SetCursorPosition(0, 0);
+                                PrintSudoku();
                             }
-                        } while (i < 9);
-
+                        }
                         return false;
                     }
                 }
             }
             return true;
         }
-
         #endregion
-
     }
 }
 
