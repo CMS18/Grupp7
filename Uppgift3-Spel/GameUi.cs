@@ -118,7 +118,23 @@ namespace Uppgift3_Spel
 
         public void Take(string[] value)
         {
-  
+            foreach (var str in value)
+            {
+                foreach (var room in _rooms)
+                {
+                    if (room == _currentRoom)
+                    {
+                        foreach (var item in room.RoomInventory)
+                        {
+                            if (item.Name == str)
+                            {
+                                _player.PlayerInventory.Add(item);
+                                room.RoomInventory.Remove(item);
+                            }
+                        }
+                    }
+                }
+            }
         }
         
         public void Go(string[] value)

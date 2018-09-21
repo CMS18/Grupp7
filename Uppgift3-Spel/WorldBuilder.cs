@@ -10,7 +10,7 @@ namespace Uppgift3_Spel
         public WorldBuilder()
         {
             var result = new List<Room>();
-            var room1 = new Room("House", "It's a house");
+            var room1 = new Room("House", "It's a house. There's a key on the ground.");
             var room2 = new Room("Inside House", "We are inside house");
             
             var item1 = new Key("House Key", "A key to the house", 1);
