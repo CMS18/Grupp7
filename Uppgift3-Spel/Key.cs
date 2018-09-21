@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Uppgift3_Spel
 {
-    public class Key : Item
+    internal class Key : Item
     {
         public Key(string name, string description, int id) : base(name, description, id)
         {
-
         }
     }
 }
