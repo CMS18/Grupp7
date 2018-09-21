@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -11,47 +9,54 @@ namespace Uppgift3_Spel
         private Room _currentRoom;
         private List<Room> _rooms;
 
-        public void PlayerInput(Player player, List<Room> rooms)
+        public void PlayerInput(Player player, List<Room> rooms, Room room)
         {
+            _currentRoom = room;
             _rooms = rooms;
             _player = player;
         }
 
         // Method to handle user input
-        public void PlayersTurn(Room room)
-        {
-            _currentRoom = room;
-            Console.Write("> ");
-            var input = Console.ReadLine();
-            // om input är tom, gå tillbaks hit.
-            
-            var inputArray = input.Split(' ');
-            var statement = inputArray[0];
+        public void PlayersTurn()
+        {      
+                Console.Clear();
+                _currentRoom.ShowRoomDescription();
+                Console.Write("> ");
+                var input = Console.ReadLine();
+                if (input == null) return;
 
-            switch(statement.ToLower())
-            {
-                case "open":
-                    Open(inputArray);
-                    break;
-                case "use":
-                    Use(inputArray);
-                    break;
-                case "show": case "inventory":
-                    Show(inputArray);
-                    break;
-                case "take": case "pickup":
-                    Take(inputArray);
-                    break;
-                case "go":
-                    Go((inputArray));
-                    break;
-                case "drop":
-                    Drop((inputArray));
-                    break;
-                default:
-                    Console.WriteLine();
-                    break;
-            }
+                var inputArray = input.Split(' ');
+                var statement = inputArray[0];
+
+                switch (statement.ToLower())
+                {
+                    case "open":
+                        Open(inputArray);
+                        break;
+                    case "use":
+                        Use(inputArray);
+                        break;
+                    case "look":
+                        _currentRoom.ShowRoomDescription();
+                        break;
+                    case "show":
+                    case "inventory":
+                        Show(inputArray);
+                        break;
+                    case "take":
+                    case "pickup":
+                        Take(inputArray);
+                        break;
+                    case "go":
+                        Go((inputArray));
+                        break;
+                    case "drop":
+                        Drop((inputArray));
+                        break;
+                    default:
+                        Console.WriteLine();
+                        break;
+                }
         }
 
         public void Show(string[] value)
@@ -73,25 +78,17 @@ namespace Uppgift3_Spel
                 {
                     foreach (var room in _rooms)
                     {
-                        if (room == _currentRoom)
+                        if (room != _currentRoom) continue;
+                        foreach (var exit in room.Exit)
                         {
-                            foreach (var exit in room.Exit)
+                            if (exit.ExitId == item.ItemId)
                             {
-                                if (exit.ExitId == item.ItemId)
-                                {
-                                    exit.Locked = false;
-                                }
+                                exit.Locked = false;
                             }
                         }
                     }
                 }
             }
-
-
-            // ordet value
-            // kolla om spelaren har det i sitt inventory
-            // kolla om det kan användas på det andra föremålet
-            // kolla om det kan användas på exit
 
         }
 
@@ -105,7 +102,7 @@ namespace Uppgift3_Spel
                     {
                         foreach (var exit in room.Exit)
                         {
-                            if (exit.Locked == false)
+                            if (!exit.Locked)
                             {
                                 _currentRoom = exit.LeadsTo;
                             }
@@ -147,7 +144,6 @@ namespace Uppgift3_Spel
         {
 
         }
-
         public void PlayerParse()
         {
             // Check user input, split string to array
