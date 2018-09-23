@@ -7,21 +7,25 @@ namespace Uppgift3_Spel
     {
         public List<Item> PlayerInventory { get; }
         public string Name { get; }
-        private readonly bool _alive;
+        private bool Alive { get; }
         
         public Player(string name)
         {
             Name = name;
             PlayerInventory = new List<Item>();
-            _alive = true;
+            Alive = true;
         }
 
-        public bool IsDead() => _alive == false;
+        public bool IsDead() => Alive == false;
 
         public void PickUpItem(Item item)
         {
-             PlayerInventory.Add(item);
-             Console.WriteLine("Taken.");
+            if (item != null)
+            {
+                PlayerInventory.Add(item);
+                Console.WriteLine("Taken.");
+            }
+            else Console.WriteLine("I can't take that...");
         }
 
         public void DropItem(Item item)
@@ -42,5 +46,21 @@ namespace Uppgift3_Spel
                 }   
             }
         }
+
+        public Item GetItemByName(string value)
+        {
+            return value == null ? null : PlayerInventory.Find
+                (i => i.Name.ToLower().Contains(value.ToLower()));
+        }
+
+        public Room Go(string direction, Room room)
+        {
+            var exit = room.GetRoomExitByName(direction);
+            if (exit != null) return exit.LeadsTo;
+
+            Console.WriteLine("I can't go there.");
+            return null;
+        }
+
     }
 }

@@ -17,6 +17,11 @@ namespace Uppgift3_Spel
             Examine = examine;
         }
 
+        public void ShowItemDescription()
+        {
+            Console.WriteLine(Description);
+        }
+
         public virtual void Use()
         {
             // Do stuff

@@ -18,18 +18,34 @@ namespace Uppgift3_Spel
             RoomInventory = new List<Item>();
         }
 
+        public Item GetRoomItemByName(string value)
+        {
+            return value == null ? null : RoomInventory.Find
+                (i => i.Name.ToLower().Contains(value.ToLower()));
+        }
 
         public void ShowRoomDescription()
         {
             Console.Title = Title;
             Console.WriteLine(Title);
             Console.WriteLine(Description);
-            // If item is gone, show other description?
         }
 
         public void AddRoomItem(Item item) => RoomInventory.Add(item);
 
-        public void RemoveItem(Item item) => RoomInventory.Remove(item); // TODO change description of room?
+        public void RemoveRoomItem(Item item)
+        {
+            if(item != null)
+            RoomInventory.Remove(item);
+        }
+
+        public Exit GetRoomExitByName(string value)
+        {
+            return value == null ? null : Exit.Find
+                (e => e.ExitName.ToLower().Contains(value.ToLower()));
+        }
+
+        // TODO method to change room description if item is removed.
 
     }
 }
