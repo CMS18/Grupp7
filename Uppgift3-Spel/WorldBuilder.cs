@@ -20,8 +20,9 @@ namespace Uppgift3_Spel
 
             // Create Items
             var r1Item1 = new Key("Room Key", "It looks like it can fit to this door.", 1, "The key is old and rusty, it looks fragile.");
-            var r1Item2 = new Item("Note", "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room. However " +
-                                         "if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.", 0, "A note from Mr. X, he doesn't sound like a good guy.");
+            var r1Item2 = new Item("Note", "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
+                                           "However " +
+                                           "if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.", 0, "A note from Mr. X, he doesn't sound like a good guy.");
             
             var r2Item1 = new Item("Bottle of Kerosene", "It's commonly used to power jet engines.", 2, "Kerosene is very flammable.");
             var r2Item2 = new Item("Rags", "Some old clothes ripped apart.", 2, "I think this used to be a shirt...");
@@ -68,13 +69,14 @@ namespace Uppgift3_Spel
             room1.RoomInventory.Add(r1Item1);
             room1.RoomInventory.Add(r1Item2);
 
-            room2.RoomInventory.Add(r2Item1);
-            room2.RoomInventory.Add(r2Item2);
-            room2.RoomInventory.Add(r2Item3);
+            room3Right.RoomInventory.Add(r2Item1);
+            room3Right.RoomInventory.Add(r2Item2);
+            room3Right.RoomInventory.Add(r2Item3);
 
             // Add to result and set property Room to result.
             result.Add(room1);
             result.Add(room2);
+            result.Add(room3Right);
             Room = result;
         }
 
