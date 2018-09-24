@@ -22,9 +22,9 @@ namespace Uppgift3_Spel
             Console.WriteLine(Description);
         }
 
-        public virtual void Use()
+        public virtual Item Use(Item item)
         {
-            // Do stuff
+            return null;
         }
 
         public void ExamineItem()

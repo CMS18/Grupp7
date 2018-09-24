@@ -5,7 +5,8 @@ namespace Uppgift3_Spel
 {
     static class PlayerParse
     {
-        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|examine|read|pickups|inventory\b"; // Innehåller alla spelarens actions
+        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|
+                                                examine|read|pickups|inventory|turn\b";
 
         public static string ToPlayerAction(this string input)
         {
@@ -14,9 +15,9 @@ namespace Uppgift3_Spel
             return match.Success ? match.Value : null;
         }
 
-        public static bool CheckValue(string value, string compareTo)
+        public static bool CheckValue(string compare, string compareTo)
         {
-            var arrayValue = value.Split(' ').ToArray();
+            var arrayValue = compare.Split(' ').ToArray();
             return arrayValue.Any(t => compareTo.ToLower().Contains(t.ToLower()));
         }
     }

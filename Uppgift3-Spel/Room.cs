@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 
 namespace Uppgift3_Spel
 {
     public class Room
     {
         public string Title { get; }
-        public string Description { get; private set; }
-        public string Examine { get; private set; }
+        public string Description { get; }
+        public string Examine { get; }
         public List<Exit> Exit { get; }
         public List<Item> RoomInventory { get; }
 
@@ -35,7 +34,11 @@ namespace Uppgift3_Spel
             Console.WriteLine(Examine);
         }
 
-        public void AddRoomItem(Item item) => RoomInventory.Add(item);
+        public void AddRoomItem(Item item)
+        {
+            RoomInventory.Add(item);
+            // TODO update Examine om fler items läggs till, eller tas bort.
+        }
 
         public void RemoveRoomItem(Item item)
         {

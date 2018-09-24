@@ -57,6 +57,12 @@ namespace Uppgift3_Spel
                 "A regular broom used to cleaning.",
                 2, "It's a broom, what more do you need to know?");
 
+            var painting = new Painting("Paining",
+                "A painting of Mr.X",
+                0,
+                "It's a painting of Mr.X," +
+                " there seems to be missing a piece of the painting.");
+
             //var item4 = new Item("Torch", "It's flame burns bright.", 4, "Woah! Keep it away from my face!");
             // Om items används på varandra så skapa Torch
 
@@ -66,7 +72,7 @@ namespace Uppgift3_Spel
                 room2,  // LeadsTo
                 1,      // ExitID
                 true,   // Locked
-                true,   // EndPoint
+                false,   // EndPoint
                 "Rooms Door",
                 "You hear a crack... the door is open! Oh... the key broke in half.",
                 "The door is locked, maybe there's a key somewhere?",
@@ -101,6 +107,7 @@ namespace Uppgift3_Spel
             room3Right.RoomInventory.Add(bottle);
             room3Right.RoomInventory.Add(rags);
             room3Right.RoomInventory.Add(broom);
+            room3Right.RoomInventory.Add(painting);
 
             // Add to result and set property Rooms to result.
             result.Add(room1);

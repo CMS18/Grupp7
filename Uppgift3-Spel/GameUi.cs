@@ -43,7 +43,7 @@ namespace Uppgift3_Spel
                     Take(input);
                     break;
                 case "go":
-                    Go((input));
+                    Go(input);
                     break;
                 case "drop":
                     Drop(input);
@@ -53,7 +53,10 @@ namespace Uppgift3_Spel
                     break;
                 case "examine":
                     Examine(input);
-                    break;   
+                    break;
+                case "turn":
+                    // TODO turn note to read other side.
+                    break;
                 default:
                     Console.WriteLine("Do what now?");
                     break;
@@ -102,6 +105,7 @@ namespace Uppgift3_Spel
                     exit.Unlock();
                     return;
                 }
+                Console.WriteLine("I can't use that...");
             }
         }
 
