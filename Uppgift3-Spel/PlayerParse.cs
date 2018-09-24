@@ -5,7 +5,7 @@ namespace Uppgift3_Spel
 {
     static class PlayerParse
     {
-        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|examine|read|pickup|inventory|turn\b";
+        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|examine|read|pickup|inventory|turn|help\b";
 
         public static string ToPlayerAction(this string input)
         {

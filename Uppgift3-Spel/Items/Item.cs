@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 
-namespace Uppgift3_Spel
+namespace Uppgift3_Spel.Items
 {
     public class Item
     {
@@ -9,6 +8,7 @@ namespace Uppgift3_Spel
         public string Description { get; }
         public string Examine { get; }
         public int ItemId { get; }
+        public bool TakeAble { get; }
 
         public Item(string name, string description, int id, string examine)
         {
@@ -16,6 +16,16 @@ namespace Uppgift3_Spel
             Description = description;
             ItemId = id;
             Examine = examine;
+            TakeAble = true;
+        }
+
+        public Item(string name, string description, int id, string examine, bool takeAble)
+        {
+            Name = name;
+            Description = description;
+            ItemId = id;
+            Examine = examine;
+            TakeAble = takeAble;
         }
 
         public void ShowItemDescription()
@@ -28,14 +38,15 @@ namespace Uppgift3_Spel
             return null;
         }
 
+        public virtual void Use(Player player, Room room, Item item)
+        {
+            //
+        }
+
         public void ExamineItem()
         {
             Console.WriteLine(Examine);
         }
 
-        public bool MatchedIdName(Item item, string value)
-        {
-            return PlayerParse.CompareStrings(value, item.Name) && item.ItemId == this.ItemId;
-        }
     }
 }

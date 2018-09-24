@@ -26,43 +26,44 @@ namespace Uppgift3_Spel
 
             var room3Right = new Room(
                 "Janitor's Room",
-                "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch",
+                "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
             // Create Items
             var roomKey = new Key(
                 "Room Key",
-                "It looks like it can fit to this door.",
+                "It looks like it could fit to this door.",
                 1,
                 "The key is old and rusty, it looks fragile.");
 
-            var note = new Item(
+            var note = new Note(
                 "Note",
-                "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
-                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.",
+                "A piece of paper with something written on it.",
                 0,
-                "A note from Mr. X, he doesn't sound like a good guy.");
+                "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
+                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.");
             
             var bottle = new Bottle(
                 "Bottle of Kerosene",
                 "It's commonly used to power jet engines.",
                 2,
                 "A bottle of kerosene, it's very flammable.");
-            var rags = new Item(
+            var rags = new Rags(
                 "Rags",
                 "Some old clothes ripped apart.",
                 2,
                 "I think this used to be a shirt...");
-            var broom = new Item(
+            var broom = new Broom(
                 "Broom",
                 "A regular broom used to cleaning.",
                 2, "It's a broom, what more do you need to know?");
 
-            var painting = new Painting("Paining",
-                "A painting of Mr.X",
+            var painting = new Painting("Painting",
+                "A painting of Mr.X?",
                 0,
-                "It's a painting of Mr.X," +
-                " there seems to be missing a piece of the painting.");
+                "The painting is signed by Mr X." +
+                " there seems to be missing a piece of the painting.",
+                false);
 
             //var item4 = new Item("Torch", "It's flame burns bright.", 4, "Woah! Keep it away from my face!");
             // Om items används på varandra så skapa Torch
@@ -100,6 +101,7 @@ namespace Uppgift3_Spel
             room2.Exit.Add(new Door(room1, 1, false, false, "Rooms Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(new Door(room2, 1, false, false, "Left", "", "", ""));
+            room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
 
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);

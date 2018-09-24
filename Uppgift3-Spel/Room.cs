@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Uppgift3_Spel.Items;
 
 namespace Uppgift3_Spel
 {

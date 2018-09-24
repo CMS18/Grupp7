@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Uppgift3_Spel.Items;
 
 namespace Uppgift3_Spel
 {
@@ -43,7 +44,7 @@ namespace Uppgift3_Spel
             {
                 if (item != null)
                 {
-                    Console.WriteLine(item.Name);
+                    Console.WriteLine($"{item.Name, -10} : {item.Description}");
                 }   
             }
         }

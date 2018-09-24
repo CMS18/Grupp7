@@ -16,13 +16,12 @@ namespace Uppgift3_Spel.Items
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
 
-            Console.WriteLine($"{player.Name} got Soaked Rags!");
+            Console.WriteLine($"{player.Name} got Soaked Rags.");
 
             return new Item("Soaked Rags",
                 "Rags drained with Kerosene",
                 5,
                 "Rags drained with Kerosene, this can burn very well!");
-            
         }
     }
 }
