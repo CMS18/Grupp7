@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Uppgift3_Spel
 {
     internal class GameUi
     {
-
-
         private Player _player;
         private Room _currentRoom;
         private List<Room> _rooms;
@@ -19,117 +18,87 @@ namespace Uppgift3_Spel
             _player = player;
         }
 
-        private static bool PlayerParse(string[] compare, string compareTo)
-        {
-            return compare.Any(str => compareTo.ToLower().Contains(str.ToLower()));
-        }
-
         // Method to handle user input
         public void PlayersTurn()
         {
             Console.Write("> ");
             var input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return;
-            var inputArray = input.Split(' ');
-            var statement = inputArray[0];
-            var inputString = inputArray.Skip(1).ToArray();
+            var playerAction = input.ToPlayerAction();
 
-            switch (statement.ToLower())
-                {
+            switch (playerAction.ToLower())
+            {
                 case "open":
-                    Open(inputString);
+                    Open(input);
                     break;
                 case "use":
-                    Use(inputString);
+                    Use(input);
                     break;
                 case "look":
                     _currentRoom.ShowRoomDescription();
                     break;
                 case "show": case "inventory":
-                    Show(inputArray);
+                    _player.ShowInventory();
                     break;
                 case "take": case "pickup":
-                    Take(inputString);
+                    Take(input);
                     break;
                 case "go":
-                    Go((inputArray));
+                    Go((input));
                     break;
                 case "drop":
-                    Drop(inputArray);
+                    Drop(input);
                     break;
                 case "read":
-                    Read(inputArray);
+                    Read(input);
                     break;
                 case "examine":
-                Examine(inputArray);
-                break;
+                    Examine(input);
+                    break;   
                 default:
                     Console.WriteLine("Do what now?");
                     break;
-                }
+            }
         }
 
-        private void Read(string[] inputArray)
+        private void Read(string value)
         {
-            foreach (var str in inputArray)
+            foreach (var item in _player.PlayerInventory)
             {
-                var item = _player.GetItemByName(str);
-                if (item == null) continue;
+                if (!PlayerParse.CheckValue(value, item.Name)) continue;
                 item.ShowItemDescription();
                 break;
             }
-            
-            
         }
-
-
 
         // TODO loop to check if currentroom is room, own method? Mycket copy pasta just nu...LARM!
         // TODO Calla och ändra description för nuvarande room? DropItem bör finnas på marken i nya rummet.
         // TODO Kolla player inventory för item i player istället för här? Samma med Rum och Exit i respektive klasser?
 
-        private void Examine(string[] value)
+        private void Examine(string value)
         {
-            foreach (var room in _rooms)
+            var item = _player.GetItemByName(value);
+            if (PlayerParse.CheckValue(value, item.Name))
             {
-                if (room != _currentRoom) continue;
-                foreach (var item in _player.PlayerInventory)
-                {
-                    if (PlayerParse(value, item.Name))
-                    {
-                        item.ExamineItem();
-                    }
-                }
-                foreach (var exit in room.Exit)
-                {
-                    if (PlayerParse(value, exit.ExitName))
-                    {
-                        exit.ExamineExit();
-                    }
-                }
+                item.ExamineItem();
+                return;
+            }
+            foreach (var exit in _currentRoom.Exit)
+            {
+                if (!PlayerParse.CheckValue(value, exit.ExitName)) continue;
+                exit.ExamineExit();
+
             }
         }
 
-        public void Show(string[] value)
-        {
-            foreach (var str in value)
-            {
-                if (str.ToLower() == "inventory")
-                {
-                    _player.ShowInventory();
-                }
-            }
-        }
-
-        public void Use(string[] value)
+        public void Use(string value)
         {
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse(value, item.Name)) continue;
+                if (!PlayerParse.CheckValue(value, item.Name)) continue;
                 foreach (var exit in _currentRoom.Exit)
                 { 
-                
-                    if (exit.ExitId != item.ItemId || !PlayerParse(value, exit.ExitName)) continue;
+                    if (exit.ExitId != item.ItemId || !PlayerParse.CheckValue(value, exit.ExitName)) continue;
                     _player.DropItem(item); 
                     exit.Unlock();
                     return;
@@ -137,11 +106,11 @@ namespace Uppgift3_Spel
             }
         }
 
-        public void Open(string[] value)
+        public void Open(string value)
         {
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!PlayerParse(value, exit.ExitName)) return;
+                if (!PlayerParse.CheckValue(value, exit.ExitName)) return;
                 if(!exit.Locked)
                 {
                     _currentRoom = exit.LeadsTo;
@@ -153,34 +122,33 @@ namespace Uppgift3_Spel
             }
         }
 
-        public void Take(string[] value)
+        public void Take(string value)
         {
             foreach (var item in _currentRoom.RoomInventory)
             {
-                if (!PlayerParse(value, item.Name)) continue;
+                if (!PlayerParse.CheckValue(value, item.Name)) continue;
                 _player.PickUpItem(item);
                 _currentRoom.RemoveRoomItem(item);
                 return;
             }
         }
         
-        public void Go(string[] value)
+        public void Go(string value)
         {
-            foreach (var str in value)
+            foreach (var exit in _currentRoom.Exit)
             {
-                var exit = _currentRoom.GetRoomExitByName(str);
-                if (exit == null) continue;
+                if (!PlayerParse.CheckValue(value, exit.ExitName)) continue;
                 _currentRoom = exit.LeadsTo;
                 _currentRoom.ShowRoomDescription();
                 break;
             }
         }
 
-        public void Drop(string[] value)
+        public void Drop(string value)
         {
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse(value, item.Name)) continue;
+                if (!PlayerParse.CheckValue(value, item.Name)) continue;
                 _currentRoom.AddRoomItem(item);
                 _player.DropItem(item);
                 return;

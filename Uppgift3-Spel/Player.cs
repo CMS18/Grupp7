@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -49,8 +50,16 @@ namespace Uppgift3_Spel
 
         public Item GetItemByName(string value)
         {
-            return value == null ? null : PlayerInventory.Find
-                (i => i.Name.ToLower().Contains(value.ToLower()));
+            var resultArray = value.Split(' ').ToArray();
+            foreach (var str in resultArray)
+            {
+                foreach (var item in PlayerInventory)
+                {
+                    if (item.Name.ToLower().Contains(str.ToLower()))
+                        return item;
+                }
+            }
+            return null;
         }
 
         public Room Go(string direction, Room room)

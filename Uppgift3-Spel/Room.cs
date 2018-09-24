@@ -24,6 +24,8 @@ namespace Uppgift3_Spel
                 (i => i.Name.ToLower().Contains(value.ToLower()));
         }
 
+        // TODO overload om flera items finns i inventoryt?
+        // TODO method to change room description if item is removed.
         public void ShowRoomDescription()
         {
             Console.Title = Title;
@@ -45,7 +47,7 @@ namespace Uppgift3_Spel
                 (e => e.ExitName.ToLower().Contains(value.ToLower()));
         }
 
-        // TODO method to change room description if item is removed.
+        
 
     }
 }
