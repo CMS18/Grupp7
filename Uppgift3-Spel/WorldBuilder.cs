@@ -105,10 +105,6 @@ namespace Uppgift3_Spel
                 ""
                 );
 
-                
-
-
-            // TODO add extit Right for room2
 
             
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Uppgift_2
 {
@@ -186,11 +185,13 @@ namespace Uppgift_2
                         }
                         _tries++; // Om fel gissning, addera tries med 1.
                         SudokuBoard[row, col] = 0; // Kommer ut så blir cellen Noll och forsätter for-loopen här inne och testar nästa nummer
-                        if (_tries != 1000) continue;
-                        PrintSudoku();
-                        Console.WriteLine("Så här långt kom jag...");
-                        Console.ReadLine();
-                        Environment.Exit(0);
+                        if (_tries == 30000)
+                        {
+                            PrintSudoku();
+                            Console.WriteLine("Så här långt kom jag...");
+                            Console.ReadLine();
+                            Environment.Exit(0);
+                        }
                     }
                     return false;
                 }
