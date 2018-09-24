@@ -15,7 +15,7 @@ namespace Uppgift3_Spel
             // Instance of worldbuilder
             var world = new WorldBuilder();
             // Set worldbuilder's room list to _rooms
-            _rooms = world.Room;
+            _rooms = world.Rooms;
             // Ask player for Name, create Player.
             _player = world.CreateNewPlayer();
             PlayGame();

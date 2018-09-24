@@ -5,7 +5,7 @@ namespace Uppgift3_Spel
 {
     internal class WorldBuilder
     {
-        public List<Room> Room { get; }
+        public List<Room> Rooms { get; }
 
         public WorldBuilder()
         {
@@ -13,7 +13,7 @@ namespace Uppgift3_Spel
 
             // Create Rooms
             var room1 = new Room(
-                "The Room",
+                "The Rooms",
                 "Hello!?...Where am I?!...Ugh... I don't feel too well." +
                 "\nI'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
                 "There's a key and a note on the ground!");
@@ -24,35 +24,35 @@ namespace Uppgift3_Spel
                 "There is a path leading to the left, it looks dark. There's also a path leading to the right.");
 
             var room3Right = new Room(
-                "Janitor's Room",
+                "Janitor's Rooms",
                 "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
             // Create Items
-            var r1Item1 = new Key(
-                "Room Key",
+            var roomKey = new Key(
+                "Rooms Key",
                 "It looks like it can fit to this door.",
                 1,
                 "The key is old and rusty, it looks fragile.");
 
-            var r1Item2 = new Item(
+            var note = new Item(
                 "Note",
                 "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
                 "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.",
                 0,
                 "A note from Mr. X, he doesn't sound like a good guy.");
             
-            var r2Item1 = new Item(
+            var bottle = new Item(
                 "Bottle of Kerosene",
                 "It's commonly used to power jet engines.",
                 2,
                 "A bottle of kerosene, it's very flammable.");
-            var r2Item2 = new Item(
+            var rags = new Item(
                 "Rags",
                 "Some old clothes ripped apart.",
                 2,
                 "I think this used to be a shirt...");
-            var r2Item3 = new Item(
+            var broom = new Item(
                 "Broom",
                 "A regular broom used to cleaning.",
                 2, "It's a broom, what more do you need to know?");
@@ -67,7 +67,7 @@ namespace Uppgift3_Spel
                 1,      // ExitID
                 true,   // Locked
                 true,   // EndPoint
-                "Room Door",
+                "Rooms Door",
                 "You hear a crack... the door is open! Oh... the key broke in half.",
                 "The door is locked, maybe there's a key somewhere?",
                 "A brown wooden door with a sturdy lock.");
@@ -90,27 +90,28 @@ namespace Uppgift3_Spel
             // Add Exits to Lists
             room1.Exit.Add((roomExit));
 
-            room2.Exit.Add(new Door(room1, 1, false, false, "Room Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
+            room2.Exit.Add(new Door(room1, 1, false, false, "Rooms Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(new Door(room2, 1, false, false, "Left", "", "", ""));
 
             // Add Items to RoomList
-            room1.RoomInventory.Add(r1Item1);
-            room1.RoomInventory.Add(r1Item2);
+            room1.RoomInventory.Add(roomKey);
+            room1.RoomInventory.Add(note);
 
-            room3Right.RoomInventory.Add(r2Item1);
-            room3Right.RoomInventory.Add(r2Item2);
-            room3Right.RoomInventory.Add(r2Item3);
+            room3Right.RoomInventory.Add(bottle);
+            room3Right.RoomInventory.Add(rags);
+            room3Right.RoomInventory.Add(broom);
 
-            // Add to result and set property Room to result.
+            // Add to result and set property Rooms to result.
             result.Add(room1);
             result.Add(room2);
             result.Add(room3Right);
-            Room = result;
+            Rooms = result;
         }
 
         public Player CreateNewPlayer()
         {
+            Console.Title = "New Game";
             string name;
             var creatingPlayer = true;
             do

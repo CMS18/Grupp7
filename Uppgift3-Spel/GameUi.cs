@@ -6,6 +6,7 @@ namespace Uppgift3_Spel
     {
         private Player _player;
         private Room _currentRoom;
+        private int _moves = 0;
 
         public void LoadGameUi(Player player, Room room)
         {
@@ -16,11 +17,13 @@ namespace Uppgift3_Spel
         // Method to handle user input
         public void PlayersTurn()
         {
+            Console.Title = _currentRoom.Title.PadRight(100) + "Moves: " + _moves;
             Console.Write("> ");
             var input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return;
             var playerAction = input.ToPlayerAction();
             if (playerAction == null) return;
+            _moves++;
 
             switch (playerAction.ToLower())
             {
