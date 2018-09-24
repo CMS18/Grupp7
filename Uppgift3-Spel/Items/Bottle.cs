@@ -8,7 +8,7 @@
 
         public override Item Use(Item item)
         {
-            if (item.ItemId == this.ItemId && item.Name.Contains(this.Name))
+            if (item.ItemId == this.ItemId)
             {
                 item = new Item("Soaked Rags",
                     "Rags drained with Kerosene",

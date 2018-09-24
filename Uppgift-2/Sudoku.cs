@@ -7,6 +7,7 @@ namespace Uppgift_2
     {
         #region Fields
         private int[,] SudokuBoard { get; }
+        private int _tries;
 
         #endregion
 
@@ -122,8 +123,7 @@ namespace Uppgift_2
 
         public void Solve()
         {
-            Thread.Sleep(20);
-            int tries = 1;
+            int solveTries = 1;
             do
             {
                 for (int row = 0; row < SudokuBoard.GetLength(0); row++)
@@ -141,12 +141,14 @@ namespace Uppgift_2
                                     solutions = 0;
                                     break;
                                 }
+
                                 if (ControlRowColBox(row, col, i))
                                 {
                                     correctNum = i;
                                     solutions++;
                                 }
                             }
+
                             if (solutions == 1 && correctNum != 0)
                             {
                                 SudokuBoard[row, col] = correctNum;
@@ -154,44 +156,43 @@ namespace Uppgift_2
                         }
                     }
                 }
-                if (tries == 0) break;
-                tries--;
+                if (solveTries == 0) break;
+                solveTries--;
             } while (ContainsEmptyCell());
 
             if (StartGuessing())
             {
-                Console.SetCursorPosition(0, 0);
                 PrintSudoku();
                 Console.ReadKey();
             }
-            // Kommer StartGuessing ut som false så kommer Solve() avslutas och hoppa tillbaka till rad 191.
+
         }
 
         private bool StartGuessing()
         {
-            Thread.Sleep(20);
-
             for (int row = 0; row < 9; row++)
             {
                 for (int col = 0; col < 9; col++)
                 {
-                    if (SudokuBoard[row, col] == 0)
-                    {
-                        for (int number = 1; number < 10; number++) // Testar nr 1 - 9
-                        {
-                            if (!ControlRowColBox(row, col, number)) continue; // Kontrollerar om numret inte finns i rad/kolumn/box
-                            SudokuBoard[row, col] = number; // Placerar nummer i cell
-                            Console.SetCursorPosition(0, 0);
-                            PrintSudoku();
-                            Solve(); // Hoppar in i första Solve och testar lösa den systematiskt med detta nummer.
-                            if (!ContainsEmptyCell()) continue;
-                            SudokuBoard[row, col] = 0; // Kommer ut så blir cellen Noll och forsätter for-loopen här inne och testar nästa nummer
-                            Console.SetCursorPosition(0, 0);
-                            PrintSudoku();
+                    if (SudokuBoard[row, col] != 0) continue;
 
+                    for (int number = 1; number < 10; number++) // Testar nr 1 - 9
+                    {
+                        if (!ControlRowColBox(row, col, number)) continue; // Kontrollerar om numret inte redan finns i rad/kolumn/box
+                        SudokuBoard[row, col] = number; // Placerar nummer i cell
+                        if (StartGuessing()) // Hoppar in i metoden rekursivt
+                        {
+                            return true;
                         }
-                        return false;
+                        _tries++; // Om fel gissning, addera tries med 1.
+                        SudokuBoard[row, col] = 0; // Kommer ut så blir cellen Noll och forsätter for-loopen här inne och testar nästa nummer
+                        if (_tries != 1000) continue;
+                        PrintSudoku();
+                        Console.WriteLine("Så här långt kom jag...");
+                        Console.ReadLine();
+                        Environment.Exit(0);
                     }
+                    return false;
                 }
             }
             return true;
