@@ -14,7 +14,7 @@ namespace Uppgift3_Spel
 
             // Create Rooms
             var room1 = new Room(
-                "The Rooms",
+                "The Room",
                 "Hello!?...Where am I?!...Ugh... I don't feel too well." +
                 "\nI'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
                 "There's a key and a note on the ground!");
