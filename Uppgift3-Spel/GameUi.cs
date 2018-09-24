@@ -93,8 +93,11 @@ namespace Uppgift3_Spel
             }
         }
 
-        public void Use(string value)
+        public void Use(string value) // use bottle on rags
         {
+            var playerFirstItem = _player.GetItemFromInventory(value);
+            if (playerFirstItem == null) return;
+
             foreach (var item in _player.PlayerInventory)
             {
                 if (!PlayerParse.CheckValue(value, item.Name)) continue;
@@ -105,7 +108,18 @@ namespace Uppgift3_Spel
                     exit.Unlock();
                     return;
                 }
-                Console.WriteLine("I can't use that...");
+
+                try
+                {
+                    _player.PlayerInventory.Add(item.Use(playerFirstItem));
+                    _player.PlayerInventory.Remove(playerFirstItem);
+                    _player.PlayerInventory.Remove(item);
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("I can't use that...");
+                }
             }
         }
 

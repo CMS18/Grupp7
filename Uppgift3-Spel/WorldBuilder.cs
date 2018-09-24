@@ -25,13 +25,13 @@ namespace Uppgift3_Spel
                 "There is a path leading to the left, it looks dark. There's also a path leading to the right.");
 
             var room3Right = new Room(
-                "Janitor's Rooms",
+                "Janitor's Room",
                 "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
             // Create Items
             var roomKey = new Key(
-                "Rooms Key",
+                "Room Key",
                 "It looks like it can fit to this door.",
                 1,
                 "The key is old and rusty, it looks fragile.");

@@ -8,12 +8,13 @@
 
         public override Item Use(Item item)
         {
-            if (item.ItemId == this.ItemId)
+            if (item.ItemId == this.ItemId && item.Name.Contains(this.Name))
             {
-                return new Item("Soaked Rags",
+                item = new Item("Soaked Rags",
                     "Rags drained with Kerosene",
                     5,
                     "Rags drained with Kerosene, this can burn very well!");
+                return item;
             }
             return null;
         }

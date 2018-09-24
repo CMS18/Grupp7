@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -45,6 +46,21 @@ namespace Uppgift3_Spel
                     Console.WriteLine(item.Name);
                 }   
             }
+        }
+
+        public Item GetItemFromInventory(string value)
+        {
+            var compareArray = value.Split(' ').ToArray();
+            foreach (var item in PlayerInventory)
+            {
+                foreach (var str in compareArray)
+                {
+                    if (item.Name.ToLower().Contains(str.ToLower()))
+                        return item;
+                }
+            }
+
+            return null;
         }
 
     }
