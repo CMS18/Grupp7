@@ -14,7 +14,7 @@ namespace Uppgift3_Spel
             return match.Success ? match.Value : null;
         }
 
-        public static bool CheckValue(string compare, string compareTo)
+        public static bool CompareStrings(string compare, string compareTo)
         {
             var arrayValue = compare.Split(' ').ToArray();
             return arrayValue.Any(t => compareTo.ToLower().Contains(t.ToLower()));

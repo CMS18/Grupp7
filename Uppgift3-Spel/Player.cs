@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Uppgift3_Spel
 {
-    internal class Player
+    public class Player
     {
         public List<Item> PlayerInventory { get; }
         public string Name { get; }

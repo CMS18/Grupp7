@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace Uppgift3_Spel
 {
@@ -22,7 +23,7 @@ namespace Uppgift3_Spel
             Console.WriteLine(Description);
         }
 
-        public virtual Item Use(Item item)
+        public virtual Item Use(Player player, Item item)
         {
             return null;
         }
@@ -30,6 +31,11 @@ namespace Uppgift3_Spel
         public void ExamineItem()
         {
             Console.WriteLine(Examine);
+        }
+
+        public bool MatchedIdName(Item item, string value)
+        {
+            return PlayerParse.CompareStrings(value, item.Name) && item.ItemId == this.ItemId;
         }
     }
 }

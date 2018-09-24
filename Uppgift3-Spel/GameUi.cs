@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Uppgift3_Spel
 {
@@ -67,7 +68,7 @@ namespace Uppgift3_Spel
         {
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse.CheckValue(value, item.Name)) continue;
+                if (!PlayerParse.CompareStrings(value, item.Name)) continue;
                 item.ShowItemDescription();
                 break;
             }
@@ -75,59 +76,52 @@ namespace Uppgift3_Spel
 
         private void Examine(string value)
         {
-            if (PlayerParse.CheckValue(value, _currentRoom.Title))
+            if (PlayerParse.CompareStrings(value, _currentRoom.Title))
             {
                 _currentRoom.ExamineRoom();
                 return;
             }
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse.CheckValue(value, item.Name)) continue;
+                if (!PlayerParse.CompareStrings(value, item.Name)) continue;
                 item.ExamineItem();
                 return;
             }
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!PlayerParse.CheckValue(value, exit.ExitName)) continue;
+                if (!PlayerParse.CompareStrings(value, exit.ExitName)) continue;
                 exit.ExamineExit();
             }
         }
 
-        public void Use(string value) // use bottle on rags
+        public void Use(string value)
         {
-            var playerFirstItem = _player.GetItemFromInventory(value);
-            if (playerFirstItem == null) return;
-
+            // Check Exit
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse.CheckValue(value, item.Name)) continue;
+                if (!PlayerParse.CompareStrings(value, item.Name)) continue;
                 foreach (var exit in _currentRoom.Exit)
-                { 
-                    if (exit.ExitId != item.ItemId || !PlayerParse.CheckValue(value, exit.ExitName)) continue;
-                    _player.DropItem(item); 
+                {
+                    if (exit.ExitId != item.ItemId || !PlayerParse.CompareStrings(value, exit.ExitName)) continue;
+                    _player.PlayerInventory.Remove(item);
                     exit.Unlock();
                     return;
                 }
-
-                try
-                {
-                    _player.PlayerInventory.Add(item.Use(playerFirstItem));
-                    _player.PlayerInventory.Remove(playerFirstItem);
-                    _player.PlayerInventory.Remove(item);
-                    break;
-                }
-                catch
-                {
-                    Console.WriteLine("I can't use that...");
-                }
             }
+
+            // Check Item
+            var playerFirstItem = _player.GetItemFromInventory(value);
+            if (playerFirstItem == null) return;
+            playerFirstItem = playerFirstItem.Use(_player, playerFirstItem);      
+            _player.PlayerInventory.Add(playerFirstItem);
+
         }
 
         public void Open(string value)
         {
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!PlayerParse.CheckValue(value, exit.ExitName)) return;
+                if (!PlayerParse.CompareStrings(value, exit.ExitName)) return;
                 if(!exit.Locked)
                 {
                     _currentRoom = exit.LeadsTo;
@@ -143,7 +137,7 @@ namespace Uppgift3_Spel
         {
             foreach (var item in _currentRoom.RoomInventory)
             {
-                if (!PlayerParse.CheckValue(value, item.Name)) continue;
+                if (!PlayerParse.CompareStrings(value, item.Name)) continue;
                 _player.PickUpItem(item);
                 _currentRoom.RemoveRoomItem(item);
                 return;
@@ -154,7 +148,7 @@ namespace Uppgift3_Spel
         {
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!PlayerParse.CheckValue(value, exit.ExitName)) continue;
+                if (!PlayerParse.CompareStrings(value, exit.ExitName)) continue;
                 _currentRoom = exit.LeadsTo;
                 _currentRoom.ShowRoomDescription();
                 break;
@@ -165,7 +159,7 @@ namespace Uppgift3_Spel
         {
             foreach (var item in _player.PlayerInventory)
             {
-                if (!PlayerParse.CheckValue(value, item.Name)) continue;
+                if (!PlayerParse.CompareStrings(value, item.Name)) continue;
                 _currentRoom.AddRoomItem(item);
                 _player.DropItem(item);
                 return;

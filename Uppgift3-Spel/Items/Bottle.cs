@@ -1,4 +1,7 @@
-﻿namespace Uppgift3_Spel.Items
+﻿using System;
+using System.Linq;
+
+namespace Uppgift3_Spel.Items
 {
     class Bottle : Item
     {
@@ -6,17 +9,20 @@
         {
         }
 
-        public override Item Use(Item item)
+        public override Item Use(Player player, Item item)
         {
-            if (item.ItemId == this.ItemId)
-            {
-                item = new Item("Soaked Rags",
-                    "Rags drained with Kerosene",
-                    5,
-                    "Rags drained with Kerosene, this can burn very well!");
-                return item;
-            }
-            return null;
+            var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Rags");
+            if (findItem == null) return null;
+            player.PlayerInventory.Remove(findItem);
+            player.PlayerInventory.Remove(item);
+
+            Console.WriteLine($"{player.Name} got Soaked Rags!");
+
+            return new Item("Soaked Rags",
+                "Rags drained with Kerosene",
+                5,
+                "Rags drained with Kerosene, this can burn very well!");
+            
         }
     }
 }

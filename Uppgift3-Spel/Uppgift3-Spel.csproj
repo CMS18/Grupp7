@@ -48,6 +48,7 @@
     <Compile Include="Items\Bottle.cs" />
     <Compile Include="Items\Key.cs" />
     <Compile Include="Items\Painting.cs" />
+    <Compile Include="Items\Rags.cs" />
     <Compile Include="PlayerParse.cs" />
     <Compile Include="World.cs" />
     <Compile Include="Items\Item.cs" />
