@@ -51,7 +51,7 @@
     <Compile Include="Items\Note.cs" />
     <Compile Include="Items\Painting.cs" />
     <Compile Include="Items\Rags.cs" />
-    <Compile Include="PlayerParse.cs" />
+    <Compile Include="InputParse.cs" />
     <Compile Include="World.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Player.cs" />

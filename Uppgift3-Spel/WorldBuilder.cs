@@ -22,7 +22,8 @@ namespace Uppgift3_Spel
             var room2 = new Room(
                 "Hallway",
                 "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?", 
-                "There is a path leading to the left, it looks dark. There's also a path leading to the right.");
+                "There is a path leading to the left, it looks dark. There's also a path leading to the right.\n" +
+                "It's a pile of rocks lying on the ground.");
 
             var room3Right = new Room(
                 "Janitor's Room",
@@ -64,9 +65,22 @@ namespace Uppgift3_Spel
                 "The painting is signed by Mr X." +
                 " there seems to be missing a piece of the painting.",
                 false);
+            
+            var lighter = new Item("Lighter",
+                "A red Bic-lighter.",
+                6,
+                "It still works!");
 
-            //var item4 = new Item("Torch", "It's flame burns bright.", 4, "Woah! Keep it away from my face!");
-            // Om items används på varandra så skapa Torch
+            // TODO
+            // Lägg till pile of rocks för rum 2, gör den non takeable,
+            // Lägg till move i InputParse const
+            // Lägg till metod Move i World.PlayersTurn
+            // Gör subklass Lighter : Item, överrida Use att kunna tända eld på facklan.
+            // Gör Room2ExitLeft, locked = true tills att användaren har facklan i inventoryt.
+            // Lägg till ett till rum med en låst dörr, dörren är också endpoint och har ett kombinationslås
+            // Skapa någon metod för vad som visas då man klarat ut spelet!
+
+
 
 
             // Create Exit Points
@@ -91,6 +105,9 @@ namespace Uppgift3_Spel
                 ""
                 );
 
+                
+
+
             // TODO add extit Right for room2
 
             
@@ -106,6 +123,8 @@ namespace Uppgift3_Spel
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);
+
+            room2.RoomInventory.Add(lighter);
 
             room3Right.RoomInventory.Add(bottle);
             room3Right.RoomInventory.Add(rags);
@@ -133,7 +152,6 @@ namespace Uppgift3_Spel
                 creatingPlayer = false;
             } while (creatingPlayer);
             return new Player(name);
-
         }
 
         
