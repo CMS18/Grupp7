@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 
 namespace Uppgift3_Spel
 {
     public class Room
     {
         public string Title { get; }
-        public string Description { get; } 
+        public string Description { get; private set; }
+        public string Examine { get; private set; }
         public List<Exit> Exit { get; }
         public List<Item> RoomInventory { get; }
 
-        public Room(string title, string description)
+        public Room(string title, string description, string examine)
         {
             Title = title;
             Description = description;
             Exit = new List<Exit>();
             RoomInventory = new List<Item>();
-        }
-
-        public Item GetRoomItemByName(string value)
-        {
-            return value == null ? null : RoomInventory.Find
-                (i => i.Name.ToLower().Contains(value.ToLower()));
+            Examine = examine;
         }
 
         // TODO overload om flera items finns i inventoryt?
@@ -31,6 +28,11 @@ namespace Uppgift3_Spel
             Console.Title = Title;
             Console.WriteLine(Title);
             Console.WriteLine(Description);
+        }
+
+        public void ExamineRoom()
+        {
+            Console.WriteLine(Examine);
         }
 
         public void AddRoomItem(Item item) => RoomInventory.Add(item);

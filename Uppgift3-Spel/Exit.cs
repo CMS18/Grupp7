@@ -26,14 +26,6 @@ namespace Uppgift3_Spel
             Examine = examine;
         }
 
-        public void Open(Exit exit)
-        {
-            if (!exit.Locked)
-            {
-                Console.WriteLine(OpenExit);
-            }
-        }
-
         public void ExamineExit() => Console.WriteLine(Examine);
 
         public virtual void Unlock() => Locked = false;

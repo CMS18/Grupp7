@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 
 namespace Uppgift3_Spel
 {
@@ -9,12 +6,10 @@ namespace Uppgift3_Spel
     {
         private Player _player;
         private Room _currentRoom;
-        private List<Room> _rooms;
 
-        public void LoadGameUi(Player player, List<Room> rooms, Room room)
+        public void LoadGameUi(Player player, Room room)
         {
             _currentRoom = room;
-            _rooms = rooms;
             _player = player;
         }
 
@@ -25,6 +20,7 @@ namespace Uppgift3_Spel
             var input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return;
             var playerAction = input.ToPlayerAction();
+            if (playerAction == null) return;
 
             switch (playerAction.ToLower())
             {
@@ -71,15 +67,16 @@ namespace Uppgift3_Spel
             }
         }
 
-        // TODO loop to check if currentroom is room, own method? Mycket copy pasta just nu...LARM!
-        // TODO Calla och ändra description för nuvarande room? DropItem bör finnas på marken i nya rummet.
-        // TODO Kolla player inventory för item i player istället för här? Samma med Rum och Exit i respektive klasser?
-
         private void Examine(string value)
         {
-            var item = _player.GetItemByName(value);
-            if (PlayerParse.CheckValue(value, item.Name))
+            if (PlayerParse.CheckValue(value, _currentRoom.Title))
             {
+                _currentRoom.ExamineRoom();
+                return;
+            }
+            foreach (var item in _player.PlayerInventory)
+            {
+                if (!PlayerParse.CheckValue(value, item.Name)) continue;
                 item.ExamineItem();
                 return;
             }
@@ -87,7 +84,6 @@ namespace Uppgift3_Spel
             {
                 if (!PlayerParse.CheckValue(value, exit.ExitName)) continue;
                 exit.ExamineExit();
-
             }
         }
 

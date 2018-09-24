@@ -12,21 +12,50 @@ namespace Uppgift3_Spel
             var result = new List<Room>();
 
             // Create Rooms
-            var room1 = new Room("The Room", "Hello!?...Where am I?!... There's a key and a note on the ground. I also see a door, maybe I can open it?");
-            var room2 = new Room("Hallway", "There is a path leading to the left, it looks a bit dark. There's also a path leading to the right.");
-            var room3Right = new Room("Janitor's Room", "It's a small room, quite messy, it smells like gasoline.\n" +
-                                                        "I see a painting of an old man with a handle bar mustasch.\n" +
-                                                        "There's a table with a bottle. I also see a cleaning cart with with some rags and a broom.");
+            var room1 = new Room(
+                "The Room",
+                "Hello!?...Where am I?!...Ugh... I don't feel too well." +
+                "\nI'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
+                "There's a key and a note on the ground!");
+
+            var room2 = new Room(
+                "Hallway",
+                "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?", 
+                "There is a path leading to the left, it looks dark. There's also a path leading to the right.");
+
+            var room3Right = new Room(
+                "Janitor's Room",
+                "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch",
+                "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
             // Create Items
-            var r1Item1 = new Key("Room Key", "It looks like it can fit to this door.", 1, "The key is old and rusty, it looks fragile.");
-            var r1Item2 = new Item("Note", "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
-                                           "However " +
-                                           "if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.", 0, "A note from Mr. X, he doesn't sound like a good guy.");
+            var r1Item1 = new Key(
+                "Room Key",
+                "It looks like it can fit to this door.",
+                1,
+                "The key is old and rusty, it looks fragile.");
+
+            var r1Item2 = new Item(
+                "Note",
+                "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
+                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.",
+                0,
+                "A note from Mr. X, he doesn't sound like a good guy.");
             
-            var r2Item1 = new Item("Bottle of Kerosene", "It's commonly used to power jet engines.", 2, "Kerosene is very flammable.");
-            var r2Item2 = new Item("Rags", "Some old clothes ripped apart.", 2, "I think this used to be a shirt...");
-            var r2Item3 = new Item("Broom", "A regular broom used to cleaning.", 2, "It's a broom, what more do you need to know?");
+            var r2Item1 = new Item(
+                "Bottle of Kerosene",
+                "It's commonly used to power jet engines.",
+                2,
+                "A bottle of kerosene, it's very flammable.");
+            var r2Item2 = new Item(
+                "Rags",
+                "Some old clothes ripped apart.",
+                2,
+                "I think this used to be a shirt...");
+            var r2Item3 = new Item(
+                "Broom",
+                "A regular broom used to cleaning.",
+                2, "It's a broom, what more do you need to know?");
 
             //var item4 = new Item("Torch", "It's flame burns bright.", 4, "Woah! Keep it away from my face!");
             // Om items används på varandra så skapa Torch

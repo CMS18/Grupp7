@@ -62,14 +62,5 @@ namespace Uppgift3_Spel
             return null;
         }
 
-        public Room Go(string direction, Room room)
-        {
-            var exit = room.GetRoomExitByName(direction);
-            if (exit != null) return exit.LeadsTo;
-
-            Console.WriteLine("I can't go there.");
-            return null;
-        }
-
     }
 }

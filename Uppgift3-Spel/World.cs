@@ -25,7 +25,7 @@ namespace Uppgift3_Spel
         {
             _currentLocation = _rooms[0]; // Sätter startposition till första index i listan av rum.
             _currentLocation.ShowRoomDescription();
-            _game.LoadGameUi(_player, _rooms, _currentLocation);
+            _game.LoadGameUi(_player, _currentLocation);
             while (!_player.IsDead())
             {
                 _game.PlayersTurn();
