@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Uppgift3_Spel.Items;
 
 namespace Uppgift3_Spel
 {
@@ -42,7 +43,7 @@ namespace Uppgift3_Spel
                 0,
                 "A note from Mr. X, he doesn't sound like a good guy.");
             
-            var bottle = new Item(
+            var bottle = new Bottle(
                 "Bottle of Kerosene",
                 "It's commonly used to power jet engines.",
                 2,
