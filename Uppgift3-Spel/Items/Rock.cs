@@ -14,12 +14,11 @@ namespace Uppgift3_Spel.Items
         {
         }
 
-
         public override void Use(Player player, Room room)
         {
             var findItem = room.RoomInventory.FirstOrDefault(i => i.Name == "Pile of Rocks");
             if (findItem == null) return;
-            room.RoomInventory.Add(new Item("Lighter",
+            room.RoomInventory.Add(new Lighter("Lighter",
                 "A red Bic-lighter.",
                 6,
                 "It still works!"));
