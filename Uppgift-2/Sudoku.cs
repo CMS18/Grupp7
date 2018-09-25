@@ -58,7 +58,7 @@ namespace Sudoku2
                 {
                     Console.WriteLine("Ogiltigt bräde");
                     Console.ReadLine();
-                    break;
+                    Environment.Exit(0);
                 }
                 sudokuBoard[row, col] = parsed;
                 col++;
