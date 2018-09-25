@@ -53,6 +53,9 @@
     <Compile Include="Items\Rags.cs" />
     <Compile Include="InputParse.cs" />
     <Compile Include="Items\Rock.cs" />
+    <Compile Include="Rooms\Hallway.cs" />
+    <Compile Include="Rooms\JanitorsRoom.cs" />
+    <Compile Include="Rooms\StartRoom.cs" />
     <Compile Include="World.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Player.cs" />
