@@ -54,7 +54,6 @@ namespace Uppgift3_Spel.Rooms
         public void AddRoomItem(Item item)
         {
             RoomInventory.Add(item);
-            // TODO update Examine om fler items läggs till, eller tas bort.
         }
 
         public void RemoveRoomItem(Item item)

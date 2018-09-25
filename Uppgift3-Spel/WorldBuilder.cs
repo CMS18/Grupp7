@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Uppgift3_Spel.Exits;
 using Uppgift3_Spel.Items;
 using Uppgift3_Spel.Rooms;
 

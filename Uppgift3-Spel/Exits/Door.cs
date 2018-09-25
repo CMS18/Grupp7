@@ -1,7 +1,7 @@
 ﻿using System;
 using Uppgift3_Spel.Rooms;
 
-namespace Uppgift3_Spel
+namespace Uppgift3_Spel.Exits
 {
     internal class Door : Exit
     {

@@ -12,9 +12,5 @@ namespace Uppgift3_Spel.Rooms
         {
         }
 
-        public override void ShowRoomDescription()
-        {
-
-        }
     }
 }
