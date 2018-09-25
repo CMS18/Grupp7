@@ -13,15 +13,31 @@ namespace Uppgift3_Spel.Rooms
         {
         }
 
-        public override void ShowRoomDescription()
-        { 
-                if (RoomInventory.Any())
-                {
 
-                }
-                //"I'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
-                //"There's a key and a note on the ground!"
-            
+        public override void ExamineRoom()
+        {
+            var sb = new StringBuilder("I can see the following items:");
+
+            foreach (var item in RoomInventory)
+            {
+                sb.Append(Environment.NewLine + item.Name);
+            }
+            Examine = sb.ToString();
+            base.ExamineRoom();
         }
+
+        public override void ShowRoomDescription()
+        {
+            foreach (var exit in Exit)
+            {
+                if (!exit.Locked)
+                {
+                    Description = "I'm inside a small room with bad lighting, there's an unlocked door here.";
+                }
+               
+            }
+            Console.WriteLine(Description);
+        }
+
     }
 }

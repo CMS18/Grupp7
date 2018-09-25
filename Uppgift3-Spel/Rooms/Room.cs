@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Uppgift3_Spel.Items;
 
 namespace Uppgift3_Spel.Rooms
@@ -7,7 +9,7 @@ namespace Uppgift3_Spel.Rooms
     public class Room
     {
         public string Title { get; }
-        public string Description { get; }
+        public string Description { get; set; }
         public string Examine { get; set; }
         public List<Exit> Exit { get; }
         public List<Item> RoomInventory { get; }
@@ -21,6 +23,7 @@ namespace Uppgift3_Spel.Rooms
             Examine = examine;
         }
 
+
         // TODO overload om flera items finns i inventoryt?
         // TODO method to change room description if item is removed.
         public virtual void ShowRoomDescription()
@@ -30,8 +33,21 @@ namespace Uppgift3_Spel.Rooms
             Console.WriteLine(Description);
         }
 
-        public void ExamineRoom()
+        public virtual void ExamineRoom()
         {
+            var sb = new StringBuilder("I can see the following items:");
+
+            foreach (var item in RoomInventory)
+            {
+                sb.Append(Environment.NewLine + item.Name);
+            }
+
+            if (sb.Length == 30)
+            {
+                Console.WriteLine("There's nothing here...");
+                return;
+            }
+            Examine = sb.ToString();
             Console.WriteLine(Examine);
         }
 
@@ -47,7 +63,12 @@ namespace Uppgift3_Spel.Rooms
             RoomInventory.Remove(item);
         }
 
-        
+        protected bool ItemExist(string value)
+        {
+            return RoomInventory.Any(i => string.Equals(i.Name, value, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+
 
     }
 }
