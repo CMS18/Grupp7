@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Uppgift3_Spel.Items;
 
-namespace Uppgift3_Spel
+namespace Uppgift3_Spel.Rooms
 {
     public class Room
     {

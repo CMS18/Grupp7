@@ -1,4 +1,5 @@
 ﻿using System;
+using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel.Items
 {

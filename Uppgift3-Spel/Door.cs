@@ -1,4 +1,5 @@
 ﻿using System;
+using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
 {
@@ -11,8 +12,8 @@ namespace Uppgift3_Spel
         public override void Unlock()
         {
             Locked = false;
-            if(OpenExit != null)
-                Console.WriteLine(OpenExit); // Skriver ut message för openExit om det finns för dörren.
+            Console.WriteLine(OpenExit);
+            Examine = "A brown wooden door, the lock is broken and the key is stuck inside.";
         }
     }
 }

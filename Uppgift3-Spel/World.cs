@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
 {
@@ -11,7 +12,7 @@ namespace Uppgift3_Spel
         public string ExitName { get; }
         public string OpenExit { get; }
         public string LockedString { get; }
-        public string Examine { get; }
+        public string Examine { get; set; }
 
 
         public Exit(Room leadsto, int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString, string examine)
