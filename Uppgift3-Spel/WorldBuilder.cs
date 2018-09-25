@@ -14,19 +14,18 @@ namespace Uppgift3_Spel
             var result = new List<Room>();
 
             // Create Rooms
-            var room1 = new Room(
+            var room1 = new StartRoom(
                 "The Room",
-                "Hello!?...Where am I?!...Ugh... I don't feel too well." +
                 "\nI'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
                 "There's a key and a note on the ground!");
 
-            var room2 = new Room(
+            var room2 = new Hallway(
                 "Hallway",
                 "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?", 
                 "There is a path leading to the left, it looks dark. There's also a path leading to the right.\n" +
                 "It's a pile of rocks lying on the ground.");
 
-            var room3Right = new Room(
+            var room3Right = new JanitorsRoom(
                 "Janitor's Room",
                 "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
@@ -149,6 +148,7 @@ namespace Uppgift3_Spel
                 if(string.IsNullOrEmpty(name))continue;
                 creatingPlayer = false;
             } while (creatingPlayer);
+            Console.WriteLine("Hello!?...Where am I ? !...Ugh...I don't feel too well.");
             return new Player(name);
         }
 
