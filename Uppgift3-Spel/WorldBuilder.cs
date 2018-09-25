@@ -39,10 +39,10 @@ namespace Uppgift3_Spel
 
             var note = new Note(
                 "Note",
-                "A piece of paper with something written on it.",
-                0,
                 "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
-                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.");
+                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.",
+                0,
+                "A piece of paper with something written on it.");
             
             var bottle = new Bottle(
                 "Bottle of Kerosene",
@@ -121,7 +121,7 @@ namespace Uppgift3_Spel
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);
 
-            room2.RoomInventory.Add(lighter);
+            //room2.RoomInventory.Add(lighter);
 
             room3Right.RoomInventory.Add(bottle);
             room3Right.RoomInventory.Add(rags);
