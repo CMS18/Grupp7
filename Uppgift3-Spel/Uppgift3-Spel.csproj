@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Door.cs" />
-    <Compile Include="Exit.cs" />
+    <Compile Include="Exits\Door.cs" />
+    <Compile Include="Exits\Exit.cs" />
     <Compile Include="Items\Bottle.cs" />
     <Compile Include="Items\Broom.cs" />
     <Compile Include="Items\Key.cs" />
