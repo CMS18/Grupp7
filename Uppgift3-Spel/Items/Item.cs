@@ -49,6 +49,5 @@ namespace Uppgift3_Spel.Items
         {
             Console.WriteLine(Examine);
         }
-
     }
 }
