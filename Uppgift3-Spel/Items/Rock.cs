@@ -23,6 +23,10 @@ namespace Uppgift3_Spel.Items
                 6,
                 "It still works!"));
 
+            room.Examine =
+                "There is a path leading to the left, it looks dark. There's also a path leading to the right.\n" +
+                "I can see a lighter where the rock pile were.";
+
             Console.WriteLine($"{player.Name} moves the rocks with great ease!");
         }
 

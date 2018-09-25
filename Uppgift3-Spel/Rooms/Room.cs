@@ -8,7 +8,7 @@ namespace Uppgift3_Spel
     {
         public string Title { get; }
         public string Description { get; }
-        public string Examine { get; }
+        public string Examine { get; set; }
         public List<Exit> Exit { get; }
         public List<Item> RoomInventory { get; }
 
@@ -45,12 +45,6 @@ namespace Uppgift3_Spel
         {
             if(item != null)
             RoomInventory.Remove(item);
-        }
-
-        public Exit GetRoomExitByName(string value)
-        {
-            return value == null ? null : Exit.Find
-                (e => e.ExitName.ToLower().Contains(value.ToLower()));
         }
 
         

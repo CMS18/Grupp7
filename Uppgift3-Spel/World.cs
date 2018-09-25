@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Uppgift3_Spel
 {
@@ -73,8 +74,8 @@ namespace Uppgift3_Spel
                 case "examine":
                     Examine(input);
                     break;
-                case "help":
-                    Help();
+                case "move":
+                    Move(input);
                     break;
                 default:
                     Console.WriteLine("Do what now?");
@@ -82,12 +83,15 @@ namespace Uppgift3_Spel
             }
         }
 
-        private void Help()
+        private void Move(string value)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Usable commands:\n" +
-                              "open, use, look, show, take, go, drop, examine, turn, read, turn");
-            Console.ResetColor();
+            foreach (var item in _currentRoom.RoomInventory)
+            {
+                if (!InputParse.CompareStrings(value, item.Name)) continue;
+                item.Use(_player, _currentRoom);
+                break;
+            }
+           
         }
 
         private void Read(string value)

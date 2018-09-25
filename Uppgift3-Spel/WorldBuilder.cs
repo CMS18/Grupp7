@@ -121,7 +121,7 @@ namespace Uppgift3_Spel
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);
 
-            room2.RoomInventory.Add(lighter);
+            room2.RoomInventory.Add(rocks);
 
             room3Right.RoomInventory.Add(bottle);
             room3Right.RoomInventory.Add(rags);
