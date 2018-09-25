@@ -43,6 +43,8 @@ namespace Uppgift3_Spel.Items
             //
         }
 
+        public virtual void Use(Player player, Room room) { }
+
         public void ExamineItem()
         {
             Console.WriteLine(Examine);

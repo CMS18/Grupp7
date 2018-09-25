@@ -65,11 +65,12 @@ namespace Uppgift3_Spel
                 "The painting is signed by Mr X." +
                 " there seems to be missing a piece of the painting.",
                 false);
-            
-            var lighter = new Item("Lighter",
-                "A red Bic-lighter.",
-                6,
-                "It still works!");
+
+            var rocks = new Rock("Pile of Rocks",
+                "It's a pile of rocks.",
+                7,
+                "A large pile of small rocks, almost as someone placed them there?",
+                false);
 
             // TODO
             // Lägg till pile of rocks för rum 2, gör den non takeable,

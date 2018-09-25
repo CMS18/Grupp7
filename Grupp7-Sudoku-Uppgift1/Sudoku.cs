@@ -21,7 +21,6 @@ namespace Uppgift1
         
         #endregion
 
-
         #region Methods
         private int[,] GenerateBoard(string board)
         {
@@ -33,7 +32,12 @@ namespace Uppgift1
 
             foreach (var ch in boardCharArray)
             {
-                int parsedChar = int.Parse(ch.ToString());
+                if (!int.TryParse(ch.ToString(), out int parsedChar))
+                {
+                    Console.WriteLine("Ogiltigt bräde");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
                 sudokuBoard[row, col] = parsedChar;
                 col++;
                 if (col == 9)
@@ -81,7 +85,6 @@ namespace Uppgift1
         {
             Console.WriteLine("Press a key to solve...");
             Console.ReadKey();
-            int tries = 0;
 
             do
             {
@@ -93,7 +96,7 @@ namespace Uppgift1
                         {
                             int solutions = 0;
                             int correctNum = 0;
-                            for (int i = 1; i < 10; i++)
+                            for (int i = 9; i > 0; i--)
                             {
                                 if (solutions > 1)
                                 {
@@ -113,12 +116,6 @@ namespace Uppgift1
                         }
                     }
                 }
-                tries++;
-                if (NoEmptyCell() && tries == 100)
-                {
-                    NoSolution();
-                }
-
             } while (NoEmptyCell());
 
             Console.WriteLine();
@@ -126,14 +123,6 @@ namespace Uppgift1
             Console.ReadLine();
         }
 
-        private void NoSolution()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Sudokun saknar lösning... så här långt kom jag.");
-            BoardAsText();
-            Console.ReadLine();
-            Environment.Exit(0);
-        }
 
         private bool NoEmptyCell()
         {

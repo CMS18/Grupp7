@@ -18,7 +18,6 @@ namespace Sudoku2
 
         public bool Solve()
         {
-            count++;
             for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
             {
                 for (int column = 0; column < _sudokuBoard.GetLength(1); column++)
@@ -29,6 +28,7 @@ namespace Sudoku2
                         {
                             if (ControlRowColBox(row, column, numbers))
                             {
+                                count++;
                                 _sudokuBoard[row, column] = numbers; // Placera nummer
                                 if (Solve())
                                 {
