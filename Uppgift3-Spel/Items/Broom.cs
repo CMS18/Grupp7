@@ -23,7 +23,7 @@ namespace Uppgift3_Spel.Items
 
             return new Item("Broom Torch",
                 "A broom covered in kerosene soaked rags.",
-                6,
+                8,
                 "I need something to light this bad boy!");
         }
     }

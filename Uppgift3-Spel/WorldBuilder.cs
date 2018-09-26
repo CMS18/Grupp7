@@ -31,6 +31,11 @@ namespace Uppgift3_Spel
                 "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
+            var room4Left = new Room(
+                "Final Room",
+                "An empty room with a door.",
+                "There's nothing here except the door...");
+
             // Create Items
             var roomKey = new Key(
                 "Room Key",
@@ -107,8 +112,16 @@ namespace Uppgift3_Spel
                 ""
                 );
 
-
-            
+            var room2LeftExit = new Exit(
+                room4Left,
+                10,
+                true,
+                false,
+                "Left",
+                "Finally some light! I can now see where I'm going.",
+                "I can't go that way, it's too dark.",
+                "It's just a dark passage..."
+                );
 
             // Add Exits to Lists
             room1.Exit.Add((roomExit));
@@ -116,7 +129,9 @@ namespace Uppgift3_Spel
             room2.Exit.Add(new Door(room1, 1, false, false, "Rooms Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(new Door(room2, 1, false, false, "Left", "", "", ""));
+            room2.Exit.Add(room2LeftExit);
             room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
+            room4Left.Exit.Add(new Exit(room2, 2, false, false, "", "", "", ""));
 
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);
