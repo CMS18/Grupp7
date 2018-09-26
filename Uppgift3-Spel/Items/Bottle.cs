@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Uppgift3_Spel.Items
 {
-    class Bottle : Item
+    internal class Bottle : Item
     {
         public Bottle(string name, string description, int id, string examine) : base(name, description, id, examine)
         {

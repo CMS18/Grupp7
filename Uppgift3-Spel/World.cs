@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
@@ -25,10 +24,10 @@ namespace Uppgift3_Spel
 
         public void PlayGame()
         {
-            _currentRoom = _rooms[0]; // Sätter startposition till första index i listan av rum.
+            _currentRoom = _rooms[0];
             _currentRoom.ShowRoomDescription();
 
-            while (!_player.IsDead())
+            while (!_player.IsDead()) // TODO fixa bool för endpoint
             {
                PlayersTurn();
             }
@@ -141,7 +140,7 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
-            // Check Exits
+            // Kolla om användaren tar use på ett exit
             foreach (var item in _player.PlayerInventory)
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
@@ -154,7 +153,7 @@ namespace Uppgift3_Spel
                 }
             }
 
-            // Check Room Items
+            // Kolla om användaren tar use på ett item i rummet
             var playerItem = _player.GetItemFromInventory(value);
             if (playerItem == null) return;
             foreach (var item in _currentRoom.RoomInventory)
@@ -164,7 +163,7 @@ namespace Uppgift3_Spel
                 break;
             }
 
-            // Check Player Items
+            // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;
             playerFirstItem = playerFirstItem.Use(_player, playerFirstItem);
