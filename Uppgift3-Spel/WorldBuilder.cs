@@ -112,7 +112,7 @@ namespace Uppgift3_Spel
                 ""
                 );
 
-            var room2LeftExit = new Exit(
+            var room2LeftExit = new LeftOfHallway(
                 room4Left,
                 10,
                 true,
@@ -128,7 +128,6 @@ namespace Uppgift3_Spel
 
             room2.Exit.Add(new Door(room1, 1, false, false, "Rooms Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room2.Exit.Add(room2RightExit);
-            room2.Exit.Add(new Door(room2, 1, false, false, "Left", "", "", ""));
             room2.Exit.Add(room2LeftExit);
             room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
             room4Left.Exit.Add(new Exit(room2, 2, false, false, "", "", "", ""));

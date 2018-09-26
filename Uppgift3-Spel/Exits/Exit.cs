@@ -33,6 +33,11 @@ namespace Uppgift3_Spel
 
         public virtual void LockedDescription() => Console.WriteLine(LockedString);
 
+        public virtual bool Unlock(Player player)
+        {
+            return false;
+        }
+
 
     }
 }

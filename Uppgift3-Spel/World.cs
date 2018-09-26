@@ -208,9 +208,12 @@ namespace Uppgift3_Spel
             foreach (var exit in _currentRoom.Exit)
             {
                 if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
-                _currentRoom = exit.LeadsTo;
-                _currentRoom.ShowRoomDescription();
-                break;
+                if (exit.Unlock(_player))
+                {
+                    _currentRoom = exit.LeadsTo;
+                    _currentRoom.ShowRoomDescription();
+                    break;
+                }
             }
         }
 
