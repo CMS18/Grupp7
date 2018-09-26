@@ -1,13 +1,13 @@
 ﻿using System;
 using Uppgift3_Spel.Rooms;
 
-namespace Uppgift3_Spel
+namespace Uppgift3_Spel.Exits
 {
     public class Exit
     {
         public Room LeadsTo { get; }
         public int ExitId { get; }
-        public bool Locked { get; set; }
+        public bool Locked { get; protected set; }
         public bool EndPoint { get; }
         public string ExitName { get; }
         public string OpenExit { get; }
@@ -33,11 +33,6 @@ namespace Uppgift3_Spel
 
         public virtual void LockedDescription() => Console.WriteLine(LockedString);
 
-        public virtual bool Unlock(Player player)
-        {
-            return false;
-        }
-
-
+        public virtual bool Unlock(Player player) => true;
     }
 }

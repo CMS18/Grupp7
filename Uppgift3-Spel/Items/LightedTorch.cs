@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Uppgift3_Spel.Items
 {
-    class Torch : Item
+    internal class LightedTorch : Item
     {
-        public Torch(string name, string description, int id, string examine) : base(name, description, id, examine)
+        public LightedTorch(string name, string description, int id, string examine) : base(name, description, id, examine)
         {
 
         }
