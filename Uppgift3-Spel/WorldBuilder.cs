@@ -130,8 +130,8 @@ namespace Uppgift3_Spel
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(room2LeftExit);
             room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
-            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", "")); //La till right här, vet inte om det blev rätt
-                                                                                        //eftersom det inte går att tända facklan än
+            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", "")); 
+                                                                                        
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);

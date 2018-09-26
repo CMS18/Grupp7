@@ -10,7 +10,6 @@ namespace Uppgift3_Spel.Items
     {
         public LightedTorch(string name, string description, int id, string examine) : base(name, description, id, examine)
         {
-
         }
     }
 }
