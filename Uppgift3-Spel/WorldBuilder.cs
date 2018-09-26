@@ -101,7 +101,7 @@ namespace Uppgift3_Spel
                 "The door is locked, maybe there's a key somewhere?",
                 "A brown wooden door with a sturdy lock.");
 
-            var room2RightExit = new Exit(
+            var room2RightExit = new RightOfHallway(
                 room3Right,
                 2,
                 false,
