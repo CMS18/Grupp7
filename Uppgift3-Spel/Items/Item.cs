@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel.Items
@@ -39,10 +40,32 @@ namespace Uppgift3_Spel.Items
             return null;
         }
 
+        public virtual Item Use(Player player, Item item, string value)
+        {
+            return null;
+        }
+
         public virtual void Use(Player player, Room room, Item item)
         {
             //
         }
+
+        protected bool CompareValue(Player player, string value)
+        {
+            var arrayValue = value.Split(' ').ToArray();
+            foreach (var item in player.PlayerInventory)
+            {
+                foreach (var str in arrayValue)
+                {
+                    if (item.Name.ToLower().Contains(str.ToLower()))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+
 
         public virtual void Use(Player player, Room room) { }
 

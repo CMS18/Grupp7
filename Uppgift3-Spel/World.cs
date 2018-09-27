@@ -91,6 +91,7 @@ namespace Uppgift3_Spel
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
                 item.Use(_player, _currentRoom);
+                _currentRoom.RemoveRoomItem(item);
                 return;
             }
 
@@ -168,11 +169,17 @@ namespace Uppgift3_Spel
                 return;
             }
 
+
+
+
+
             // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;
             playerFirstItem = playerFirstItem.Use(_player, playerFirstItem);
+            if (playerFirstItem == null) return;
             _player.PlayerInventory.Add(playerFirstItem);
+           
 
         }
 

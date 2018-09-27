@@ -6,12 +6,13 @@ namespace Uppgift3_Spel.Items
     class Rags : Item
     {
         public Rags(string name, string description, int id, string examine) : base(name, description, id, examine)
-        {
-        }
+        { }
 
-        public override Item Use(Player player, Item item)
+        public override Item Use(Player player, Item item, string value)
         {
-            var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Rags");
+            if (!CompareValue(player, value)) return null;
+
+            var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Bottle of Kerosene");
             if (findItem == null) return null;
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);

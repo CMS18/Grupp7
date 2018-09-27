@@ -27,9 +27,9 @@ namespace Uppgift3_Spel
 
             var room2 = new Hallway(
                 "Hallway",
-                "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\nThere is a path leading to" +
-                " the left, it looks dark. There's also a path leading to the right.", 
-                 "It's a pile of rocks lying on the ground.");
+                "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\n" +
+                "There is a path leading to the left, it looks dark. There's also a path leading to the right.\n",
+                "There's a pile of rocks lying on the ground.");
 
             var room3Right = new JanitorsRoom(
                 "Janitor's Room",
