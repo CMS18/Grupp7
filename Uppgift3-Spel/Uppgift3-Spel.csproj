@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Exits\Door.cs" />
     <Compile Include="Exits\Exit.cs" />
+    <Compile Include="Exits\FinalDoor.cs" />
     <Compile Include="Exits\LeftOfHallway.cs" />
     <Compile Include="Exits\RightOfHallway.cs" />
     <Compile Include="Items\Bottle.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Items\Rock.cs" />
     <Compile Include="Items\LightedTorch.cs" />
     <Compile Include="Items\SoakedRags.cs" />
+    <Compile Include="Rooms\FinalRoom.cs" />
     <Compile Include="Rooms\Hallway.cs" />
     <Compile Include="Rooms\JanitorsRoom.cs" />
     <Compile Include="Rooms\StartRoom.cs" />

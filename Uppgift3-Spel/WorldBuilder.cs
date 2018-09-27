@@ -38,7 +38,7 @@ namespace Uppgift3_Spel
                 "I can't see any exits here besides the way I came from.",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
-            var room4Left = new Room(
+            var room4Left = new FinalRoom(
                 "Final Room",
                 "An empty room with a door.",
                 "There's nothing here except the door...");
@@ -130,6 +130,16 @@ namespace Uppgift3_Spel
                 "It's just a dark passage..."
                 );
 
+            var finalRoomExit = new FinalDoor(
+                11,
+                true,
+                false,
+                "Final door",
+                "YAAAY",
+                "The door is locked. There's a codelock to it. I need to find that code!",
+                "A big iron door with codelock next to it."
+                );
+
             // Add Exits to Lists
             room1.Exit.Add((roomExit));
 
@@ -137,7 +147,8 @@ namespace Uppgift3_Spel
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(room2LeftExit);
             room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
-            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", "")); 
+            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", ""));
+            room4Left.Exit.Add(finalRoomExit);
                                                                                         
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);

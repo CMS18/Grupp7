@@ -27,6 +27,17 @@ namespace Uppgift3_Spel.Exits
             Examine = examine;
         }
 
+        public Exit(int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString, string examine)
+        {
+            ExitId = exitId;
+            Locked = locked;
+            EndPoint = endPoint;
+            ExitName = name;
+            OpenExit = openExit;
+            LockedString = lockedString;
+            Examine = examine;
+        }
+
         public void ExamineExit() => Console.WriteLine(Examine);
 
         public virtual void Unlock() => Locked = false;
