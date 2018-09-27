@@ -195,6 +195,7 @@ namespace Uppgift3_Spel
                 if (!exit.Locked && exit.EndPoint)
                 {
                     _player.HasWon();
+                    return;
 
                 }
                 if (!exit.Locked)
