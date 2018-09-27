@@ -12,5 +12,18 @@ namespace Uppgift3_Spel.Items
         {
         }
 
+        public override Item Use(Player player, Item item)
+        {
+            var findItem = player.PlayerInventory.FirstOrDefault(x => x.ItemId == 6);
+
+            if (findItem == null) return null;
+            player.PlayerInventory.Remove(findItem);
+            player.PlayerInventory.Remove(item);
+            Console.WriteLine($"{player.Name} got a Lighted Torch.");
+            return new LightedTorch("Lighted Torch",
+                "It's a torch that is burning bright.",
+                10,
+                "Woah! Keep it away from my face!");
+        }
     }
 }

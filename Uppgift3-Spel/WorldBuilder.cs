@@ -22,9 +22,9 @@ namespace Uppgift3_Spel
 
             var room2 = new Hallway(
                 "Hallway",
-                "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?", 
-                "There is a path leading to the left, it looks dark. There's also a path leading to the right.\n" +
-                "It's a pile of rocks lying on the ground.");
+                "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\nThere is a path leading to" +
+                " the left, it looks dark. There's also a path leading to the right.", 
+                 "It's a pile of rocks lying on the ground.");
 
             var room3Right = new JanitorsRoom(
                 "Janitor's Room",
@@ -130,8 +130,8 @@ namespace Uppgift3_Spel
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(room2LeftExit);
             room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
-            room4Left.Exit.Add(new Exit(room2, 2, false, false, "", "", "", ""));
-
+            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", "")); 
+                                                                                        
             // Add Items to RoomList
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);
