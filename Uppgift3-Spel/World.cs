@@ -27,7 +27,7 @@ namespace Uppgift3_Spel
             _currentRoom = _rooms[0];
             _currentRoom.ShowRoomDescription();
 
-            while (!_player.IsDead()) // TODO fixa bool för endpoint
+            while (true) // TODO fixa bool för endpoint
             {
                PlayersTurn();
             }
@@ -234,11 +234,5 @@ namespace Uppgift3_Spel
                 return;
             }
         }
-
-
-
-
-
-
     }
 }
