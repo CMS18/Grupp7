@@ -28,5 +28,7 @@ namespace Uppgift3_Spel.Exits
             }
             Console.WriteLine("Incorrect combination.");
         }
+
+        public override void LockedDescription() => Console.WriteLine(LockedString);
     }
 }

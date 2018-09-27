@@ -191,7 +191,7 @@ namespace Uppgift3_Spel
         {
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!InputParse.CompareStrings(value, exit.ExitName)) return;
+                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
                 if (!exit.Locked && exit.EndPoint)
                 {
                     _player.HasWon();
