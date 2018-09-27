@@ -14,25 +14,13 @@ namespace Uppgift3_Spel.Rooms
         }
 
 
-        public override void ExamineRoom()
-        {
-            var sb = new StringBuilder("I can see the following items:");
-
-            foreach (var item in RoomInventory)
-            {
-                sb.Append(Environment.NewLine + item.Name);
-            }
-            Examine = sb.ToString();
-            base.ExamineRoom();
-        }
-
         public override void ShowRoomDescription()
         {
             foreach (var exit in Exit)
             {
                 if (!exit.Locked)
                 {
-                    Description = "I'm inside a small room with bad lighting, there's an unlocked door here.";
+                    Description = "I'm inside a small room with bad lighting, there's an unlocked door here, the lock is broken.";
                 }
                
             }

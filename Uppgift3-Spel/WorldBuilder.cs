@@ -8,7 +8,12 @@ namespace Uppgift3_Spel
 {
     internal class WorldBuilder
     {
-        public List<Room> Rooms { get; }
+        private List<Room> Rooms { get; }
+
+        public List<Room> GetWorldRooms()
+        {
+            return Rooms;
+        }
 
         public WorldBuilder()
         {
@@ -28,7 +33,8 @@ namespace Uppgift3_Spel
 
             var room3Right = new JanitorsRoom(
                 "Janitor's Room",
-                "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.",
+                "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.\n" +
+                "I can't see any exits here besides the way I came from.",
                 "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
 
             var room4Left = new Room(

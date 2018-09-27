@@ -63,6 +63,7 @@ namespace Uppgift3_Spel.Rooms
             RoomInventory.Remove(item);
         }
 
+        // Kanske inte behövs
         protected bool ItemExist(string value)
         {
             return RoomInventory.Any(i => string.Equals(i.Name, value, StringComparison.CurrentCultureIgnoreCase));

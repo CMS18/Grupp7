@@ -35,7 +35,7 @@ namespace Sudoku2
             string diabolic2 = "900040000000010200370000005000000090001000400000705000000020100580300000000000000";
             string zen = "000000000000000000000000000000000000000010000000000000000000000000000000000000000";
 
-            Sudoku sudoku = new Sudoku(diabolic2);
+            Sudoku sudoku = new Sudoku(unsolvable4);
             sudoku.PrintSuduko();
             if (!sudoku.Solve())
             {
