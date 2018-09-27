@@ -29,7 +29,6 @@ namespace Uppgift3_Spel.Rooms
         // TODO method to change room description if item is removed.
         public virtual void ShowRoomDescription()
         {
-            Console.Title = Title;
             Console.WriteLine(Title);
             Console.WriteLine(Description);
         }
