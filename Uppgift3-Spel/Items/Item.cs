@@ -42,6 +42,7 @@ namespace Uppgift3_Spel.Items
 
         public virtual Item Use(Player player, Item item, string value)
         {
+            Console.WriteLine("I can't use that.");
             return null;
         }
 
@@ -50,19 +51,10 @@ namespace Uppgift3_Spel.Items
             //
         }
 
-        protected virtual bool CompareValue(Player player, string value)
+        protected virtual bool FindItemFromString(string value, string contain)
         {
             var arrayValue = value.Split(' ').ToArray();
-            foreach (var item in player.PlayerInventory)
-            {
-                foreach (var str in arrayValue)
-                {
-                    if (item.Name.ToLower().Contains(str.ToLower()))
-                        return true;
-                }
-            }
-
-            return false;
+            return arrayValue.Any(str => str.ToLower().Contains(contain));
         }
 
 

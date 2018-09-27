@@ -11,7 +11,7 @@ namespace Uppgift3_Spel.Items
 
         public override Item Use(Player player, Item item, string value)
         {
-            if (!CompareValue(player, value)) return null;
+            if (!FindItemFromString(value, "rags")) return null;
 
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Rags");
             if (findItem == null) return null;
@@ -26,10 +26,6 @@ namespace Uppgift3_Spel.Items
                 "Rags drained with Kerosene, this can burn very well!");
         }
 
-        protected virtual bool CompareValue(Player player, string value)
-        {
-            var arrayValue = value.Split(' ').ToArray();
-            return arrayValue.Any(str => str.ToLower().Contains("rags"));
-        }
+
     }
 }

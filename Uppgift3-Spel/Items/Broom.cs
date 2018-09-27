@@ -12,8 +12,10 @@ namespace Uppgift3_Spel.Items
         {
         }
 
-        public override Item Use(Player player, Item item)
+        public override Item Use(Player player, Item item, string value)
         {
+            if (!FindItemFromString(value, "soaked rags")) return null;
+
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Soaked Rags");
             if (findItem == null) return null;
             player.PlayerInventory.Remove(findItem);

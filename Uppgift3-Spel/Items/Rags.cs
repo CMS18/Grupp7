@@ -10,25 +10,19 @@ namespace Uppgift3_Spel.Items
 
         public override Item Use(Player player, Item item, string value)
         {
-            if (!CompareValue(player, value)) return null;
+            if (!FindItemFromString(value, "bottle")) base.Use(player, item, value);
 
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Bottle of Kerosene");
-            if (findItem == null) return null;
+            if (findItem == null) base.Use(player, item, value);
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
 
             Console.WriteLine($"{player.Name} got Soaked Rags.");
 
-            return new Item("Soaked Rags",
+            return new SoakedRags("Soaked Rags",
                 "Rags drained with Kerosene",
                 5,
                 "Rags drained with Kerosene, this can burn very well!");
-        }
-
-        protected virtual bool CompareValue(Player player, string value)
-        {
-            var arrayValue = value.Split(' ').ToArray();
-            return arrayValue.Any(str => str.ToLower().Contains("bottle"));
         }
     }
 }
