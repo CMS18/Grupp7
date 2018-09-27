@@ -23,8 +23,8 @@ namespace Uppgift3_Spel
             var room2 = new Hallway(
                 "Hallway",
                 "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\nThere is a path leading to" +
-                " the left, it looks dark. There's also a path leading to the right.", 
-                 "It's a pile of rocks lying on the ground.");
+                " the left, it looks dark. There's also a path leading to the right. It's a pile of rocks lying on the ground.", 
+                "nånting");
 
             var room3Right = new JanitorsRoom(
                 "Janitor's Room",
@@ -63,7 +63,8 @@ namespace Uppgift3_Spel
             var broom = new Broom(
                 "Broom",
                 "A regular broom used to cleaning.",
-                2, "It's a broom, what more do you need to know?");
+                2,
+                "It's a broom, what more do you need to know?");
 
             var painting = new Painting("Painting",
                 "A painting of Mr.X?",
