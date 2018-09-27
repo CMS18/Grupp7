@@ -69,7 +69,7 @@ namespace Uppgift3_Spel
             var broom = new Broom(
                 "Broom",
                 "A regular broom used to cleaning.",
-                2, "It's a broom, what more do you need to know?");
+                5, "It's a broom, what more do you need to know?");
 
             var painting = new Painting("Painting",
                 "A painting of Mr.X?",

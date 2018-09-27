@@ -58,6 +58,7 @@
     <Compile Include="InputParse.cs" />
     <Compile Include="Items\Rock.cs" />
     <Compile Include="Items\LightedTorch.cs" />
+    <Compile Include="Items\SoakedRags.cs" />
     <Compile Include="Rooms\Hallway.cs" />
     <Compile Include="Rooms\JanitorsRoom.cs" />
     <Compile Include="Rooms\StartRoom.cs" />
