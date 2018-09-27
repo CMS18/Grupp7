@@ -9,12 +9,50 @@ namespace Sudoku2
     class Sudoku
     {
         private int[,] _sudokuBoard;
-        private int count;
+        private int tries;
 
         public Sudoku(string board)
         {
             _sudokuBoard = GenerateBoard(board);
         }
+
+        public void SolveBasic()
+        {
+            for (int row = 0; row < _sudokuBoard.GetLength(0); row++)
+            {
+                for (int col = 0; col < _sudokuBoard.GetLength(1); col++)
+                {
+                    if (_sudokuBoard[row, col] == 0)
+                    {
+                        int solutions = 0;
+                        int correctNum = 0;
+                        for (int i = 9; i > 0; i--)
+                        {
+                            if (solutions > 1)
+                            {
+                                solutions = 0;
+                                break;
+                            }
+                            if (ControlRowColBox(row, col, i))
+                            {
+                                correctNum = i;
+                                solutions++;
+                            }
+                        }
+                        if (solutions == 1 && correctNum != 0)
+                        {
+                            _sudokuBoard[row, col] = correctNum;
+                        }
+                    }
+                }
+            }
+            PrintSuduko();
+            Console.WriteLine("Denna Sudoku gick inte att lösa...");
+            Console.ReadLine();
+            Environment.Exit(0);
+        }
+
+
 
         public bool Solve()
         {
@@ -24,11 +62,11 @@ namespace Sudoku2
                 {
                     if (_sudokuBoard[row, column] == 0)
                     {
+                        tries++;
                         for (int numbers = 9; numbers > 0; numbers--)
                         {
                             if (ControlRowColBox(row, column, numbers))
                             {
-                                count++;
                                 _sudokuBoard[row, column] = numbers; // Placera nummer
                                 if (Solve())
                                 {
@@ -114,8 +152,6 @@ namespace Sudoku2
                     Console.WriteLine("+-----------------------------+");
                 }
             }
-
-            Console.WriteLine("Antal försök: "+ count);
         }
     }
 }

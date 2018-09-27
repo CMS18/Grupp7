@@ -16,7 +16,7 @@ namespace Uppgift3_Spel
             // Instance of worldbuilder
             var world = new WorldBuilder();
             // Set worldbuilder's room list to _rooms
-            _rooms = world.Rooms;
+            _rooms = world.GetWorldRooms();
             // Ask player for Name, create Player.
             _player = world.CreateNewPlayer();
             PlayGame();
@@ -31,6 +31,8 @@ namespace Uppgift3_Spel
             {
                PlayersTurn();
             }
+
+            // Calla Victory!
         }
 
         public void PlayersTurn()
@@ -89,8 +91,10 @@ namespace Uppgift3_Spel
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
                 item.Use(_player, _currentRoom);
-                break;
+                return;
             }
+
+            Console.WriteLine("I can't do that.");
            
         }
 
@@ -100,8 +104,9 @@ namespace Uppgift3_Spel
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
                 item.ShowItemDescription();
-                break;
+                return;
             }
+            Console.WriteLine("I can't do that.");
         }
 
         private void Examine(string value)
@@ -160,7 +165,7 @@ namespace Uppgift3_Spel
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
                 playerItem.Use(_player, _currentRoom, playerItem);
-                break;
+                return;
             }
 
             // Kolla om användaren  tar use på ett item i sitt inventory
@@ -198,8 +203,8 @@ namespace Uppgift3_Spel
                     _currentRoom.RemoveRoomItem(item);
                     return;
                 }
-
             }
+            Console.WriteLine("I can't take that.");
         }
 
         public void Go(string value)
