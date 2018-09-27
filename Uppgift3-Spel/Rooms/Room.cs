@@ -24,7 +24,6 @@ namespace Uppgift3_Spel.Rooms
             Examine = examine;
         }
 
-
         // TODO overload om flera items finns i inventoryt?
         // TODO method to change room description if item is removed.
         public virtual void ShowRoomDescription()
