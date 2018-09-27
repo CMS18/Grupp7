@@ -14,6 +14,13 @@ namespace Uppgift3_Spel.Rooms
 
         public override void ShowRoomDescription()
         {
+            if (RoomInventory.All(i => i.ItemId != 7))
+            {
+                Description = "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\n" +
+                              "There is a path leading to the left, it looks dark. There's also a path leading to the right.";
+                Console.WriteLine(Description);
+                return;
+            }
             foreach (var exit in Exit)
             {
                 if (!exit.Locked && exit.ExitId == 10)
@@ -24,7 +31,6 @@ namespace Uppgift3_Spel.Rooms
                     Console.WriteLine(Description);
                     return;
                 }
-
             }
 
             base.ShowRoomDescription();
