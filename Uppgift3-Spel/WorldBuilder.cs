@@ -52,8 +52,7 @@ namespace Uppgift3_Spel
 
             var note = new Note(
                 "Note",
-                "Welcome to my game, I hope I didn't drug you too heavily... I left a key for you to leave this room.\n" +
-                "However if you want to escape you have to solve the upcoming puzzles as well. Enjoy! /Mr X.",
+                "A piece of paper with something written on it.",
                 0,
                 "A piece of paper with something written on it.");
             
@@ -82,7 +81,7 @@ namespace Uppgift3_Spel
             var rocks = new Rock("Pile of Rocks",
                 "It's a pile of rocks.",
                 7,
-                "A large pile of small rocks, almost as someone placed them there?",
+                "A large pile of small rocks, almost as someone placed them there? Maybe I can move them.",
                 false);
 
             // TODO
@@ -104,7 +103,7 @@ namespace Uppgift3_Spel
                 true,   // Locked
                 false,   // EndPoint
                 "Rooms Door",
-                "You hear a crack... the door is open! Oh... the key broke in half.",
+                "You hear a crack... the door is unlocked! Oh... the key broke in half.",
                 "The door is locked, maybe there's a key somewhere?",
                 "A brown wooden door with a sturdy lock.");
 
@@ -173,9 +172,9 @@ namespace Uppgift3_Spel
             Console.Title = "New Game";
             string name;
             var creatingPlayer = true;
+            MainScreen();
             do
             {
-                Console.Clear();
                 Console.Write("> What's your name? ");
                 name = Console.ReadLine();
                 if(string.IsNullOrEmpty(name))continue;
@@ -183,8 +182,19 @@ namespace Uppgift3_Spel
             } while (creatingPlayer);
 
             Console.Clear();
-            Console.WriteLine("Hello!?...Where am I ? !...Ugh...I don't feel too well.\n");
+            Console.WriteLine("Hello!?...Where am I?!...Ugh...I don't feel too well.\n");
             return new Player(name);
+        }
+
+        public void MainScreen()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("+----------------------------------------+");
+            Console.WriteLine("+         MR.X DUNGEON GAME v1.0         +");
+            Console.WriteLine("+----------------------------------------+");
+            Console.WriteLine("+ Type help for commands during the game +");
+            Console.WriteLine("+----------------------------------------+");
+            Console.ResetColor();
         }
 
         

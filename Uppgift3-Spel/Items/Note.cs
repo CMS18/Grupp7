@@ -13,6 +13,15 @@ namespace Uppgift3_Spel.Items
         {
         }
 
+
+        public override void ShowItemDescription()
+        {
+            Console.WriteLine("Welcome to my game, I hope I didn't drug you too heavily..." +
+                              " I left a key for you to leave this room.\n" +
+                              "However if you want to escape, you have to solve the upcoming puzzles as well." +
+                              " Muhahahaha....haha! /Mr X.");
+        }
+
         public override void Use(Player player, Room room, Item item)
         {
             var findItem = room.RoomInventory.FirstOrDefault(i => i.Name == "Painting");

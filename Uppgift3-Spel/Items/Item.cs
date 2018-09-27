@@ -30,15 +30,12 @@ namespace Uppgift3_Spel.Items
             TakeAble = takeAble;
         }
 
-        public void ShowItemDescription()
+
+        public virtual void ShowItemDescription()
         {
             Console.WriteLine(Description);
         }
 
-        public virtual Item Use(Player player, Item item)
-        {
-            return null;
-        }
 
         public virtual Item Use(Player player, Item item, string value)
         {

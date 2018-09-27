@@ -11,8 +11,8 @@ namespace Uppgift3_Spel.Rooms
     public class Room
     {
         public string Title { get; }
-        public string Description { get; set; }
-        public string Examine { get; set; }
+        public string Description { get; protected set; }
+        public string Examine { get; protected set; }
         public List<Exit> Exit { get; }
         public List<Item> RoomInventory { get; }
 
@@ -25,12 +25,11 @@ namespace Uppgift3_Spel.Rooms
             Examine = examine;
         }
 
-        // TODO overload om flera items finns i inventoryt?
-        // TODO method to change room description if item is removed.
         public virtual void ShowRoomDescription()
         {
             Console.WriteLine(Title);
             Console.WriteLine(Description);
+            ExamineRoom();
         }
 
         public Exit GetExitFromRoom(string value)
@@ -51,14 +50,20 @@ namespace Uppgift3_Spel.Rooms
 
         public virtual void ExamineRoom()
         {
-            var sb = new StringBuilder("I can see the following items:");
+            var sb = new StringBuilder("There's following items in here:  ");
 
             foreach (var item in RoomInventory)
             {
-                sb.Append(Environment.NewLine + item.Name);
+                if (RoomInventory.Count == 1)
+                {
+                    sb.Clear();
+                    sb.Append($"There's a {item.Name} here.");
+                    break;
+                }
+                sb.Append(item.Name + ", ");
             }
 
-            if (sb.Length == 30)
+            if (sb.Length == 34)
             {
                 Console.WriteLine("There's nothing here...");
                 return;
@@ -76,12 +81,6 @@ namespace Uppgift3_Spel.Rooms
         {
             if(item != null)
             RoomInventory.Remove(item);
-        }
-
-        // Kanske inte behövs
-        public bool ExitExist(string value)
-        {
-            return Exit.Any(i => string.Equals(i.ExitName, value, StringComparison.CurrentCultureIgnoreCase));
         }
 
 

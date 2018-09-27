@@ -38,11 +38,6 @@ namespace Uppgift3_Spel.Exits
             Examine = examine;
         }
 
-        public virtual void Unlock(string value)
-        {
-
-        }
-
         public virtual void Unlock(Player player, string value)
         {
 

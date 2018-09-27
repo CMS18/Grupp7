@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
@@ -41,7 +42,11 @@ namespace Uppgift3_Spel
             var input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input)) return;
             var playerAction = input.ToPlayerAction();
-            if (playerAction == null) return;
+            if (playerAction == null)
+            {
+                Console.WriteLine("I don't understand what you mean. Type help for help.");
+                return;
+            }
             _moves++;
 
             switch (playerAction.ToLower())
@@ -78,10 +83,21 @@ namespace Uppgift3_Spel
                 case "move":
                     Move(input);
                     break;
+                case "help":
+                    Help();
+                    break;
                 default:
                     Console.WriteLine("Do what now?");
                     break;
             }
+        }
+
+        private static void Help()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Usable commands: help, open, use, drop, look, show, take,\n" +
+                              " pickup, go, examine, read, inventory, move");
+            Console.ResetColor();
         }
 
         private void Move(string value)
@@ -145,7 +161,7 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
-
+            
             // Kolla om användaren tar use på ett exit
             foreach (var item in _player.PlayerInventory)
             {
@@ -192,6 +208,8 @@ namespace Uppgift3_Spel
             }
             _player.PlayerInventory.Add(playerFirstItem);
 
+            Console.WriteLine("I can't do that.");
+
         }
 
         public void Open(string value)
@@ -214,6 +232,8 @@ namespace Uppgift3_Spel
                 exit.LockedDescription();
                 return;
             }
+
+            Console.WriteLine("I can't do that.");
         }
 
         public void Take(string value)

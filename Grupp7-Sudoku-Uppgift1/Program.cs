@@ -15,7 +15,6 @@ namespace Uppgift1
         static void Main(string[] args)
         {
             Sudoku game = new Sudoku(easy1);
-
             game.BoardAsText();
             game.Solve();
         }

@@ -2,7 +2,7 @@
 
 namespace Uppgift3_Spel.Exits
 {
-    class FinalDoor : Exit
+    internal class FinalDoor : Exit
     {
         public FinalDoor(int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString, string examine) : base(exitId, locked, endPoint, name, openExit, lockedString, examine)
         { }
@@ -14,12 +14,20 @@ namespace Uppgift3_Spel.Exits
             value = Console.ReadLine();
             if (value == "1483")
             {
+                Console.Beep(440, 200);
+                Console.Beep(500, 200);
+                Console.Beep(700, 200);
+                Console.Beep(600, 200);
                 Locked = false;
                 EndPoint = true;
                 Console.WriteLine(OpenExit);
                 Examine = "The door is unlocked, let's get out of here!";
                 return;
             }
+            Console.Beep(440, 200);
+            Console.Beep(600, 200);
+            Console.Beep(300, 200);
+            Console.Beep(500, 200);
             Console.WriteLine("Incorrect combination.");
         }
 
