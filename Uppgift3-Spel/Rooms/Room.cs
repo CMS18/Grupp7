@@ -33,6 +33,22 @@ namespace Uppgift3_Spel.Rooms
             Console.WriteLine(Description);
         }
 
+        public Exit GetExitFromRoom(string value)
+        {
+            var compareArray = value.Split(' ').ToArray();
+            foreach (var exit in Exit)
+            {
+                foreach (var str in compareArray)
+                {
+                    if (exit.ExitName.ToLower().Contains(str.ToLower()))
+                        return exit;
+                }
+            }
+
+            return null;
+        }
+
+
         public virtual void ExamineRoom()
         {
             var sb = new StringBuilder("I can see the following items:");
@@ -63,9 +79,9 @@ namespace Uppgift3_Spel.Rooms
         }
 
         // Kanske inte behövs
-        protected bool ItemExist(string value)
+        public bool ExitExist(string value)
         {
-            return RoomInventory.Any(i => string.Equals(i.Name, value, StringComparison.CurrentCultureIgnoreCase));
+            return Exit.Any(i => string.Equals(i.ExitName, value, StringComparison.CurrentCultureIgnoreCase));
         }
 
 

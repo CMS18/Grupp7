@@ -160,16 +160,20 @@ namespace Uppgift3_Spel
             }
 
             // Kolla om final door.
-            foreach (var exit in _currentRoom.Exit)
+            var roomExit = _currentRoom.GetExitFromRoom(value);
+            if (roomExit != null)
             {
-                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
-                exit.Unlock(_player, value);
+                roomExit.Unlock(_player, value);
                 return;
             }
-
+                
             // Kolla om användaren tar use på ett item i rummet
             var playerItem = _player.GetItemFromInventory(value);
-            if (playerItem == null) return;
+            if (playerItem == null)
+            {
+                Console.WriteLine("I can't do that.");
+                return;
+            }
             foreach (var item in _currentRoom.RoomInventory)
             {
                 if (!InputParse.CompareStrings(value, item.Name)) continue;
@@ -177,12 +181,15 @@ namespace Uppgift3_Spel
                 return;
             }
 
-
             // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;
-            playerFirstItem = playerFirstItem.Use(_player, playerFirstItem, value);
-            if (playerFirstItem == null) return;
+                playerFirstItem = playerFirstItem.Use(_player, playerFirstItem, value);
+            if (playerFirstItem == null)
+            {
+                Console.WriteLine("I can't do that.");
+                return;
+            }
             _player.PlayerInventory.Add(playerFirstItem);
 
         }
@@ -252,7 +259,7 @@ namespace Uppgift3_Spel
         public void Victory()
         {
             Console.WriteLine($"---------------YOU ARE THE BEST---------------");
-            Console.WriteLine($"{_player.Name} escape the dungeon! Total moves: {_moves}, great job!");
+            Console.WriteLine($"{_player.Name} escaped the dungeon! Total moves: {_moves}, great job!");
             Console.ReadLine();
             Environment.Exit(0);
         }
