@@ -9,16 +9,12 @@ namespace Uppgift3_Spel
     {
         public List<Item> PlayerInventory { get; }
         public string Name { get; }
-        private bool Alive { get; }
         
         public Player(string name)
         {
             Name = name;
             PlayerInventory = new List<Item>();
-            Alive = true;
         }
-
-        public bool IsDead() => Alive == false;
 
         public void PickUpItem(Item item)
         {
