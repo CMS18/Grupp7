@@ -12,8 +12,9 @@ namespace Uppgift3_Spel.Items
         {
         }
 
-        public override Item Use(Player player, Item item)
+        public override Item Use(Player player, Item item, string value)
         {
+            if (!FindItemFromString(value, "lighter")) return null;
             var findItem = player.PlayerInventory.FirstOrDefault(x => x.ItemId == 6);
 
             if (findItem == null) return null;

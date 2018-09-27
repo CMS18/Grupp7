@@ -8,8 +8,9 @@ namespace Uppgift3_Spel.Items
         public Lighter(string name, string description, int id, string examine) : base(name, description, id, examine)
         { }
 
-        public override Item Use(Player player, Item item)
+        public override Item Use(Player player, Item item, string value)
         {
+            if (!FindItemFromString(value, "torch")) return null;
             var findItem = player.PlayerInventory.FirstOrDefault(x => x.ItemId == 8);
 
             if (findItem == null) return null;
