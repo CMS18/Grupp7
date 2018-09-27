@@ -169,10 +169,6 @@ namespace Uppgift3_Spel
                 return;
             }
 
-
-
-
-
             // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;

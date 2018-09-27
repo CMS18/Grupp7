@@ -12,8 +12,10 @@ namespace Uppgift3_Spel.Items
         {
         }
 
-        public override Item Use(Player player, Item item)
+        public override Item Use(Player player, Item item, string value)
         {
+            if (!FindItemFromString(value, "broom")) return null;
+
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Broom");
             if (findItem == null) return null;
             player.PlayerInventory.Remove(findItem);
@@ -26,5 +28,8 @@ namespace Uppgift3_Spel.Items
                 8,
                 "I need something to light this bad boy!");
         }
+
+
+
     }
 }

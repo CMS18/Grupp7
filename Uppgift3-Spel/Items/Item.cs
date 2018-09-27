@@ -42,7 +42,6 @@ namespace Uppgift3_Spel.Items
 
         public virtual Item Use(Player player, Item item, string value)
         {
-            Console.WriteLine("I can't use that.");
             return null;
         }
 
@@ -56,8 +55,6 @@ namespace Uppgift3_Spel.Items
             var arrayValue = value.Split(' ').ToArray();
             return arrayValue.Any(str => str.ToLower().Contains(contain));
         }
-
-
 
         public virtual void Use(Player player, Room room) { }
 

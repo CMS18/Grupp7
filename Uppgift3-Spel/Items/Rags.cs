@@ -3,17 +3,17 @@ using System.Linq;
 
 namespace Uppgift3_Spel.Items
 {
-    class Rags : Item
+    internal class Rags : Item
     {
         public Rags(string name, string description, int id, string examine) : base(name, description, id, examine)
         { }
 
         public override Item Use(Player player, Item item, string value)
         {
-            if (!FindItemFromString(value, "bottle")) base.Use(player, item, value);
+            if (!FindItemFromString(value, "bottle")) return null;
 
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Bottle of Kerosene");
-            if (findItem == null) base.Use(player, item, value);
+            if (findItem == null) return null;
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
 
