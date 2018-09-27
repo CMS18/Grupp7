@@ -22,7 +22,7 @@ namespace Uppgift3_Spel
             // Create Rooms
             var room1 = new StartRoom(
                 "The Room",
-                "\nI'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
+                "I'm inside a small room with bad lighting, I can see a door, maybe I can open it?",
                 "There's a key and a note on the ground!");
 
             var room2 = new Hallway(
@@ -134,7 +134,7 @@ namespace Uppgift3_Spel
                 11,
                 true,
                 false,
-                "Door",
+                "Codelock Door",
                 "Success! The door is unlocked, let's get out of here!",
                 "The door is locked. There's a codelock to it. I need to find that code!",
                 "A big iron door with codelock next to it."
@@ -181,7 +181,9 @@ namespace Uppgift3_Spel
                 if(string.IsNullOrEmpty(name))continue;
                 creatingPlayer = false;
             } while (creatingPlayer);
-            Console.WriteLine("Hello!?...Where am I ? !...Ugh...I don't feel too well.");
+
+            Console.Clear();
+            Console.WriteLine("Hello!?...Where am I ? !...Ugh...I don't feel too well.\n");
             return new Player(name);
         }
 

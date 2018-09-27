@@ -24,7 +24,7 @@ namespace Uppgift3_Spel.Rooms
                 }
                
             }
-            Console.WriteLine(Description);
+            base.ShowRoomDescription();
         }
 
     }
