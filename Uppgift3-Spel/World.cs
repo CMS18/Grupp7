@@ -207,7 +207,7 @@ namespace Uppgift3_Spel
                 if (!exit.Locked)
                 {
                     _currentRoom = exit.LeadsTo;
-                    _currentRoom.ShowRoomDescription();
+                    _currentRoom?.ShowRoomDescription();
                     return;
                 }
                 exit.LockedDescription();
@@ -257,6 +257,7 @@ namespace Uppgift3_Spel
 
         public void Victory()
         {
+            Console.Title = _currentRoom.Title.PadRight(100) + "Moves: " + _moves;
             Console.WriteLine($"---------------YOU ARE THE BEST---------------");
             Console.WriteLine($"{_player.Name} escaped the dungeon! Total moves: {_moves}, great job!");
             Console.ReadLine();
