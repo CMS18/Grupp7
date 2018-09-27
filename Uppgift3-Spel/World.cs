@@ -176,7 +176,7 @@ namespace Uppgift3_Spel
             // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;
-            playerFirstItem = playerFirstItem.Use(_player, playerFirstItem);
+            playerFirstItem = playerFirstItem.Use(_player, playerFirstItem, value);
             if (playerFirstItem == null) return;
             _player.PlayerInventory.Add(playerFirstItem);
            

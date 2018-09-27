@@ -50,7 +50,7 @@ namespace Uppgift3_Spel.Items
             //
         }
 
-        protected bool CompareValue(Player player, string value)
+        protected virtual bool CompareValue(Player player, string value)
         {
             var arrayValue = value.Split(' ').ToArray();
             foreach (var item in player.PlayerInventory)

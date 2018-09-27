@@ -24,5 +24,11 @@ namespace Uppgift3_Spel.Items
                 5,
                 "Rags drained with Kerosene, this can burn very well!");
         }
+
+        protected virtual bool CompareValue(Player player, string value)
+        {
+            var arrayValue = value.Split(' ').ToArray();
+            return arrayValue.Any(str => str.ToLower().Contains("bottle"));
+        }
     }
 }
