@@ -18,9 +18,9 @@ namespace Uppgift3_Spel.Items
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
 
-            Console.WriteLine($"{player.Name} got Broom Torch.");
+            Console.WriteLine($"{player.Name} got a Torch.");
 
-            return new BroomTorch("Broom Torch",
+            return new BroomTorch("Torch",
                 "A broom covered in kerosene soaked rags.",
                 8,
                 "I need something to light this bad boy!");

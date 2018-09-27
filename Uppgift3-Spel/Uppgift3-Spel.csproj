@@ -51,6 +51,7 @@
     <Compile Include="Items\Bottle.cs" />
     <Compile Include="Items\Broom.cs" />
     <Compile Include="Items\BroomTorch.cs" />
+    <Compile Include="Items\CodeLock.cs" />
     <Compile Include="Items\Key.cs" />
     <Compile Include="Items\Lighter.cs" />
     <Compile Include="Items\Note.cs" />
