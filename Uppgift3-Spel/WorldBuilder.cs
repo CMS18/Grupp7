@@ -134,8 +134,8 @@ namespace Uppgift3_Spel
                 11,
                 true,
                 false,
-                "Final door",
-                "YAAAY",
+                "Door",
+                "Success! The door is unlocked, let's get out of here!",
                 "The door is locked. There's a codelock to it. I need to find that code!",
                 "A big iron door with codelock next to it."
                 );

@@ -27,12 +27,11 @@ namespace Uppgift3_Spel
             _currentRoom = _rooms[0];
             _currentRoom.ShowRoomDescription();
 
-            while (true) // TODO fixa bool för endpoint
+            while (!_player.Won) // TODO fixa bool för endpoint
             {
                PlayersTurn();
             }
-
-            // Calla Victory!
+            Victory();
         }
 
         public void PlayersTurn()
@@ -146,6 +145,7 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
+
             // Kolla om användaren tar use på ett exit
             foreach (var item in _player.PlayerInventory)
             {
@@ -159,6 +159,14 @@ namespace Uppgift3_Spel
                 }
             }
 
+            // Kolla om final door.
+            foreach (var exit in _currentRoom.Exit)
+            {
+                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
+                exit.Unlock(_player, value);
+                return;
+            }
+
             // Kolla om användaren tar use på ett item i rummet
             var playerItem = _player.GetItemFromInventory(value);
             if (playerItem == null) return;
@@ -169,13 +177,13 @@ namespace Uppgift3_Spel
                 return;
             }
 
+
             // Kolla om användaren  tar use på ett item i sitt inventory
             var playerFirstItem = _player.GetItemFromInventory(value);
             if (playerFirstItem == null) return;
             playerFirstItem = playerFirstItem.Use(_player, playerFirstItem, value);
             if (playerFirstItem == null) return;
             _player.PlayerInventory.Add(playerFirstItem);
-           
 
         }
 
@@ -184,6 +192,11 @@ namespace Uppgift3_Spel
             foreach (var exit in _currentRoom.Exit)
             {
                 if (!InputParse.CompareStrings(value, exit.ExitName)) return;
+                if (!exit.Locked && exit.EndPoint)
+                {
+                    _player.HasWon();
+
+                }
                 if (!exit.Locked)
                 {
                     _currentRoom = exit.LeadsTo;
@@ -233,6 +246,14 @@ namespace Uppgift3_Spel
                 _player.DropItem(item);
                 return;
             }
+        }
+
+        public void Victory()
+        {
+            Console.WriteLine($"---------------YOU ARE THE BEST---------------");
+            Console.WriteLine($"{_player.Name} escape the dungeon! Total moves: {_moves}, great job!");
+            Console.ReadLine();
+            Environment.Exit(0);
         }
     }
 }

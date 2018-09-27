@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace Uppgift3_Spel
 {
-    static class InputParse
+    internal static class InputParse
     {
-        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|examine|read|pickup|inventory|turn|help|move\b";
+        private const string PlayerOptions = @"\bopen|drop|use|look|show|take|go|examine|read|pickup|inventory|turn|help|move|codelock\b";
 
         public static string ToPlayerAction(this string input)
         {

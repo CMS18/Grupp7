@@ -9,11 +9,13 @@ namespace Uppgift3_Spel
     {
         public List<Item> PlayerInventory { get; }
         public string Name { get; }
+        public bool Won { get; private set; }
         
         public Player(string name)
         {
             Name = name;
             PlayerInventory = new List<Item>();
+            Won = false;
         }
 
         public void PickUpItem(Item item)
@@ -24,6 +26,11 @@ namespace Uppgift3_Spel
                 Console.WriteLine("Taken.");
             }
             else Console.WriteLine("I can't take that...");
+        }
+
+        public void HasWon()
+        {
+            Won = true;
         }
 
         public void DropItem(Item item)

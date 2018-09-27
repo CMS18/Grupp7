@@ -10,6 +10,9 @@ namespace Uppgift3_Spel.Rooms
     {
         public FinalRoom(string title, string description, string examine) : base(title, description, examine)
         {
+
         }
+
+
     }
 }

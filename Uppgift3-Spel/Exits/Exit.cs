@@ -8,7 +8,7 @@ namespace Uppgift3_Spel.Exits
         public Room LeadsTo { get; }
         public int ExitId { get; }
         public bool Locked { get; protected set; }
-        public bool EndPoint { get; }
+        public bool EndPoint { get; protected set; }
         public string ExitName { get; }
         public string OpenExit { get; }
         public string LockedString { get; }
@@ -36,6 +36,16 @@ namespace Uppgift3_Spel.Exits
             OpenExit = openExit;
             LockedString = lockedString;
             Examine = examine;
+        }
+
+        public virtual void Unlock(string value)
+        {
+
+        }
+
+        public virtual void Unlock(Player player, string value)
+        {
+
         }
 
         public void ExamineExit() => Console.WriteLine(Examine);
