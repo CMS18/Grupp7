@@ -75,7 +75,7 @@ namespace Uppgift3_Spel
                 "A painting of Mr.X?",
                 0,
                 "The painting is signed by Mr X." +
-                " there seems to be missing a piece of the painting.",
+                " There seems to be missing a piece of the painting.",
                 false);
 
             var rocks = new Rock("Pile of Rocks",
@@ -136,7 +136,7 @@ namespace Uppgift3_Spel
                 "Codelock Door",
                 "Success! The door is unlocked, let's get out of here!",
                 "The door is locked. There's a codelock to it. I need to find that code!",
-                "A big iron door with codelock next to it."
+                "A big iron door with a codelock next to it."
                 );
 
             // Add Exits to Lists
