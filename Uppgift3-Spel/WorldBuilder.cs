@@ -34,7 +34,7 @@ namespace Uppgift3_Spel
                 "Janitor's Room",
                 "It's a small room, quite messy, it smells like gasoline. I see a painting of an old man with a handle bar mustasch.\n" +
                 "I can't see any exits here besides the way I came from.",
-                "There's a table with a bottle. I also see a cleaning cart with some rags and a broom");
+                "");
 
             var room4Left = new FinalRoom(
                 "Final Room",

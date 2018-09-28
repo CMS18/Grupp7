@@ -47,7 +47,7 @@ namespace Uppgift3_Spel.Rooms
 
         public virtual void ExamineRoom()
         {
-            var sb = new StringBuilder("I can see following items here: ");
+            var sb = new StringBuilder("I can see the following items here: ");
             var count = RoomInventory.Count();
             switch (count)
             {
