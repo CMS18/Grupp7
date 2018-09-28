@@ -10,7 +10,7 @@ namespace Uppgift3_Spel.Items
 
         public override Item Use(Player player, Item item, string value)
         {
-            if (!InputParse.CompareStrings(value, "bootle")) return null;
+            if (!InputParse.CompareStrings(value, "bottle")) return null;
 
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Bottle of Kerosene");
             if (findItem == null) return null;
