@@ -11,8 +11,11 @@ namespace Uppgift3_Spel.Exits
 
         public override void Unlock()
         {
-            Locked = false;
-            Console.WriteLine(OpenExit);
+            if (Locked)
+            {
+                Console.WriteLine(OpenExit);
+            }
+            base.Unlock();
             Examine = "A brown wooden door, the lock is broken and the key is stuck inside.";
         }
     }
