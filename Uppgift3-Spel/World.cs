@@ -247,6 +247,7 @@ namespace Uppgift3_Spel
                 else
                 {
                     Console.WriteLine("I can't take that");
+                    return;
                 }
             }
             Console.WriteLine("There's nothing here to take.");
