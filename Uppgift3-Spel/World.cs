@@ -266,6 +266,7 @@ namespace Uppgift3_Spel
                     break;
                 }
             }
+            Console.WriteLine("I can't go that way.");
         }
 
         public void Drop(string value)
