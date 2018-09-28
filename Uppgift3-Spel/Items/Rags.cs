@@ -20,7 +20,7 @@ namespace Uppgift3_Spel.Items
             Console.WriteLine($"{player.Name} got Soaked Rags.");
 
             return new SoakedRags("Soaked Rags",
-                "Rags drained with Kerosene",
+                "Rags drained with Kerosene.",
                 5,
                 "Rags drained with Kerosene, this can burn very well!");
         }
