@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel.Items
@@ -30,30 +29,14 @@ namespace Uppgift3_Spel.Items
             TakeAble = takeAble;
         }
 
+        public virtual void ShowItemDescription() => Console.WriteLine(Description);
 
-        public virtual void ShowItemDescription()
-        {
-            Console.WriteLine(Description);
-        }
+        public virtual Item Use(Player player, Item item, string value) => null;
 
-
-        public virtual Item Use(Player player, Item item, string value)
-        {
-            return null;
-        }
-
-        public virtual void Use(Player player, Room room, Item item)
-        {
-            //
-        }
-
-
+        public virtual void Use(Player player, Room room, Item item) { }
 
         public virtual void Use(Player player, Room room) { }
 
-        public void ExamineItem()
-        {
-            Console.WriteLine(Examine);
-        }
+        public void ExamineItem() => Console.WriteLine(Examine);
     }
 }

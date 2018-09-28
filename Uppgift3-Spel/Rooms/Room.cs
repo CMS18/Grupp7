@@ -59,7 +59,6 @@ namespace Uppgift3_Spel.Rooms
                 }
                 sb.Append(Environment.NewLine + item.Name);
             }
-
             if (sb.Length == 34)
             {
                 Console.WriteLine("There's nothing here...");
