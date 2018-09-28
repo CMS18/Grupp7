@@ -173,6 +173,7 @@ namespace Uppgift3_Spel
                     return;
                 }
             }
+            Console.WriteLine("I can't do that."); //FIXA!!
 
             // Kolla om final door.
             var roomExit = _currentRoom.GetExitFromRoom(value);
@@ -206,8 +207,6 @@ namespace Uppgift3_Spel
                 return;
             }
             _player.PlayerInventory.Add(playerFirstItem);
-
-            Console.WriteLine("I can't do that.");
 
         }
 
@@ -263,7 +262,7 @@ namespace Uppgift3_Spel
                 {
                     _currentRoom = exit.LeadsTo;
                     _currentRoom.ShowRoomDescription();
-                    break;
+                    return;
                 }
             }
             Console.WriteLine("I can't go that way.");
