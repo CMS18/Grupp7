@@ -11,7 +11,7 @@ namespace Uppgift3_Spel.Items
 
         public override Item Use(Player player, Item item, string value)
         {
-            if (!FindItemFromString(value, "soaked")) return null;
+            if (!InputParse.CompareStrings(value, "soaked")) return null;
 
             var findItem = player.PlayerInventory.FirstOrDefault(i => i.Name == "Soaked Rags");
             if (findItem == null) return null;
@@ -20,7 +20,8 @@ namespace Uppgift3_Spel.Items
 
             Console.WriteLine($"{player.Name} got a Torch.");
 
-            return new Torch("Torch",
+            return new Torch(
+                "Torch",
                 "A broom covered in kerosene soaked rags.",
                 8,
                 "I need something to light this bad boy!");

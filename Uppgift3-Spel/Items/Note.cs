@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel.Items
@@ -28,7 +25,8 @@ namespace Uppgift3_Spel.Items
             if (findItem == null) return;
             player.PlayerInventory.Remove(item);
             room.RoomInventory.Remove(findItem);
-            room.RoomInventory.Add(new Painting("Completed Painting",
+            room.RoomInventory.Add(new Item(
+                "Completed Painting",
                 "It's a complete painting of Mr.X... I think?",
                 5,
                 "There is a number written here! 1, 4, 8, 3. I wonder what that's for?",

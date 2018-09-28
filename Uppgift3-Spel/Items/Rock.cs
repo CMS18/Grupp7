@@ -14,7 +14,8 @@ namespace Uppgift3_Spel.Items
         {
             var findItem = room.RoomInventory.FirstOrDefault(i => i.Name == "Pile of Rocks");
             if (findItem == null) return;
-            room.RoomInventory.Add(new Lighter("Lighter",
+            room.RoomInventory.Add(new Lighter(
+                "Lighter",
                 "A red BIC lighter.",
                 6,
                 "It still works!"));

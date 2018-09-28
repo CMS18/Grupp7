@@ -47,11 +47,7 @@ namespace Uppgift3_Spel.Items
             //
         }
 
-        protected virtual bool FindItemFromString(string value, string contain)
-        {
-            var arrayValue = value.Split(' ').ToArray();
-            return arrayValue.Any(str => str.ToLower().Contains(contain));
-        }
+
 
         public virtual void Use(Player player, Room room) { }
 

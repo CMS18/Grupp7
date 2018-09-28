@@ -71,7 +71,7 @@ namespace Uppgift3_Spel
                 "A regular broom used to cleaning.",
                 5, "It's a broom, what more do you need to know?");
 
-            var painting = new Painting(
+            var painting = new Item(
                 "Painting",
                 "A painting of Mr.X?",
                 0,

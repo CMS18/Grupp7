@@ -53,7 +53,6 @@
     <Compile Include="Items\Torch.cs" />
     <Compile Include="Items\Lighter.cs" />
     <Compile Include="Items\Note.cs" />
-    <Compile Include="Items\Painting.cs" />
     <Compile Include="Items\Rags.cs" />
     <Compile Include="InputParse.cs" />
     <Compile Include="Items\Rock.cs" />
