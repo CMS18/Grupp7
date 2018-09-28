@@ -62,7 +62,7 @@ namespace Uppgift3_Spel.Rooms
             var shouldBeComma = false;
             for (int i = 0; i < count; i++)
             {
-                if (shouldBeComma) sb.Append($", ");
+                if (shouldBeComma) sb.Append(", ");
                 shouldBeComma = true;
                 sb.Append($"{RoomInventory[i].Name}");
             }
