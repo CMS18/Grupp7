@@ -5,7 +5,6 @@ namespace Sudoku2
     class Sudoku
     {
         private int[,] _sudokuBoard;
-        private int tries;
 
         public Sudoku(string board)
         {
@@ -58,7 +57,6 @@ namespace Sudoku2
                 {
                     if (_sudokuBoard[row, column] == 0)
                     {
-                        tries++;
                         for (int numbers = 9; numbers > 0; numbers--)
                         {
                             if (ControlRowColBox(row, column, numbers))
