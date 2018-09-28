@@ -20,7 +20,7 @@ namespace Uppgift3_Spel.Exits
                 return true;
             }
 
-            Console.WriteLine("It's too dark to go that way.");
+            Console.Write("It's too dark, ");
             return false;
         }
     }
