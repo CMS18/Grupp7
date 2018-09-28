@@ -47,39 +47,37 @@ namespace Uppgift3_Spel.Rooms
 
         public virtual void ExamineRoom()
         {
-            var sb = new StringBuilder("There's following items in here:  ");
-
-            foreach (var item in RoomInventory)
+            var sb = new StringBuilder("I can see following items here: ");
+            var count = RoomInventory.Count();
+            switch (count)
             {
-                if (RoomInventory.Count == 1)
-                {
+                case 0:
+                    Console.WriteLine("There's no items here...");
+                    return;
+                case 1:
                     sb.Clear();
-                    sb.Append($"There's a {item.Name} here.");
+                    sb.Append("I can see the following item here: ");
                     break;
-                }
-                sb.Append(Environment.NewLine + item.Name);
             }
-            if (sb.Length == 34)
+            var shouldBeComma = false;
+            for (int i = 0; i < count; i++)
             {
-                Console.WriteLine("There's nothing here...");
-                return;
+                if (shouldBeComma) sb.Append($", ");
+                shouldBeComma = true;
+                sb.Append($"{RoomInventory[i].Name}");
             }
+            sb.Append(".");
+
             Examine = sb.ToString();
             Console.WriteLine(Examine);
         }
 
-        public void AddRoomItem(Item item)
-        {
-            RoomInventory.Add(item);
-        }
+        public void AddRoomItem(Item item) => RoomInventory.Add(item);
 
         public void RemoveRoomItem(Item item)
         {
             if(item != null)
             RoomInventory.Remove(item);
         }
-
-
-
     }
 }
