@@ -43,11 +43,12 @@ namespace Uppgift3_Spel
             var playerAction = input.ToPlayerAction();
             if (playerAction == null)
             {
-                Console.WriteLine("I don't understand what you mean. Type help for help.");
+                Console.WriteLine("I don't understand what you mean.");
+                _moves++;
                 return;
             }
-            _moves++;
 
+            _moves++;
             switch (playerAction.ToLower())
             {
                 case "open":
