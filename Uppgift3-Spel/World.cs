@@ -161,21 +161,19 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
-            
-            // Kolla om användaren tar use på ett exit
-            foreach (var item in _player.PlayerInventory)
+            foreach (var exit in _currentRoom.Exit)
             {
-                if (!InputParse.CompareStrings(value, item.Name)) continue;
-                foreach (var exit in _currentRoom.Exit)
+                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
+                foreach (var item in _player.PlayerInventory)
                 {
                     if (exit.ExitId != item.ItemId || !InputParse.CompareStrings(value, exit.ExitName)) continue;
                     _player.PlayerInventory.Remove(item);
                     exit.Unlock();
                     return;
                 }
+                Console.WriteLine("I can't do that.");
             }
-            Console.WriteLine("I can't do that.");
-
+            
             // Kolla om final door.
             var roomExit = _currentRoom.GetExitFromRoom(value);
             if (roomExit != null)
