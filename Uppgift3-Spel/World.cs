@@ -174,7 +174,7 @@ namespace Uppgift3_Spel
                     return;
                 }
             }
-            Console.WriteLine("I can't do that."); //FIXA!!
+            Console.WriteLine("I can't do that.");
 
             // Kolla om final door.
             var roomExit = _currentRoom.GetExitFromRoom(value);
