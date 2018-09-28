@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using Uppgift3_Spel.Rooms;
 
 namespace Uppgift3_Spel
@@ -28,7 +27,7 @@ namespace Uppgift3_Spel
             _currentRoom = _rooms[0];
             _currentRoom.ShowRoomDescription();
 
-            while (!_player.Won) // TODO fixa bool för endpoint
+            while (!_player.Won)
             {
                PlayersTurn();
             }
@@ -247,8 +246,12 @@ namespace Uppgift3_Spel
                     _currentRoom.RemoveRoomItem(item);
                     return;
                 }
+                else
+                {
+                    Console.WriteLine("I can't take that");
+                }
             }
-            Console.WriteLine("I can't take that.");
+            Console.WriteLine("There's nothing here to take.");
         }
 
         public void Go(string value)

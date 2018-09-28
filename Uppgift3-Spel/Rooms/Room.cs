@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Uppgift3_Spel.Exits;
 using Uppgift3_Spel.Items;
@@ -37,13 +36,11 @@ namespace Uppgift3_Spel.Rooms
             var compareArray = value.Split(' ').ToArray();
             foreach (var exit in Exit)
             {
-                foreach (var str in compareArray)
+                if (compareArray.Any(str => exit.ExitName.ToLower().Contains(str.ToLower())))
                 {
-                    if (exit.ExitName.ToLower().Contains(str.ToLower()))
-                        return exit;
+                    return exit;
                 }
             }
-
             return null;
         }
 
@@ -60,7 +57,7 @@ namespace Uppgift3_Spel.Rooms
                     sb.Append($"There's a {item.Name} here.");
                     break;
                 }
-                sb.Append(item.Name + ", ");
+                sb.Append(Environment.NewLine + item.Name);
             }
 
             if (sb.Length == 34)

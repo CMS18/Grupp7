@@ -50,15 +50,13 @@
     <Compile Include="Exits\RightOfHallway.cs" />
     <Compile Include="Items\Bottle.cs" />
     <Compile Include="Items\Broom.cs" />
-    <Compile Include="Items\BroomTorch.cs" />
-    <Compile Include="Items\Key.cs" />
+    <Compile Include="Items\Torch.cs" />
     <Compile Include="Items\Lighter.cs" />
     <Compile Include="Items\Note.cs" />
     <Compile Include="Items\Painting.cs" />
     <Compile Include="Items\Rags.cs" />
     <Compile Include="InputParse.cs" />
     <Compile Include="Items\Rock.cs" />
-    <Compile Include="Items\LightedTorch.cs" />
     <Compile Include="Items\SoakedRags.cs" />
     <Compile Include="Rooms\FinalRoom.cs" />
     <Compile Include="Rooms\Hallway.cs" />

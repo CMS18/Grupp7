@@ -28,10 +28,7 @@ namespace Uppgift3_Spel
             else Console.WriteLine("I can't take that...");
         }
 
-        public void HasWon()
-        {
-            Won = true;
-        }
+        public void HasWon() => Won = true;
 
         public void DropItem(Item item)
         {
@@ -41,14 +38,14 @@ namespace Uppgift3_Spel
 
         public void ShowInventory()
         {
-            if(PlayerInventory.Count == 0) Console.WriteLine("Your inventory is empty.");
-
+            if (PlayerInventory.Count == 0)
+            {
+                Console.WriteLine($"{Name}'s inventory is empty.");
+                return;
+            }
             foreach (var item in PlayerInventory)
             {
-                if (item != null)
-                {
-                    Console.WriteLine($"{item.Name, -10} : {item.Description}");
-                }   
+                Console.WriteLine($"{item.Name, -10} : {item.Description}");
             }
         }
 
@@ -57,10 +54,9 @@ namespace Uppgift3_Spel
             var compareArray = value.Split(' ').ToArray();
             foreach (var item in PlayerInventory)
             {
-                foreach (var str in compareArray)
+                if (compareArray.Any(str => item.Name.ToLower().Contains(str.ToLower())))
                 {
-                    if (item.Name.ToLower().Contains(str.ToLower()))
-                        return item;
+                    return item;
                 }
             }
 

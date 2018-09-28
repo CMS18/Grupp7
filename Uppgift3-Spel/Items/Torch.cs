@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Uppgift3_Spel.Items
 {
-    class BroomTorch : Item
+    class Torch : Item
     {
-        public BroomTorch(string name, string description, int id, string examine) : base(name, description, id, examine)
+        public Torch(string name, string description, int id, string examine) : base(name, description, id, examine)
         {
         }
 
@@ -21,7 +21,7 @@ namespace Uppgift3_Spel.Items
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
             Console.WriteLine($"{player.Name} got a Lighted Torch.");
-            return new LightedTorch("Lighted Torch",
+            return new Item("Lighted Torch",
                 "It's a torch that is burning bright.",
                 10,
                 "Woah! Keep it away from my face!");

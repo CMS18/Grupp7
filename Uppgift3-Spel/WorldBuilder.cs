@@ -8,7 +8,7 @@ namespace Uppgift3_Spel
 {
     internal class WorldBuilder
     {
-        private List<Room> Rooms { get; }
+        private List<Room> Rooms { get; } = new List<Room>();
 
         public List<Room> GetWorldRooms()
         {
@@ -17,7 +17,6 @@ namespace Uppgift3_Spel
 
         public WorldBuilder()
         {
-            var result = new List<Room>();
 
             // Create Rooms
             var room1 = new StartRoom(
@@ -28,8 +27,7 @@ namespace Uppgift3_Spel
             var room2 = new Hallway(
                 "Hallway",
                 "A small hallway with cement covered walls, the air is damp. I think I'm in a cellar?\n" +
-                "There is a path leading to the left, it looks dark. There's also a path leading to the right.\nThere's a pile of rocks " +
-                "lying on the ground.",
+                "There is a path leading to the left, it looks dark. There's also a path leading to the right.",
                 "");
 
             var room3Right = new JanitorsRoom(
@@ -40,11 +38,11 @@ namespace Uppgift3_Spel
 
             var room4Left = new FinalRoom(
                 "Final Room",
-                "An empty room with a door.",
+                "It's a small room with walls covered in moist, I can see a door with a codelock next to it.",
                 "There's nothing here except the door...");
 
             // Create Items
-            var roomKey = new Key(
+            var roomKey = new Item(
                 "Room Key",
                 "It looks like it could fit to this door.",
                 1,
@@ -61,47 +59,40 @@ namespace Uppgift3_Spel
                 "It's commonly used to power jet engines.",
                 2,
                 "A bottle of kerosene, it's very flammable.");
+
             var rags = new Rags(
                 "Rags",
                 "Some old clothes ripped apart.",
                 2,
                 "I think this used to be a shirt...");
+
             var broom = new Broom(
                 "Broom",
                 "A regular broom used to cleaning.",
                 5, "It's a broom, what more do you need to know?");
 
-            var painting = new Painting("Painting",
+            var painting = new Painting(
+                "Painting",
                 "A painting of Mr.X?",
                 0,
                 "The painting is signed by Mr X." +
                 " there seems to be missing a piece of the painting.",
                 false);
 
-            var rocks = new Rock("Pile of Rocks",
+            var rocks = new Rock(
+                "Pile of Rocks",
                 "It's a pile of rocks.",
                 7,
                 "A large pile of small rocks, almost as someone placed them there? Maybe I can move them.",
                 false);
 
-            // TODO
-            // Lägg till pile of rocks för rum 2, gör den non takeable,
-            // Lägg till move i InputParse const
-            // Lägg till metod Move i World.PlayersTurn
-            // Gör subklass Lighter : Item, överrida Use att kunna tända eld på facklan.
-            // Gör Room2ExitLeft, locked = true tills att användaren har facklan i inventoryt.
-            // Lägg till ett till rum med en låst dörr, dörren är också endpoint och har ett kombinationslås
-            // Skapa någon metod för vad som visas då man klarat ut spelet!
-
-
-
 
             // Create Exit Points
             var roomExit = new Door(
-                room2,  // LeadsTo
-                1,      // ExitID
-                true,   // Locked
-                false,   // EndPoint
+                room2,
+                1,
+                true,
+                false,
                 "Rooms Door",
                 "You hear a crack... the door is unlocked! Oh... the key broke in half.",
                 "The door is locked, maybe there's a key somewhere?",
@@ -139,17 +130,42 @@ namespace Uppgift3_Spel
                 "A big iron door with codelock next to it."
                 );
 
-            // Add Exits to Lists
-            room1.Exit.Add((roomExit));
-
-            room2.Exit.Add(new Door(room1, 1, false, false, "Rooms Door", "", "", "That's the door I came from. The key is still stuck inside the lock, whoops!"));
+            // Add exits to room sists
+            room1.Exit.Add(roomExit);
+            room2.Exit.Add(new Door(
+                room1,
+                1,
+                false,
+                false,
+                "Rooms Door",
+                "",
+                "",
+                "That's the door I came from. The key is still stuck inside the lock, whoops!"));
             room2.Exit.Add(room2RightExit);
             room2.Exit.Add(room2LeftExit);
-            room3Right.Exit.Add(new Exit(room2, 2, false, false, "Left", "", "", ""));
-            room4Left.Exit.Add(new Exit(room2, 2, false, false, "Right", "", "", ""));
+
+            room3Right.Exit.Add(new Exit(
+                room2,
+                2,
+                false,
+                false,
+                "Left",
+                "",
+                "",
+                ""));
+
+            room4Left.Exit.Add(new Exit
+                (room2,
+                2,
+                false,
+                false,
+                "Right",
+                "",
+                "",
+                ""));
             room4Left.Exit.Add(finalRoomExit);
                                                                                         
-            // Add Items to RoomList
+            // Add items to room inventory
             room1.RoomInventory.Add(roomKey);
             room1.RoomInventory.Add(note);
 
@@ -160,11 +176,10 @@ namespace Uppgift3_Spel
             room3Right.RoomInventory.Add(broom);
             room3Right.RoomInventory.Add(painting);
 
-            // Add to result and set property Rooms to result.
-            result.Add(room1);
-            result.Add(room2);
-            result.Add(room3Right);
-            Rooms = result;
+            // Add all instances of rooms to property Rooms
+            Rooms.Add(room1);
+            Rooms.Add(room2);
+            Rooms.Add(room3Right);
         }
 
         public Player CreateNewPlayer()

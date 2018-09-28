@@ -16,8 +16,8 @@ namespace Uppgift3_Spel
 
         public static bool CompareStrings(string compare, string compareTo)
         {
-            var arrayValue = compare.Split(' ').ToArray();
-            return arrayValue.Any(t => compareTo.ToLower().Contains(t.ToLower()));
+            var arrayValue = compare.Split(' ').Skip(1).ToArray();
+            return arrayValue.Any(str => compareTo.ToLower().Contains(str.ToLower()));
         }
     }
 }
