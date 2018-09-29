@@ -159,25 +159,23 @@ namespace Uppgift3_Spel
             {
                 roomExit.Unlock(_player, value);
                 return;
-
             }
 
             foreach (var exit in _currentRoom.Exit)
             {
-                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
-                foreach (var item in _player.PlayerInventory)
-                {
-                    if (exit.ExitId != item.ItemId || !InputParse.CompareStrings(value, exit.ExitName)) continue;
-                    _player.PlayerInventory.Remove(item);
-                    exit.Unlock();
-                    return;
-                }
-                Console.WriteLine("I can't do that.");
+                if (InputParse.CompareStrings(value, exit.ExitName))
+                    foreach (var item in _player.PlayerInventory)
+                    {
+                        if (exit.ExitId == item.ItemId && InputParse.CompareStrings(value, exit.ExitName))
+                        {
+                            _player.PlayerInventory.Remove(item);
+                            exit.Unlock();
+                            return;
+                        }
+                    }
             }
             
-            
 
-                
             // Kolla om användaren tar use på ett item i rummet
             var playerItem = _player.GetItemFromInventory(value);
             if (playerItem == null)
