@@ -7,11 +7,11 @@ namespace Uppgift3_Spel.Exits
         public FinalDoor(int exitId, bool locked, bool endPoint, string name, string openExit, string lockedString, string examine) : base(exitId, locked, endPoint, name, openExit, lockedString, examine)
         { }
 
-        public override void Unlock(Player player, string value)
+        public override void Unlock(Player player, string input)
         {
             Console.WriteLine();
             Console.Write("The combination is four numbers: ");
-            value = Console.ReadLine();
+            string value = Console.ReadLine();
             if (value == "1483")
             {
                 Console.Beep(440, 200);

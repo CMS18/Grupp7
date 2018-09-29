@@ -153,6 +153,15 @@ namespace Uppgift3_Spel
 
         public void Use(string value)
         {
+            // Kolla om final door.
+            var roomExit = _currentRoom.GetExitFromRoom("codelock");
+            if (roomExit != null)
+            {
+                roomExit.Unlock(_player, value);
+                return;
+
+            }
+
             foreach (var exit in _currentRoom.Exit)
             {
                 if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
@@ -166,13 +175,8 @@ namespace Uppgift3_Spel
                 Console.WriteLine("I can't do that.");
             }
             
-            // Kolla om final door.
-            var roomExit = _currentRoom.GetExitFromRoom(value);
-            if (roomExit != null)
-            {
-                roomExit.Unlock(_player, value);
-                return;
-            }
+            
+
                 
             // Kolla om användaren tar use på ett item i rummet
             var playerItem = _player.GetItemFromInventory(value);
