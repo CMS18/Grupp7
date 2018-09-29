@@ -9,6 +9,7 @@ namespace Uppgift3_Spel
 
         public static string ToPlayerAction(this string input)
         {
+            input = input.ToLower();
             Regex regex = new Regex(PlayerOptions);
             Match match = regex.Match(input);
             return match.Success ? match.Value : "";
