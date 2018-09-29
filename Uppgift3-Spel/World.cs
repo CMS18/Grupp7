@@ -39,15 +39,7 @@ namespace Uppgift3_Spel
             Console.Title = _currentRoom.Title.PadRight(100) + "Moves: " + _moves;
             Console.Write("> ");
             var input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input)) return;
             var playerAction = input.ToPlayerAction();
-            if (playerAction == null)
-            {
-                Console.WriteLine("I don't understand what you mean.");
-                _moves++;
-                return;
-            }
-
             _moves++;
             switch (playerAction.ToLower())
             {

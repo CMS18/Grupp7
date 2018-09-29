@@ -211,8 +211,5 @@ namespace Uppgift3_Spel
             Console.WriteLine("+----------------------------------------+");
             Console.ResetColor();
         }
-
-        
-
     }
 }

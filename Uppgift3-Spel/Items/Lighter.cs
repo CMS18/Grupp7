@@ -11,14 +11,14 @@ namespace Uppgift3_Spel.Items
         public override Item Use(Player player, Item item, string value)
         {
             if (!InputParse.CompareStrings(value, "torch")) return null;
-            //if (!FindItemFromString(value, "torch")) return null;
             var findItem = player.PlayerInventory.FirstOrDefault(x => x.ItemId == 8);
 
             if (findItem == null) return null;
             player.PlayerInventory.Remove(findItem);
             player.PlayerInventory.Remove(item);
             Console.WriteLine($"{player.Name} got a Lighted Torch.");
-            return new Item("Lighted Torch",
+            return new Item(
+                "Lighted Torch",
                 "It's a torch that is burning bright.",
                 10,
                 "Woah! Keep it away from my face!");

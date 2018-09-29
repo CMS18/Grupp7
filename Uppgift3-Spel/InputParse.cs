@@ -11,7 +11,7 @@ namespace Uppgift3_Spel
         {
             Regex regex = new Regex(PlayerOptions);
             Match match = regex.Match(input);
-            return match.Success ? match.Value : null;
+            return match.Success ? match.Value : "";
         }
 
         public static bool CompareStrings(string compare, string compareTo)
