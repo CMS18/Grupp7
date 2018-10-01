@@ -209,12 +209,12 @@ namespace Uppgift3_Spel
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine(@"    ___ _________    __   __              ");
-            Console.WriteLine(@"    |  \/  || ___ \  \ \ / /              ");
-            Console.WriteLine(@"    | .  . || | _ /   \ V /               ");
-            Console.WriteLine(@"    | |\/| ||    /    /   \               ");
-            Console.WriteLine(@"    | |  | || |\ \ _ / /^\ \              ");
-            Console.WriteLine(@"    \_|  |_/\_| \_(_) /   \/       V.1.102");
+            Console.WriteLine(@"        ___ _________    __   __          ");
+            Console.WriteLine(@"        |  \/  || ___ \  \ \ / /          ");
+            Console.WriteLine(@"        | .  . || | _ /   \ V /           ");
+            Console.WriteLine(@"        | |\/| ||    /    /   \           ");
+            Console.WriteLine(@"        | |  | || |\ \ _ / /^\ \          ");
+            Console.WriteLine(@"        \_|  |_/\_| \_(_) /   \/   V.1.102");
             Console.WriteLine("+----------------------------------------+");
             Console.WriteLine("+ Type help for commands during the game +");
             Console.WriteLine("+----------------------------------------+");
