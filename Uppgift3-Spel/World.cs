@@ -20,6 +20,7 @@ namespace Uppgift3_Spel
             // Ask player for Name, create Player.
             _player = world.CreateNewPlayer();
             PlayGame();
+
         }
 
         public void PlayGame()

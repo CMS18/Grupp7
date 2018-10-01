@@ -112,6 +112,7 @@ namespace Sudoku2
                 if (_sudokuBoard[row, i] == num) return false; // Kontrollerar hela raden
                 if (_sudokuBoard[i, col] == num) return false; // Kontrollerar hela kolumen
                 if (_sudokuBoard[rowStart + (i % 3), colStart + (i / 3)] == num) return false; // Kontrollerar Box
+                // 0-2 rowStart, 0-2 colStart
             }
             return true;
         }

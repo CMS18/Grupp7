@@ -13,6 +13,20 @@ namespace Uppgift3_Spel.Rooms
 
         }
 
+        public override void ShowRoomDescription()
+        {
+            foreach (var exit in Exit)
+            {
+                if (!exit.Locked && exit.ExitId == 11)
+                {
+                    Description = "It's a small room with walls covered in moist, the door is unlocked.\n" +
+                                  "I should get out of here while I can!";
+                }
+
+            }
+            base.ShowRoomDescription();
+        }
+
 
     }
 }
