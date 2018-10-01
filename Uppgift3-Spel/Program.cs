@@ -6,7 +6,6 @@ namespace Uppgift3_Spel
         {
             //TEXTSPEL
              new World();
-
         }
     }
 }

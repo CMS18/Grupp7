@@ -164,9 +164,10 @@ namespace Uppgift3_Spel
 
             foreach (var exit in _currentRoom.Exit)
             {
-                if (InputParse.CompareStrings(value, exit.ExitName))
+                if (!InputParse.CompareStrings(value, exit.ExitName)) continue;
                     foreach (var item in _player.PlayerInventory)
                     {
+                        if (!InputParse.CompareStrings(value, item.Name)) continue;
                         if (exit.ExitId == item.ItemId && InputParse.CompareStrings(value, exit.ExitName))
                         {
                             _player.PlayerInventory.Remove(item);
