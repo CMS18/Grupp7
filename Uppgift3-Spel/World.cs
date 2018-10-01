@@ -69,7 +69,7 @@ namespace Uppgift3_Spel
                 case "read":
                     Read(input);
                     break;
-                case "examine":
+                case "examine": case "inspect":
                     Examine(input);
                     break;
                 case "move":
