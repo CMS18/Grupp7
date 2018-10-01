@@ -244,7 +244,7 @@ namespace Uppgift3_Spel
                     return;
                 }
             }
-            Console.WriteLine("There's nothing here to take.");
+            Console.WriteLine("I can't take that.");
         }
 
         public void Go(string value)
