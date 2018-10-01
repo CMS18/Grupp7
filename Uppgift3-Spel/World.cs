@@ -279,8 +279,34 @@ namespace Uppgift3_Spel
             Console.Title = _currentRoom.Title.PadRight(100) + "Moves: " + _moves;
             Console.WriteLine($"---------------YOU ARE THE BEST---------------");
             Console.WriteLine($"{_player.Name} escaped the dungeon! Total moves: {_moves}, great job!");
-            Console.ReadLine();
-            Environment.Exit(0);
+            //Console.ReadLine();
+            //Environment.Exit(0);
+            PlayAgain();
+        }
+
+
+        public void PlayAgain()
+        {
+            bool play = true;
+            do
+            {
+                Console.Write("Do you want to play again? Y/N ");
+                var input = Console.ReadLine();
+                switch (input.ToUpper())
+                {
+                    case "Y":
+                        Console.Clear();
+                        var world = new World();
+                        break;
+                    case "N":
+                        play = false;
+                        break;
+                    default:
+                        Console.WriteLine("Y for YES or N for NO.");
+                        break;
+                }
+
+            } while (play);
         }
     }
 }
