@@ -5,7 +5,7 @@ namespace Uppgift3_Spel
         static void Main(string[] args)
         {
             //TEXTSPEL
-            var game = new World();
+             new World();
 
         }
     }

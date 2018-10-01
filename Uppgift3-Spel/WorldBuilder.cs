@@ -187,13 +187,17 @@ namespace Uppgift3_Spel
             Console.Title = "New Game";
             string name;
             var creatingPlayer = true;
-            MainScreen();
             do
             {
+                MainScreen();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write("> What's your name? ");
+                Console.ResetColor();
                 name = Console.ReadLine();
                 if(string.IsNullOrEmpty(name))continue;
                 creatingPlayer = false;
+                Console.Clear();
             } while (creatingPlayer);
 
             Console.Clear();
@@ -203,9 +207,14 @@ namespace Uppgift3_Spel
 
         public void MainScreen()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("+----------------------------------------+");
-            Console.WriteLine("+         MR.X DUNGEON GAME v1.0         +");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(@"    ___ _________    __   __              ");
+            Console.WriteLine(@"    |  \/  || ___ \  \ \ / /              ");
+            Console.WriteLine(@"    | .  . || | _ /   \ V /               ");
+            Console.WriteLine(@"    | |\/| ||    /    /   \               ");
+            Console.WriteLine(@"    | |  | || |\ \ _ / /^\ \              ");
+            Console.WriteLine(@"    \_|  |_/\_| \_(_) /   \/       V.1.102");
             Console.WriteLine("+----------------------------------------+");
             Console.WriteLine("+ Type help for commands during the game +");
             Console.WriteLine("+----------------------------------------+");
